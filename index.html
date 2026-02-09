@@ -1,0 +1,3233 @@
+[file name]: index.html
+[file content begin]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Preston City of Sanctuary - Building a Culture of Welcome</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts for better typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #A0125A;
+            --primary-light: #c93b84;
+            --secondary-color: #f8f9fa;
+            --accent-color: #2c5aa0;
+            --dark-color: #7a0d44;
+            --light-color: #fef5fa;
+            --success-color: #2a9d8f;
+            --gradient-primary: linear-gradient(135deg, #A0125A 0%, #7a0d44 100%);
+            --gradient-secondary: linear-gradient(135deg, #2c5aa0 0%, #4a7bc8 100%);
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-color: #f9fbfd;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, h6, .navbar-brand, .hero-title, .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+        
+        /* Top Social Banner */
+        .top-social-banner {
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 8px 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1040;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .top-social-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .site-logo {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+        }
+        
+        .top-brand-text {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: #A0125A;
+            font-size: 1rem;
+            margin: 0;
+            padding: 0;
+            line-height: 1.2;
+        }
+        
+        .top-search-box {
+            flex: 1;
+            max-width: 300px;
+            margin: 0 15px;
+            position: relative;
+        }
+        
+        .top-search-box input {
+            width: 100%;
+            padding: 6px 12px 6px 35px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            background-color: white;
+        }
+        
+        .top-search-box input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(160, 18, 90, 0.1);
+        }
+        
+        .top-search-box i {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        .top-social-icons {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .top-social-icons a {
+            color: #555;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(0,0,0,0.05);
+        }
+        
+        .top-social-icons a:hover {
+            color: #A0125A;
+            background-color: rgba(160, 18, 90, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        /* Navigation - FIXED FOR VISIBILITY */
+        .navbar {
+            background: var(--gradient-primary) !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            position: fixed;
+            top: 56px;
+            width: 100%;
+            z-index: 1030;
+        }
+        
+        .navbar.scrolled {
+            padding-top: 8px;
+            padding-bottom: 8px;
+            background: rgba(160, 18, 90, 0.95) !important;
+            backdrop-filter: blur(10px);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: white !important;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .navbar-logo {
+            height: 35px;
+            width: auto;
+            object-fit: contain;
+        }
+        
+        /* Navigation Menu - Desktop - FIXED FOR VISIBILITY */
+        .navbar-nav {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .nav-item {
+            position: relative;
+            text-align: center;
+        }
+        
+        .nav-link {
+            color: rgba(255,255,255,0.95) !important;
+            font-weight: 600;
+            padding: 15px 12px !important;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+            margin: 0 2px;
+            white-space: nowrap;
+            font-size: 1rem;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: white !important;
+            background-color: rgba(255,255,255,0.25);
+            transform: translateY(-2px);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        /* Dropdown menus - FIXED FOR VISIBILITY */
+        .dropdown-menu {
+            border-radius: 10px;
+            border: none;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            padding: 10px 0;
+            min-width: 220px;
+            background: white;
+            z-index: 1050;
+        }
+        
+        .dropdown-item {
+            padding: 12px 20px;
+            transition: all 0.3s ease;
+            color: #333 !important;
+            font-weight: 500;
+        }
+        
+        .dropdown-item:hover {
+            background: var(--gradient-primary);
+            color: white !important;
+            padding-left: 25px;
+        }
+        
+        /* Page Title Container */
+        .page-title-container {
+            background: white;
+            margin-top: 112px;
+            padding: 25px 0 15px;
+            border-bottom: 1px solid #eaeaea;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .page-title {
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: 0;
+            font-size: 2rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 8px;
+        }
+        
+        .page-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--gradient-secondary);
+        }
+        
+        .page-subtitle {
+            color: #666;
+            font-size: 1.1rem;
+            margin-top: 8px;
+            margin-bottom: 0;
+        }
+        
+        /* Search Results Modal */
+        .search-modal {
+            display: none;
+            position: fixed;
+            top: 56px;
+            left: 0;
+            width: 100%;
+            height: calc(100% - 56px);
+            background-color: rgba(255, 255, 255, 0.98);
+            z-index: 1060;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        .search-modal.active {
+            display: block;
+        }
+        
+        .search-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .search-modal-title {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin: 0;
+        }
+        
+        .search-close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #666;
+            cursor: pointer;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .search-close-btn:hover {
+            background-color: #f0f0f0;
+            color: var(--primary-color);
+        }
+        
+        .search-results {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .search-result-item {
+            margin-bottom: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+        
+        .search-result-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+            border-left: 3px solid var(--primary-color);
+        }
+        
+        .search-result-title {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+        
+        .search-result-snippet {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .search-result-link {
+            display: inline-block;
+            margin-top: 8px;
+            color: var(--accent-color);
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-decoration: none;
+        }
+        
+        .search-result-link:hover {
+            text-decoration: underline;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 40px 20px;
+            color: #666;
+        }
+        
+        .no-results i {
+            font-size: 3rem;
+            color: #ddd;
+            margin-bottom: 15px;
+        }
+        
+        /* Main Content Area */
+        .main-content-container {
+            margin-top: 20px;
+            padding-bottom: 40px;
+        }
+        
+        /* Two-Column Layout */
+        .two-column-layout {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 0;
+        }
+        
+        .content-left-column {
+            width: 70%;
+            padding-right: 30px;
+        }
+        
+        .content-right-column {
+            width: 30%;
+            position: sticky;
+            top: 130px;
+            align-self: flex-start;
+        }
+        
+        /* Content Sections */
+        .section-title {
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+            font-weight: 700;
+            position: relative;
+            font-size: 1.8rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--gradient-secondary);
+        }
+        
+        .content-card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            height: 100%;
+            margin-bottom: 20px;
+            overflow: hidden;
+            background-color: white;
+        }
+        
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        /* Buttons */
+        .btn-primary-custom {
+            background: var(--gradient-primary);
+            border: none;
+            color: white;
+            font-weight: 600;
+            padding: 12px 25px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(160, 18, 90, 0.3);
+            display: inline-block;
+            text-align: center;
+        }
+        
+        .btn-primary-custom:hover {
+            background: var(--dark-color);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(160, 18, 90, 0.4);
+        }
+        
+        /* Card styles */
+        .card-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        /* Facebook posts */
+        .facebook-post {
+            border-left: 4px solid #1877f2;
+            padding: 12px;
+            margin-bottom: 15px;
+            background-color: white;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .facebook-post:hover {
+            transform: translateX(3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        }
+        
+        .post-date {
+            color: #6c757d;
+            font-size: 0.8rem;
+            margin-bottom: 5px;
+        }
+        
+        .facebook-post h5 {
+            color: var(--primary-color);
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+        
+        .facebook-post p {
+            font-size: 0.85rem;
+            line-height: 1.5;
+            color: #555;
+            margin-bottom: 10px;
+        }
+        
+        .facebook-post a {
+            color: #1877f2;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 50px 0 20px;
+            position: relative;
+        }
+        
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--gradient-primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(160, 18, 90, 0.4);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Facebook Sidebar */
+        .facebook-sidebar {
+            max-height: calc(100vh - 150px);
+            overflow-y: auto;
+            padding-right: 10px;
+            margin-top: 0;
+        }
+        
+        .facebook-sidebar-title {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 1rem;
+        }
+        
+        /* MOBILE RESPONSIVE FIXES */
+        
+        /* Large tablets and small desktops */
+        @media (max-width: 1200px) {
+            .nav-link {
+                font-size: 0.95rem;
+                padding: 12px 8px !important;
+            }
+            
+            .content-left-column {
+                width: 65%;
+                padding-right: 20px;
+            }
+            
+            .content-right-column {
+                width: 35%;
+            }
+            
+            .top-search-box {
+                max-width: 250px;
+            }
+        }
+        
+        /* Tablets and small laptops */
+        @media (max-width: 992px) {
+            body {
+                padding-top: 0;
+            }
+            
+            .navbar {
+                top: 56px;
+                position: fixed;
+            }
+            
+            /* Bootstrap handles collapse */
+            .navbar-nav {
+                flex-direction: column !important;
+                width: 100%;
+            }
+            
+            .nav-item {
+                flex: none;
+                text-align: left;
+                width: 100%;
+                margin: 0;
+            }
+            
+            .nav-link {
+                text-align: left;
+                padding: 12px 15px !important;
+                margin: 0;
+                font-size: 1rem;
+                white-space: normal;
+                color: rgba(255,255,255,0.95) !important;
+            }
+            
+            .page-title-container {
+                margin-top: 112px;
+                padding: 20px 0 10px;
+            }
+            
+            .page-title {
+                font-size: 1.8rem;
+            }
+            
+            /* Two-column layout becomes single column */
+            .two-column-layout {
+                flex-direction: column;
+            }
+            
+            .content-left-column,
+            .content-right-column {
+                width: 100%;
+                padding-right: 0;
+            }
+            
+            .content-right-column {
+                margin-top: 30px;
+                position: static;
+                top: auto;
+            }
+            
+            .facebook-sidebar {
+                position: static;
+                max-height: none;
+                overflow-y: visible;
+            }
+            
+            .top-search-box {
+                max-width: 200px;
+                margin: 0 10px;
+            }
+            
+            .logo-container .top-brand-text {
+                display: none;
+            }
+            
+            .site-logo {
+                height: 35px;
+            }
+        }
+        
+        /* Mobile phones */
+        @media (max-width: 768px) {
+            .top-social-banner {
+                padding: 6px 0;
+            }
+            
+            .logo-container .top-brand-text {
+                font-size: 0;
+            }
+            
+            .site-logo {
+                height: 32px;
+            }
+            
+            .top-search-box {
+                max-width: 150px;
+                margin: 0 8px;
+            }
+            
+            .top-search-box input {
+                padding: 5px 10px 5px 30px;
+                font-size: 0.85rem;
+            }
+            
+            .top-search-box i {
+                font-size: 0.85rem;
+                left: 10px;
+            }
+            
+            .top-social-icons a {
+                width: 28px;
+                height: 28px;
+                font-size: 0.9rem;
+            }
+            
+            .navbar {
+                top: 48px;
+            }
+            
+            .navbar-logo {
+                height: 30px;
+            }
+            
+            .page-title-container {
+                margin-top: 104px;
+                padding: 15px 0 10px;
+            }
+            
+            .page-title {
+                font-size: 1.6rem;
+            }
+            
+            .page-subtitle {
+                font-size: 1rem;
+            }
+            
+            .btn-primary-custom,
+            .btn-secondary-custom {
+                padding: 10px 20px;
+                font-size: 0.95rem;
+                display: block;
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            
+            .top-social-container {
+                padding: 0 10px;
+            }
+            
+            .content-card {
+                padding: 15px !important;
+            }
+            
+            .facebook-sidebar-title {
+                padding: 10px;
+                font-size: 0.95rem;
+            }
+            
+            .back-to-top {
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
+                bottom: 15px;
+                right: 15px;
+            }
+            
+            footer {
+                padding: 30px 0 15px;
+            }
+        }
+        
+        /* Small mobile phones */
+        @media (max-width: 576px) {
+            .top-social-banner {
+                padding: 5px 0;
+            }
+            
+            .navbar {
+                top: 46px;
+            }
+            
+            .navbar-brand {
+                font-size: 1.1rem;
+            }
+            
+            .navbar-logo {
+                height: 28px;
+            }
+            
+            .page-title-container {
+                margin-top: 101px;
+                padding: 12px 0 8px;
+            }
+            
+            .page-title {
+                font-size: 1.4rem;
+            }
+            
+            .page-subtitle {
+                font-size: 0.95rem;
+            }
+            
+            .top-search-box {
+                max-width: 120px;
+                margin: 0 5px;
+            }
+            
+            .top-search-box input {
+                padding: 4px 8px 4px 28px;
+                font-size: 0.8rem;
+            }
+            
+            .top-search-box i {
+                font-size: 0.8rem;
+                left: 8px;
+            }
+            
+            .top-social-icons {
+                gap: 6px;
+            }
+            
+            .top-social-icons a {
+                width: 26px;
+                height: 26px;
+            }
+            
+            .facebook-post {
+                padding: 10px;
+            }
+            
+            .facebook-post h5 {
+                font-size: 0.9rem;
+            }
+            
+            .facebook-post p {
+                font-size: 0.8rem;
+            }
+            
+            .site-logo {
+                height: 28px;
+            }
+        }
+        
+        /* Very small mobile phones */
+        @media (max-width: 400px) {
+            .logo-container .top-brand-text {
+                display: none;
+            }
+            
+            .page-title {
+                font-size: 1.3rem;
+            }
+            
+            .page-subtitle {
+                font-size: 0.9rem;
+            }
+            
+            .top-search-box {
+                max-width: 100px;
+            }
+            
+            .top-search-box input {
+                font-size: 0.75rem;
+                padding: 3px 6px 3px 25px;
+            }
+            
+            .top-search-box i {
+                font-size: 0.75rem;
+            }
+            
+            .top-social-icons a {
+                width: 24px;
+                height: 24px;
+                font-size: 0.8rem;
+            }
+            
+            .site-logo {
+                height: 26px;
+            }
+        }
+        
+        /* The rest of your existing styles remain below (unchanged) */
+        .service-item {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+            border-left: 5px solid var(--primary-color);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        
+        .service-item:hover {
+            background-color: #fef5fa;
+            transform: translateX(5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        /* Events */
+        .event-card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .event-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+        }
+        
+        .event-date {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+        
+        .event-content {
+            padding: 15px;
+            background: white;
+        }
+        
+        /* Team */
+        .team-member {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        
+        .member-role {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-secondary);
+        }
+        
+        footer a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        footer a:hover {
+            color: white;
+            text-decoration: none;
+            padding-left: 5px;
+        }
+        
+        .footer-title {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            margin-right: 10px;
+            font-size: 1.3rem;
+            color: white;
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            background-color: rgba(255,255,255,0.15);
+        }
+        
+        .social-icons a:hover {
+            color: white;
+            background-color: var(--accent-color);
+            transform: translateY(-3px) scale(1.1);
+        }
+        
+        /* Learning English Cards */
+        .learning-card {
+            border: none;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: white;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+        }
+        
+        .learning-card:hover {
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .learning-card h5 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .learning-card a {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        /* Resources */
+        .resource-link {
+            display: block;
+            padding: 12px 15px;
+            margin-bottom: 10px;
+            background-color: white;
+            border-radius: 8px;
+            border-left: 5px solid var(--success-color);
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        
+        .resource-link:hover {
+            background-color: #fef5fa;
+            transform: translateX(5px);
+            color: var(--primary-color);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Campaign Section */
+        .campaign-alert {
+            background-color: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        
+        /* Contact Info */
+        .contact-info {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.06);
+        }
+        
+        /* Image in About Us section */
+        .about-image-container {
+            margin: 20px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            position: relative;
+        }
+        
+        .about-image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .about-image-container:hover img {
+            transform: scale(1.05);
+        }
+        
+        .about-image-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            padding: 15px;
+            font-size: 0.85rem;
+            font-style: italic;
+        }
+        
+        /* Animation for content */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Scrollbar styling for Facebook sidebar */
+        .facebook-sidebar::-webkit-scrollbar {
+            width: 5px;
+        }
+        
+        .facebook-sidebar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 8px;
+        }
+        
+        .facebook-sidebar::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 8px;
+        }
+        
+        .facebook-sidebar::-webkit-scrollbar-thumb:hover {
+            background: var(--dark-color);
+        }
+        
+        /* Loading spinner */
+        .loading-spinner {
+            display: none;
+            text-align: center;
+            padding: 0;
+        }
+        
+        .loading-spinner.active {
+            display: block;
+        }
+        
+        /* Dynamic content specific styles */
+        .dynamic-content .row {
+            margin-top: 15px;
+        }
+        
+        .dynamic-content .content-card {
+            padding: 15px;
+            text-align: center;
+        }
+        
+        /* Video Container */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        
+        /* Info Box */
+        .info-box {
+            background-color: #e7f3ff;
+            border-left: 5px solid var(--primary-color);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        
+        .warning-box {
+            background-color: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        
+        /* List group styling */
+        .list-group-item-action {
+            transition: all 0.3s ease;
+            margin-bottom: 5px;
+            border-left: 3px solid transparent;
+        }
+        
+        .list-group-item-action:hover {
+            background-color: #fef5fa;
+            border-left: 3px solid var(--primary-color);
+            transform: translateX(3px);
+        }
+        
+        /* Help Card Styles */
+        .help-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            height: 100%;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            border-top: 5px solid var(--primary-color);
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+        
+        .help-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-primary);
+        }
+        
+        .help-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+        }
+        
+        .help-icon {
+            font-size: 2.8rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Back to top button -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Search Modal -->
+    <div class="search-modal" id="searchModal">
+        <div class="search-results">
+            <div class="search-modal-header">
+                <h3 class="search-modal-title">Search Results</h3>
+                <button class="search-close-btn" id="closeSearchBtn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div id="searchResultsContainer">
+                <!-- Search results will be displayed here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Top Social Banner -->
+    <div class="top-social-banner">
+        <div class="top-social-container">
+            <div class="logo-container">
+                <!-- Logo Image -->
+                <img src="logo.png"
+                     alt="Preston City of Sanctuary Logo" 
+                     class="site-logo">
+                <p class="top-brand-text">Preston City of Sanctuary</p>
+            </div>
+            
+            <!-- Search Box -->
+            <div class="top-search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="siteSearchInput" placeholder="Search within this site..." aria-label="Search this website">
+            </div>
+            
+            <div class="top-social-icons">
+                <a href="https://www.facebook.com/people/Preston-City-of-Sanctuary/100067197351909/" 
+                   target="_blank" 
+                   title="Follow us on Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/prestoncityofsanctuary/" 
+                   target="_blank" 
+                   title="Follow us on Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://bsky.app/profile/prestoncitysanct.bsky.social"
+                   target="_blank"
+                   title="Follow us on Bluesky"
+                   class="bluesky-icon">
+                    <svg width="18" height="18" viewBox="0 0 600 530" aria-hidden="true">
+                        <path fill="currentColor" d="M300 265C260 205 155 90 80 45 10 0-5 25 10 95c15 70 65 190 110 250 40 55 90 85 135 60 10-5 30-20 45-45 15 25 35 40 45 45 45 25 95-5 135-60 45-60 95-180 110-250 15-70 0-95-70-50-75 45-180 160-220 220z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand d-lg-none" href="#">
+                <!-- Small logo for mobile navigation -->
+                <img src="logo.png"
+                     alt="Preston City of Sanctuary Logo" 
+                     class="navbar-logo">
+                <span>Preston Sanctuary</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#" id="home-link">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" id="about-main-link">
+                            About Us
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" id="about-link">About Us</a></li>
+                            <li><a class="dropdown-item" href="#" id="what-we-do-link">What We Do</a></li>
+                            <li><a class="dropdown-item" href="#" id="who-we-are-link">Who We Are</a></li>
+                            <li><a class="dropdown-item" href="#" id="policies-link">Policies & Documents</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" id="help-main-link">
+                            Help & Support
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" id="help-link">Help For Sanctuary Seekers</a></li>
+                            <li><a class="dropdown-item" href="#" id="learning-english-link">Learning English</a></li>
+                            <li><a class="dropdown-item" href="#" id="immigration-rights-link">Immigration Rights</a></li>
+                            <li><a class="dropdown-item" href="#" id="employment-link">Employment</a></li>
+                            <li><a class="dropdown-item" href="#" id="health-link">Health Services</a></li>
+                            <li><a class="dropdown-item" href="#" id="housing-link">Housing</a></li>
+                            <li><a class="dropdown-item" href="#" id="libraries-link">Libraries</a></li>
+                            <li><a class="dropdown-item" href="#" id="sports-link">Sports & Leisure</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" id="get-involved-main-link">
+                            Get Involved
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" id="how-to-help-link">How To Help</a></li>
+                            <li><a class="dropdown-item" href="#" id="volunteers-link">For Volunteers</a></li>
+                            <li><a class="dropdown-item" href="#" id="campaigns-link">Current Campaigns</a></li>
+                            <li><a class="dropdown-item" href="#" id="donate-link">Donate</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="events-link">Events</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" id="resources-main-link">
+                            Resources
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" id="resources-link">Resources & Publications</a></li>
+                            <li><a class="dropdown-item" href="#" id="web-links-link">Useful Web Links</a></li>
+                            <li><a class="dropdown-item" href="#" id="facebook-posts-link">Facebook Updates</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="contact-link">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Title Container -->
+    <div class="page-title-container" id="page-title-area">
+        <!-- Page title will be loaded dynamically here -->
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="container main-content-container" id="content-area">
+        <!-- Content will be loaded dynamically here -->
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h4 class="footer-title">Preston City of Sanctuary</h4>
+                    <div class="logo-container" style="margin-bottom: 15px;">
+                        <img src="logo.png"
+                             alt="Preston City of Sanctuary Logo" 
+                             style="height: 40px; width: auto;">
+                    </div>
+                    <p>
+                        Part of the national <a href="https://cityofsanctuary.org/" 
+                               target="_blank" 
+                               rel="noopener noreferrer"
+                               style="color: #a8dadc !important; text-decoration: underline !important; font-weight: 600 !important;">
+                            City of Sanctuary
+                        </a> movement building a culture of welcome for people 
+                        seeking sanctuary in the UK.
+                    </p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/people/Preston-City-of-Sanctuary/100067197351909/" 
+                           target="_blank" 
+                           title="Follow us on Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/prestoncityofsanctuary/" 
+                           target="_blank" 
+                           title="Follow us on Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://bsky.app/profile/prestoncitysanct.bsky.social"
+                           target="_blank"
+                           title="Follow us on Bluesky"
+                           class="bluesky-icon">
+                            <svg width="18" height="18" viewBox="0 0 600 530" aria-hidden="true">
+                                <path fill="currentColor" d="M300 265C260 205 155 90 80 45 10 0-5 25 10 95c15 70 65 190 110 250 40 55 90 85 135 60 10-5 30-20 45-45 15 25 35 40 45 45 45 25 95-5 135-60 45-60 95-180 110-250 15-70 0-95-70-50-75 45-180 160-220 220z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 mb-4">
+                    <h4 class="footer-title">Contact Information</h4>
+                    <div class="contact-info" style="background: white; color: black; padding: 15px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                        <p style="color: black; margin-bottom: 10px;">
+                            <i class="fas fa-envelope me-2" style="color: #A0125A;"></i> 
+                            <a href="mailto:prestoncityofsanctuary@gmail.com" style="color: #A0125A; font-weight: bold;">
+                                prestoncityofsanctuary@gmail.com
+                            </a>
+                        </p>
+                        <p style="color: black; margin-bottom: 10px;">
+                            <i class="fas fa-phone me-2" style="color: #A0125A;"></i> 
+                            Email first to request a callback
+                        </p>
+                        <p style="color: black; margin-bottom: 10px;">
+                            <i class="fas fa-map-marker-alt me-2" style="color: #A0125A;"></i> 
+                            Preston, Lancashire, UK
+                        </p>
+                        <p style="color: black; margin-top: 15px; padding-top: 10px; border-top: 1px solid #eee;">
+                            <strong>Google Group:</strong><br>
+                            <a href="https://groups.google.com/g/preston-city-of-sanctuary" target="_blank" 
+                               style="color: #A0125A; font-weight: bold; font-size: 0.85rem;">
+                                https://groups.google.com/g/preston-city-of-sanctuary
+                            </a>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 mb-4">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <div class="row">
+                        <div class="col-6">
+                            <ul class="list-unstyled">
+                                <li><a href="#" onclick="loadContent('home')">Home</a></li>
+                                <li><a href="#" onclick="loadContent('about')">About Us</a></li>
+                                <li><a href="#" onclick="loadContent('what-we-do')">What We Do</a></li>
+                                <li><a href="#" onclick="loadContent('help')">Help For Seekers</a></li>
+                                <li><a href="#" onclick="loadContent('learning-english')">Learning English</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-6">
+                            <ul class="list-unstyled">
+                                <li><a href="#" onclick="loadContent('events')">Events</a></li>
+                                <li><a href="#" onclick="loadContent('who-we-are')">Who We Are</a></li>
+                                <li><a href="#" onclick="loadContent('how-to-help')">How to Help</a></li>
+                                <li><a href="#" onclick="loadContent('volunteers')">Volunteers</a></li>
+                                <li><a href="#" onclick="loadContent('contact')">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <a href="mailto:prestoncityofsanctuary@gmail.com" class="btn btn-primary-custom">Join the Movement</a>
+                    </div>
+                </div>
+            </div>
+            <hr class="bg-light">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2026 Preston City of Sanctuary. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p>
+                        <a href="#" onclick="loadContent('policies')" class="me-3">Privacy Policy</a>
+                        <a href="#" onclick="loadContent('policies')">Accessibility</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Facebook sidebar HTML template
+        const facebookSidebarHTML = `
+            <!-- Right Column: Sidebar -->
+            <div class="content-right-column">
+                <!-- Facebook Sidebar -->
+                <div class="facebook-sidebar" style="margin-top: 0;"> 
+                    <div class="facebook-sidebar-title">
+                        <span><i class="fab fa-facebook me-2"></i> Latest Facebook Updates</span>
+                        <a href="https://www.facebook.com/people/Preston-City-of-Sanctuary/100067197351909/" 
+                           target="_blank" 
+                           style="color: white; font-size: 0.9rem;">
+                            View All
+                        </a>
+                    </div>
+                    
+                    <div class="facebook-post">
+                        <div class="post-date">30 January 2026</div>
+                        <h5>Campaigning with Confidence training session invite</h5>
+                        <p>The aim of this session is for us to come away with practical guidance to ensure any campaigning we do is firmly within the rules. There will also be time for Q&A. (Feed generated with FetchRSS)</p>
+                        <a href="https://www.facebook.com/people/Preston-City-of-Sanctuary/posts/example1" target="_blank">View on Facebook</a>
+                    </div>
+                    
+                    <div class="facebook-post">
+                        <div class="post-date">29 January 2026</div>
+                        <h5>"The Audacity of Hope" is how The New York Times described The Old Oak's message</h5>
+                        <p>"The Audacity of Hope" is how The New York Times described The Old Oak's message. Out now on BBC iPlayer, this brilliant film from the legendary filmmaker Ken Loach shows us how communities can connect and forge powerful relationships despite (or because of) adversity.</p>
+                        <a href="https://www.facebook.com/people/Preston-City-of-Sanctuary/posts/example2" target="_blank">View on Facebook</a>
+                    </div>
+                    
+                    <div class="facebook-post">
+                        <div class="post-date">28 January 2026</div>
+                        <h5>Good move by a decent country..</h5>
+                        <p>Good move by a decent country.. Spain has announced a large-scale move to bring undocumented migrants out of the shadows, offering legal status to around half a million people who are already living and working there.</p>
+                        <a href="https://www.facebook.com/people/Preston-City-of-Sanctuary/posts/example3" target="_blank">View on Facebook</a>
+                    </div>
+                    
+                    <div class="facebook-post">
+                        <div class="post-date">28 January 2026</div>
+                        <h5>Nigel Farage claims that "illegal migrants" are being prioritised for housing over British veterans</h5>
+                        <p>Nigel Farage claims that "illegal migrants" are being prioritized for housing over British veterans, promising that Reform UK would instead put British citizens first.</p>
+                        <a href="https://www.facebook.com/people/Preston-City-of-Sanctuary/posts/example4" target="_blank">View on Facebook</a>
+                    </div>
+                    
+                    <div class="facebook-post">
+                        <div class="post-date">27 January 2026</div>
+                        <h5>If you haven't signed up yet to the annual Refugee Week Conference, then what are you waiting for?!</h5>
+                        <p>If you haven't signed up yet to the annual Refugee Week Conference, then what are you waiting for?! Join us online from anywhere around the world to connect, inspire and mobilise.</p>
+                        <a href="https://www.facebook.com/people/Preston-City-of-Sanctuary/posts/example5" target="_blank">View on Facebook</a>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        // Page title templates for all sections
+        const pageTitleTemplates = {
+            'home': `
+                <div class="container">
+                    <h1 class="page-title">Welcome to Preston City of Sanctuary!</h1>
+                    <p class="page-subtitle">Building a culture of welcome for people seeking sanctuary in the UK</p>
+                </div>
+            `,
+            'about': `
+                <div class="container">
+                    <h1 class="page-title">About Us</h1>
+                    <p class="page-subtitle">Learn about our mission, vision, and the work we do</p>
+                </div>
+            `,
+            'what-we-do': `
+                <div class="container">
+                    <h1 class="page-title">What We Do</h1>
+                    <p class="page-subtitle">Discover our activities and initiatives in Preston</p>
+                </div>
+            `,
+            'who-we-are': `
+                <div class="container">
+                    <h1 class="page-title">Who We Are</h1>
+                    <p class="page-subtitle">Meet our team and core group members</p>
+                </div>
+            `,
+            'policies': `
+                <div class="container">
+                    <h1 class="page-title">Policies & Documents</h1>
+                    <p class="page-subtitle">Access our governance documents and policies</p>
+                </div>
+            `,
+            'help': `
+                <div class="container">
+                    <h1 class="page-title">Help For Sanctuary Seekers</h1>
+                    <p class="page-subtitle">Find support and resources for sanctuary seekers</p>
+                </div>
+            `,
+            'learning-english': `
+                <div class="container">
+                    <h1 class="page-title">Learning English</h1>
+                    <p class="page-subtitle">ESOL courses and language learning opportunities</p>
+                </div>
+            `,
+            'immigration-rights': `
+                <div class="container">
+                    <h1 class="page-title">Immigration Rights</h1>
+                    <p class="page-subtitle">Information about immigration rights and legal support</p>
+                </div>
+            `,
+            'employment': `
+                <div class="container">
+                    <h1 class="page-title">Employment</h1>
+                    <p class="page-subtitle">Job seeking and employment support</p>
+                </div>
+            `,
+            'health': `
+                <div class="container">
+                    <h1 class="page-title">Health Services</h1>
+                    <p class="page-subtitle">Healthcare services and support in Preston</p>
+                </div>
+            `,
+            'housing': `
+                <div class="container">
+                    <h1 class="page-title">Housing</h1>
+                    <p class="page-subtitle">Housing advice and support services</p>
+                </div>
+            `,
+            'libraries': `
+                <div class="container">
+                    <h1 class="page-title">Libraries</h1>
+                    <p class="page-subtitle">Library services and resources in Lancashire</p>
+                </div>
+            `,
+            'sports': `
+                <div class="container">
+                    <h1 class="page-title">Sports & Leisure</h1>
+                    <p class="page-subtitle">Sports activities and leisure opportunities</p>
+                </div>
+            `,
+            'how-to-help': `
+                <div class="container">
+                    <h1 class="page-title">How To Help</h1>
+                    <p class="page-subtitle">Ways you can support our work</p>
+                </div>
+            `,
+            'volunteers': `
+                <div class="container">
+                    <h1 class="page-title">For Volunteers</h1>
+                    <p class="page-subtitle">Volunteer opportunities and information</p>
+                </div>
+            `,
+            'campaigns': `
+                <div class="container">
+                    <h1 class="page-title">Current Campaigns</h1>
+                    <p class="page-subtitle">Join our campaigns for refugee rights</p>
+                </div>
+            `,
+            'donate': `
+                <div class="container">
+                    <h1 class="page-title">Donate</h1>
+                    <p class="page-subtitle">Support our work through donations</p>
+                </div>
+            `,
+            'events': `
+                <div class="container">
+                    <h1 class="page-title">Events</h1>
+                    <p class="page-subtitle">Past and upcoming events</p>
+                </div>
+            `,
+            'resources': `
+                <div class="container">
+                    <h1 class="page-title">Resources & Publications</h1>
+                    <p class="page-subtitle">Useful resources and publications</p>
+                </div>
+            `,
+            'web-links': `
+                <div class="container">
+                    <h1 class="page-title">Useful Web Links</h1>
+                    <p class="page-subtitle">Links to helpful organizations and websites</p>
+                </div>
+            `,
+            'facebook-posts': `
+                <div class="container">
+                    <h1 class="page-title">Facebook Updates</h1>
+                    <p class="page-subtitle">Latest posts from our Facebook page</p>
+                </div>
+            `,
+            'contact': `
+                <div class="container">
+                    <h1 class="page-title">Contact Us</h1>
+                    <p class="page-subtitle">Get in touch with Preston City of Sanctuary</p>
+                </div>
+            `
+        };
+
+        // Content definitions for all 19 sections
+        const contentTemplates = {
+            'home': `
+                <div class="two-column-layout" style="display: flex; flex-wrap: wrap;">
+                    <div class="content-left-column">
+                        <section class="dynamic-content">
+                            <p>
+                                We are part of a national movement dedicated to building a culture of welcome for people seeking sanctuary in the UK. 
+                                Our aim is to create a network of people and organisations right across the city, united in making our city more welcoming, 
+                                open and fair for all, by creating platforms for collaboration, dialogue and mutual opportunities.
+                            </p>
+                            <p>
+                                Together We Are captures Sanctuary's belief in the power of community. Through the voices of people rebuilding their lives, it celebrates resilience, belonging, and the strength found when individuals come together.
+                            </p>
+
+                            <div style="margin: 20px 0; text-align: center;">
+                                <h3 style="margin-bottom: 15px;">Together We Are</h3>                   
+                                <div style="position: relative; display: inline-block; max-width: 100%;">                         
+                                    <a href="https://www.youtube.com/watch?v=dcIKZXzNZFI"
+                                       target="_blank"
+                                       style="text-decoration: none; color: inherit;">
+                                        <div style="position: relative;">
+                                            <img src="https://img.youtube.com/vi/dcIKZXzNZFI/hqdefault.jpg" 
+                                                 alt="Preston City of Sanctuary Video Thumbnail"
+                                                 style="width: 100%; max-width: 560px; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+                                            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(255,0,0,0.8); width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                                                <span style="color: white; font-size: 30px; margin-left: 5px;">▶</span>
+                                            </div>
+                                        </div>
+                                        <p style="margin-top: 10px; font-weight: bold; color: #ff0000;">Click to watch our introduction video</p>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <br><br><br><br>                               
+                            <div class="mt-4">
+                                <button onclick="loadContent('about')" class="btn btn-primary-custom me-3">Learn More About Us</button>
+                            </div>
+                        </section>
+                    </div>
+                    ${facebookSidebarHTML}
+                </div>
+            `,
+            
+            'about': `
+                <div class="two-column-layout" style="display: flex; flex-wrap: wrap;">
+                    <div class="content-left-column">
+                        <section class="dynamic-content">
+                            <p>
+                                Preston City of Sanctuary is part of a national movement dedicated to building a culture of welcome for people 
+                                seeking sanctuary in the UK. Our aim is to bring together people and organisations across the city to create 
+                                a more welcoming, open, and fair Preston for everyone.
+                            </p>
+                            <p>
+                                We have built a strong network of volunteers, professionals, statutory, voluntary, and faith organisations, 
+                                working alongside asylum seekers and refugees who live in our city. Through collaboration, dialogue, and shared 
+                                opportunities, we support new citizens and our multicultural communities through a two-way integration process.
+                            </p>
+                            <p>
+                                We regularly hold open network meetings, events, and celebrations to strengthen connections and promote 
+                                inclusion across Preston.
+                            </p>
+                            
+                            <div class="row mt-4">
+                                <div class="col-md-6 mb-4">
+                                    <div class="content-card p-4 text-center">
+                                        <div class="card-icon">
+                                            <i class="fas fa-bullseye"></i>
+                                        </div>
+                                        <h4>Our Vision</h4>
+                                        <p>A city where everyone feels safe, welcomed, and valued, regardless of their background or immigration status.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="content-card p-4 text-center">
+                                        <div class="card-icon">
+                                            <i class="fas fa-handshake"></i>
+                                        </div>
+                                        <h4>Our Mission</h4>
+                                        <p>To build a culture of welcome and inclusion for sanctuary seekers through collaboration and community engagement.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="about-image-container smaller-version fade-in mt-4">
+                                <img src="AboutUs.jpg" 
+                                     alt="Community gathering with diverse people showing unity and support">
+                                <div class="about-image-caption">
+                                    Building bridges and fostering understanding in our diverse Preston community
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    ${facebookSidebarHTML}
+                </div>
+            `,
+            
+            'what-we-do': `
+                <div class="two-column-layout" style="display: flex; flex-wrap: wrap;">
+                    <div class="content-left-column">
+                        <section class="dynamic-content">
+                            <p>
+                                Here in Preston we have built a network of volunteers, professionals, statutory, voluntary and faith organisations, 
+                                together with asylum seekers and refugees living in our city. We proactively share information about issues, campaigns, 
+                                organisations and events that support or are of interest to sanctuary seekers.
+                            </p>
+                            <p>
+                                We are committed to supporting the new citizens and our multicultural communities with the two-way integration process. 
+                                We hold open meetings of the whole network and other events and celebrations from time to time.
+                            </p>
+                            
+                            <div class="row mt-4">
+                                <div class="col-md-4 mb-4">
+                                    <div class="content-card p-4 text-center">
+                                        <div class="card-icon">
+                                            <i class="fas fa-network-wired"></i>
+                                        </div>
+                                        <h4>Building Networks</h4>
+                                        <p>Connecting organizations and individuals across Preston to create a supportive ecosystem.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-4">
+                                    <div class="content-card p-4 text-center">
+                                        <div class="card-icon">
+                                            <i class="fas fa-hands-helping"></i>
+                                        </div>
+                                        <h4>Direct Support</h4>
+                                        <p>Providing practical assistance and guidance to sanctuary seekers in our community.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-4">
+                                    <div class="content-card p-4 text-center">
+                                        <div class="card-icon">
+                                            <i class="fas fa-bullhorn"></i>
+                                        </div>
+                                        <h4>Awareness & Advocacy</h4>
+                                        <p>Raising awareness about sanctuary issues and advocating for inclusive policies.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <p class="mt-4">
+                                <a href="#" class="btn btn-primary-custom me-2">View Our History</a>
+                                <a href="#" class="btn btn-outline-primary">View Annual Reports</a>
+                            </p>
+                        </section>
+                    </div>
+                    ${facebookSidebarHTML}
+                </div>
+            `,
+            
+            'who-we-are': `
+                <div class="two-column-layout" style="display: flex; flex-wrap: wrap;">
+                    <div class="content-left-column">
+                        <section class="dynamic-content">
+                            <p>Preston City of Sanctuary is an unincorporated organisation operating according to our <a href="#">constitution (revised December 2022)</a>.</p>
+                            
+                            <div class="learning-card mt-4">
+                                <h5>Core Group Members (2025)</h5>
+                                <ul>
+                                    <li>Dawn Judd (Chair)</li>
+                                    <li>Suely Ludgero-Newlove (Vice-chair)</li>
+                                    <li>Greg Smith (Communications)</li>
+                                    <li>Roy Leeming (Treasurer)</li>
+                                    <li>Jennifer Jaynes (Core group member)</li>
+                                    <li>Abdul Saboor Matin (Core group member)</li>
+                                    <li>Kiko Ho (Core group member)</li>
+                                    <li>Andrew Pratt (Core group member – minutes secretary)</li>
+                                    <li>Jeff Morgan (Core group member)</li>
+                                    <li>Emmanuel Ogboko (Core group member)</li>
+                                    <li>Liz Granger (representing University of Lancashire)</li>
+                                    <li>Cllr. Nweeda Khan (Core group member; CoS National representative)</li>
+                                    <li>Mortaza Zolfpour Arokhlo (Comms Sub Group member)</li>
+                                </ul>
+                                <p>We also have an independent "Experts Group" with experience of the resettlement or asylum process.</p>
+                            </div>
+                            
+                            <div class="row mt-4">
+                                <div class="col-md-6 mb-4">
+                                    <div class="content-card p-4">
+                                        <h5>Our Structure</h5>
+                                        <p>We operate with a Core Group that meets regularly to oversee our activities and strategy. Sub-groups focus on specific areas such as communications, events, and policy.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="content-card p-4">
+                                        <h5>Experts by Experience</h5>
+                                        <p>Our advisory group consists of individuals with lived experience of seeking sanctuary, ensuring our work remains grounded in real needs and perspectives.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    ${facebookSidebarHTML}
+                </div>
+            `,
+            
+            'policies': `
+                <div class="two-column-layout" style="display: flex; flex-wrap: wrap;">
+                    <div class="content-left-column">
+                        <section class="dynamic-content">
+                            <p>Here you can find all our important policies, documents, and governance information.</p>
+                            
+                            <div class="row mt-4">
+                                <div class="col-md-6 mb-4">
+                                    <div class="content-card p-4">
+                                        <h5><i class="fas fa-shield-alt me-2"></i> Safeguarding Policy</h5>
+                                        <p>Our commitment to protecting vulnerable individuals within our community.</p>
+                                        <a href="#" class="btn btn-outline-primary btn-sm mt-2">View Policy</a>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="content-card p-4">
+                                        <h5><i class="fas fa-file-alt me-2"></i> Complaints Procedures</h5>
+                                        <p>How to raise concerns or complaints about our work or volunteers.</p>
+                                        <a href="#" class="btn btn-outline-primary btn-sm mt-2">View Procedures</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <div class="content-card p-4">
+                                        <h5><i class="fas fa-chart-line me-2"></i> Action Plan 2025</h5>
+                                        <p>Our strategic objectives and activities for the current year.</p>
+                                        <a href="#" class="btn btn-outline-primary btn-sm mt-2">View Action Plan</a>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="content-card p-4">
+                                        <h5><i class="fas fa-gavel me-2"></i> Constitution (Dec 2022)</h5>
+                                        <p>Our governing document outlining our purpose, structure, and rules.</p>
+                                        <a href="#" class="btn btn-outline-primary btn-sm mt-2">View Constitution</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-info mt-4">
+                                <p><strong>To make a complaint:</strong></p>
+                                <p>Email: <a href="mailto:prestoncityofsanctuary@gmail.com">prestoncityofsanctuary@gmail.com</a></p>
+                            </div>
+                        </section>
+                    </div>
+                    ${facebookSidebarHTML}
+                </div>
+            `,
+            
+            'help': `
+                <div class="two-column-layout" style="display: flex; flex-wrap: wrap;">
+                    <div class="content-left-column">
+                        <section class="dynamic-content">
+                            <div class="info-box">
+                                <p><strong>Note:</strong> Use the dropdown menus in this section to find help around different issues. Just click the down arrow (∨) and choose from the list.</p>
+                                <p>There is an excellent resource recently developed by our friends at the LCC Refugee Resettlement Programme: <a href="https://www.resettlementinlancashire.org" target="_blank">RESETTLEMENT IN LANCASHIRE</a></p>
+                                <p>The Home Office Guide for new refugees in several languages: <a href="https://www.gov.uk/government/publications/welcome-a-guide-for-new-refugees" target="_blank">Download here</a></p>
+                            </div>
+                            
+                            <div class="row mt-4">
+                                <div class="col-md-6 mb-4">
+                                    <div class="service-item">
+                                        <h5><i class="fas fa-clinic-medical me-2"></i> Drop in and Support Service</h5>
+                                        <p class="mb-1"><strong>British Red Cross Refugee Support Preston</strong></p>
+                                        <p class="mb-1">Address: Pittman Court, Pittman Way, Fulwood, Preston, PR2 9ZG</p>
+                                        <p class="mb-1">Phone: <a href="tel:01772707308">01772 707308</a></p>
+                                        <p class="mb-0">Weekly drop-in: Thursday mornings at St Cuthbert Church Centre (Douglas Hall), Lytham Road Fulwood, PR2 3AR</p>
+                                        <p>Also at Leyland Baptist Church, 247 Leyland Lane, Leyland, PR25 1XL (Wednesdays 9:30–13:30)</p>
+                                        <p>Contact: Wonder Phiri - <a href="mailto:wphiri@redcross.org.uk">wphiri@redcross.org.uk</a> or <a href="tel:07753976711">0775 3976711</a></p>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6 mb-4">
+                                    <div class="service-item">
+                                        <h5><i class="fas fa-home me-2"></i> Housing</h5>
+                                        <p><strong>Preston City Council Housing Advice Service</strong></p>
+                                        <p>Address: Town Hall, Lancaster Road, PR1 2RL</p>
+                                        <p>Email: <a href="mailto:housing@preston.gov.uk">housing@preston.gov.uk</a></p>
+                                        <p>Phone: <a href="tel:01772906412">01772 906412</a></p>
+                                        <p>Drop-in hours: Mon, Wed-Thu, Fri 8:45am–4pm; Tue 8:45am–3pm</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <p class="mt-3">For more specific help with Learning English, Immigration Rights, Employment, Health Services, Housing, Libraries, or Sports & Leisure, please select from the dropdown menu or navigate to those specific sections.</p>
+                        </section>
+                    </div>
+                    ${facebookSidebarHTML}
+                </div>
+            `,
+            
+            'learning-english': `
+                <div class="two-column-layout" style="display: flex; flex-wrap: wrap;">
+                    <div class="content-left-column">
+                        <section class="dynamic-content">
+                            <p>Classes for Sanctuary seekers / Asylum seekers / Refugees in the Preston area.</p>
+                            <p>For information about translation and interpreters <a href="#">click here</a>.</p>
+                            
+                            <div class="learning-card mt-4">
+                                <h5>Preston College</h5>
+                                <p>The main centre for learning English and getting qualifications is Preston College. Asylum seekers and refugees can register for free courses.</p>
+                                <p><strong>Website:</strong> <a href="https://www.preston.ac.uk/adults/esol/" target="_blank">https://www.preston.ac.uk/adults/esol/</a></p>
+                                <p><strong>Phone:</strong> <a href="tel:01772225522">01772 225522</a> to organise an assessment date</p>
+                                
+                                <h6 class="mt-3">Fee Information:</h6>
+                                <ul>
+                                    <li>If you do not work and receive a benefit - courses may be free (bring recent evidence)</li>
+                                    <li>If you work and individual income is less than £16009.50 - 100% reduction in fees</li>
+                                    <li>If household income is less than £30,994 - eligible for discount</li>
+                                    <li>Otherwise fees are £175 for all qualifications</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="row mt-4">
+                                <div class="col-md-6 mb-4">
+                                    <div class="content-card p-4">
+                                        <h5><i class="fas fa-graduation-cap me-2"></i> Formal Education</h5>
+                                        <p>Structured ESOL courses with qualifications at Preston College, UCLAN, and other educational institutions.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="content-card p-4">
+                                        <h5><i class="fas fa-comments me-2"></i> Informal Learning</h5>
+                                        <p>Conversation groups, community classes, and practical learning through activities like cooking and social events.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    ${facebookSidebarHTML}
+                </div>
+            `,
+            
+            'immigration-rights': `
+                <div class="two-column-layout" style="display: flex; flex-wrap: wrap;">
+                    <div class="content-left-column">
+                        <section class="dynamic-content">
+                            <div class="learning-card">
+                                <h5>Right to Remain Toolkit</h5>
+                                <p>A guide to the UK immigration and asylum system with translations in several languages:</p>
+                                <p><a href="https://righttoremain.org.uk/toolkit/" target="_blank">https://righttoremain.org.uk/toolkit/</a></p>
+                            </div>
+                            
+                            <div class="learning-card mt-4">
+                                <h5>Jubilee+ Asylum Process Guide</h5>
+                                <p>Useful website explaining the UK asylum process:</p>
+                                <p><a href="https://jubilee-plus.org/refugee-network/about-uk-refugees-and-asylum-seekers/the-asylum-system/" target="_blank">https://jubilee-plus.org/refugee-network/about-uk-refugees-and-asylum-seekers/the-asylum-system/</a></p>
+                            </div>
+                            
+                            <div class="row mt-4">
+                                <div class="col-md-6 mb-4">
+                                    <div class="content-card p-4">
+                                        <h5><i class="fas fa-balance-scale me-2"></i> Legal Rights</h5>
+                                        <p>Understanding your legal rights as an asylum seeker or refugee in the UK.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="content-card p-4">
+                                        <h5><i class="fas fa-passport me-2"></i> Documentation</h5>
+                                        <p>Information about necessary documentation, visa requirements, and status updates.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    ${facebookSidebarHTML}
+                </div>
+            `,
+            
+            'employment': `
+                <div class="two-column-layout" style="display: flex; flex-wrap: wrap;">
+                    <div class="content-left-column">
+                        <section class="dynamic-content">
+                            <p>Asylum Seekers generally cannot work unless in UK over 12 months.</p>
+                            <p>Refugees can seek employment after registering for NI number.</p>
+                            
+                            <div class="learning-card mt-4">
+                                <h5>Job Centre Plus Preston</h5>
+                                <p>Register for work/benefits at your local Job Centre.</p>
+                                <p>Employers check right to work via Evisa and share code.</p>
+                            </div>
+                            
+                            <div class="row mt-4">
+                                <div class="col-md-6 mb-4">
+                                    <div class="content-card p-4">
+                                        <h5><i class="fas fa-briefcase me-2"></i> Finding Work</h5>
+                                        <p>Resources and support for job searching, CV writing, and interview preparation.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="content-card p-4">
+                                        <h5><i class="fas fa-graduation-cap me-2"></i> Skills & Training</h5>
+                                        <p>Opportunities for skills development, vocational training, and qualification recognition.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    ${facebookSidebarHTML}
+                </div>
+            `,
+            
+            'health': `
+                <div class="two-column-layout" style="display: flex; flex-wrap: wrap;">
+                    <div class="content-left-column">
+                        <section class="dynamic-content">
+                            <p><strong>Finding a GP:</strong> <a href="https://www.nhs.uk/service-search/find-a-gp" target="_blank">https://www.nhs.uk/service-search/find-a-gp</a></p>
+                            <p><strong>Emergency:</strong> Call 999</p>
+                            <p><strong>Advice:</strong> Call 111</p>
+                            <p><strong>Royal Preston Hospital:</strong> Sharoe Green Lane North, Fulwood, PR2 9HT</p>
+                            
+                            <div class="row mt-4">
+                                <div class="col-md-6 mb-4">
+                                    <div class="service-item">
+                                        <h5><i class="fas fa-stethoscope me-2"></i> General Practice</h5>
+                                        <p>Registering with a GP, understanding NHS services, and accessing primary care.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6 mb-4">
+                                    <div class="service-item">
+                                        <h5><i class="fas fa-tooth me-2"></i> Dental Services</h5>
+                                        <p><strong>Finding an NHS dentist:</strong> <a href="https://www.nhs.uk/service-search/find-a-dentist" target="_blank">NHS Find a Dentist</a></p>
+                                        <p><strong>Emergency:</strong> Call 111 for urgent dental service</p>
+                                        <p>Free dental treatment for: 0-18 years, pregnant women, asylum seekers (with Home Office ID card showing 'employment: forbidden')</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    ${facebookSidebarHTML}
+                </div>
+            `,
+            
+            'housing': `
+                <div class="two-column-layout" style="display: flex; flex-wrap: wrap;">
+                    <div class="content-left-column">
+                        <section class="dynamic-content">
+                            <div class="service-item">
+                                <h5><i class="fas fa-home me-2"></i> Preston City Council Housing Advice Service</h5>
+                                <p>Address: Town Hall, Lancaster Road, PR1 2RL</p>
+                                <p>Email: <a href="mailto:housing@preston.gov.uk">housing@preston.gov.uk</a></p>
+                                <p>Phone: <a href="tel:01772906412">01772 906412</a></p>
+                                <p>Drop-in hours: Mon, Wed-Thu, Fri 8:45am–4pm; Tue 8:45am–3pm</p>
+                            </div>
+                            
+                            <div class="row mt-4">
+                                <div class="col-md-6 mb-4">
+                                    <div class="content-card p-4">
+                                        <h5><i class="fas fa-building me-2"></i> Social Housing</h5>
+                                        <p>Information about applying for social housing through the council and housing associations.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="content-card p-4">
+                                        <h5><i class="fas fa-hotel me-2"></i> Private Renting</h5>
+                                        <p>Guidance on finding private accommodation, understanding tenancy agreements, and tenant rights.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    ${facebookSidebarHTML}
+                </div>
+            `,
+            
+            'libraries': `
+                <div class="two-column-layout" style="display: flex; flex-wrap: wrap;">
+                    <div class="content-left-column">
+                        <section class="dynamic-content">
+                            <p>All 64 Lancashire libraries have Libraries of Sanctuary status</p>
+                            <p>Free membership, no proof of address or ID required</p>
+                            <p>Access to books in foreign languages, computers, events</p>
+                            <p>Find your local library: <a href="https://www.lancashire.gov.uk/libraries-and-archives/libraries/find-a-library/" target="_blank">Library Map</a></p>
+                            
+                            <div class="row mt-4">
+                                <div class="col-md-6 mb-4">
+                                    <div class="content-card p-4 text-center">
+                                        <div class="card-icon">
+                                            <i class="fas fa-book"></i>
+                                        </div>
+                                        <h4>Books & Resources</h4>
+                                        <p>Access to books in multiple languages, learning materials, and digital resources.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="content-card p-4 text-center">
+                                        <div class="card-icon">
+                                            <i class="fas fa-laptop"></i>
+                                        </div>
+                                        <h4>Computer Access</h4>
+                                        <p>Free internet access, computer use, and printing facilities at all libraries.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    ${facebookSidebarHTML}
+                </div>
+            `,
+            
+            'sports': `
+                <div class="two-column-layout" style="display: flex; flex-wrap: wrap;">
+                    <div class="content-left-column">
+                        <section class="dynamic-content">
+                            <div class="service-item">
+                                <h5><i class="fas fa-futbol me-2"></i> Sir Tom Finney Soccer Centre</h5>
+                                <p>Football activities for sanctuary seekers</p>
+                                <p>Contact: Peter Mason <a href="mailto:pete@masonhouse.co.uk">pete@masonhouse.co.uk</a> or Kathleen Mason <a href="mailto:kath@masonhouse.co.uk">kath@masonhouse.co.uk</a></p>
+                            </div>
+                            
+                            <div class="row mt-4">
+                                <div class="col-md-6 mb-4">
+                                    <div class="content-card p-4">
+                                        <h5><i class="fas fa-running me-2"></i> Preston Park Run</h5>
+                                        <p>Every Saturday 9am at Avenham Park (free)</p>
+                                        <p>A free, weekly 5km community event open to all abilities.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="content-card p-4">
+                                        <h5><i class="fas fa-bicycle me-2"></i> Preston Pedals</h5>
+                                        <p>Cycling promotion and bike help</p>
+                                        <p>Opportunities to learn cycling skills and access affordable bicycles.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    ${facebookSidebarHTML}
+                </div>
+            `,
+            
+            'how-to-help': `
+                <div class="two-column-layout" style="display: flex; flex-wrap: wrap;">
+                    <div class="content-left-column">
+                        <section class="dynamic-content">
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <div class="help-card">
+                                        <div class="help-icon">
+                                            <i class="fas fa-graduation-cap"></i>
+                                        </div>
+                                        <h4>Education – Schools of Sanctuary</h4>
+                                        <p>Help create welcoming schools that foster a culture of inclusion for all children.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6 mb-4">
+                                    <div class="help-card">
+                                        <div class="help-icon">
+                                            <i class="fas fa-bullhorn"></i>
+                                        </div>
+                                        <h4>Campaigning</h4>
+                                        <p>Join our campaigns to promote refugee rights and create welcoming communities.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <div class="help-card">
+                                        <div class="help-icon">
+                                            <i class="fas fa-hands-helping"></i>
+                                        </div>
+                                        <h4>For Volunteers</h4>
+                                        <p>Become a volunteer and make a real difference in the lives of sanctuary seekers.</p>
+                                        <button onclick="loadContent('volunteers')" class="btn btn-primary-custom mt-3">Volunteer Opportunities</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6 mb-4">
+                                    <div class="help-card">
+                                        <div class="help-icon">
+                                            <i class="fas fa-donate"></i>
+                                        </div>
+                                        <h4>Donate</h4>
+                                        <p>Support our work financially to help us continue providing essential services.</p>
+                                        <button onclick="loadContent('donate')" class="btn btn-primary-custom mt-3">Donate Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    ${facebookSidebarHTML}
+                </div>
+            `,
+            
+            'volunteers': `
+                <div class="two-column-layout" style="display: flex; flex-wrap: wrap;">
+                    <div class="content-left-column">
+                        <section class="dynamic-content">
+                            <p>If you have time to offer as a volunteer, there are plenty of opportunities for both sanctuary seekers and established residents.</p>
+                            
+                            <div class="learning-card mt-4">
+                                <h5>Volunteer Opportunities</h5>
+                                <ul>
+                                    <li>Join our core management group or Experts by Experience advisory group</li>
+                                    <li>Help manage our website and social media</li>
+                                    <li>Personal support (phone calls, reading letters, accompanying to GP)</li>
+                                    <li>Help with English at Talk English classes</li>
+                                    <li>Offer a spare room through Refugees at Home</li>
+                                    <li>Help with sport and cultural events</li>
+                                    <li>Donating furniture, clothing, food, bicycles</li>
+                                    <li>Fundraising and campaigning</li>
+                                </ul>
+                                <p><strong>Find opportunities:</strong></p>
+                                <ul>
+                                    <li><a href="https://www.helpinpreston.org" target="_blank">Help In Preston website</a></li>
+                                    <li><a href="https://www.prestonvolunteers.org" target="_blank">Preston Volunteers</a></li>
+                                </ul>
+                                <p>Contact: <a href="mailto:prestoncityofsanctuary@gmail.com">prestoncityofsanctuary@gmail.com</a></p>
+                            </div>
+                        </section>
+                    </div>
+                    ${facebookSidebarHTML}
+                </div>
+            `,
+            
+            'campaigns': `
+                <div class="two-column-layout" style="display: flex; flex-wrap: wrap;">
+                    <div class="content-left-column">
+                        <section class="dynamic-content">
+                            <div class="campaign-alert">
+                                <p>We support the campaigns led by our partner organisation <strong>Asylum Matters</strong>.</p>
+                                <p>At the moment (September 2025) increasingly restrictive and cruel policies on immigration and asylum are being proposed by opposition parties and far right groups.</p>
+                            </div>
+                            
+                            <div class="learning-card mt-4">
+                                <h5>Suspension of Refugee Family Reunion</h5>
+                                <p>A Statement of Changes to the Immigration Rules has confirmed the suspension of new refugee family reunion applications after 3pm on Thursday 4th September.</p>
+                                <p>This decision puts families at risk of prolonged separation.</p>
+                                <p><strong>Resources:</strong></p>
+                                <ul>
+                                    <li><a href="https://www.freemovement.org.uk" target="_blank">Update from Free Movement</a></li>
+                                    <li><a href="https://www.gmiau.org" target="_blank">GMIAU Explainer</a></li>
+                                    <li><a href="https://www.ramfel.org.uk" target="_blank">RAMFEL Human Impact Analysis</a></li>
+                                </ul>
+                            </div>
+                            
+                            <div class="info-box mt-4">
+                                <p><strong>Get Involved:</strong> Join our campaigns by attending events, signing petitions, writing to representatives, and raising awareness in your community.</p>
+                            </div>
+                        </section>
+                    </div>
+                    ${facebookSidebarHTML}
+                </div>
+            `,
+            
+            'donate': `
+                <div class="two-column-layout" style="display: flex; flex-wrap: wrap;">
+                    <div class="content-left-column">
+                        <section class="dynamic-content">
+                            <div class="learning-card">
+                                <p>Preston City of Sanctuary welcomes financial donations to support our work. We use gifts to support activities, campaigning, and events.</p>
+                                
+                                <div class="warning-box mt-3">
+                                    <p><strong>Note:</strong> We are an umbrella organisation and not a registered charity, so we cannot benefit from Gift Aid donations.</p>
+                                    <p>You may prefer to directly support organisations such as:</p>
+                                    <ul>
+                                        <li>British Red Cross</li>
+                                        <li>Talk English</li>
+                                        <li>Kind Communities</li>
+                                        <li>Care 4 Calais</li>
+                                        <li>Refugee Action</li>
+                                        <li>Kairos Housing</li>
+                                    </ul>
+                                </div>
+                                
+                                <p class="mt-3">Contact us if you would like to donate: <a href="mailto:prestoncityofsanctuary@gmail.com">prestoncityofsanctuary@gmail.com</a></p>
+                            </div>
+                        </section>
+                    </div>
+                    ${facebookSidebarHTML}
+                </div>
+            `,
+            
+            'events': `
+                <div class="two-column-layout" style="display: flex; flex-wrap: wrap;">
+                    <div class="content-left-column">
+                        <section class="dynamic-content">
+                            <div class="event-card">
+                                <div class="event-date">21 Sep 2023</div>
+                                <div class="event-content">
+                                    <h5>Understanding Trauma Workshop</h5>
+                                    <p>Led by Dr Jeff Morgan at Salvation Army PR1 7BN</p>
+                                    <p>12:30 for refreshments, workshop 1pm-3pm</p>
+                                    <p>RSVP by 14 Sep to: <a href="mailto:prestoncityofsanctuary@gmail.com">prestoncityofsanctuary@gmail.com</a></p>
+                                </div>
+                            </div>
+                            
+                            <div class="row mt-4">
+                                <div class="col-md-6 mb-4">
+                                    <div class="content-card p-4">
+                                        <h5><i class="fas fa-calendar me-2"></i> Upcoming Events</h5>
+                                        <p>Check back regularly for new events, workshops, and community gatherings.</p>
+                                        <p>Subscribe to our newsletter or follow us on social media for updates.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="content-card p-4">
+                                        <h5><i class="fas fa-history me-2"></i> Past Events</h5>
+                                        <p>View reports, photos, and outcomes from our previous events and activities.</p>
+                                        <a href="#" class="btn btn-outline-primary btn-sm mt-2">View Event Archive</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    ${facebookSidebarHTML}
+                </div>
+            `,
+            
+            'resources': `
+                <div class="two-column-layout" style="display: flex; flex-wrap: wrap;">
+                    <div class="content-left-column">
+                        <section class="dynamic-content">
+                            <div class="d-grid gap-3">
+                                <a href="#" class="resource-link">
+                                    <strong>Getting the Story Straight</strong>
+                                    <small class="d-block">British Red Cross</small>
+                                </a>
+                                
+                                <a href="#" class="resource-link">
+                                    <strong>Welcoming the Stranger</strong>
+                                    <small class="d-block">Various information booklets</small>
+                                </a>
+                                
+                                <a href="#" class="resource-link">
+                                    <strong>Resources on Destitution</strong>
+                                    <small class="d-block">Still Human Still Here</small>
+                                </a>
+                                
+                                <a href="#" class="resource-link">
+                                    <strong>The Journey by Francesca Sanna</strong>
+                                    <small class="d-block">Amnesty International book for children</small>
+                                </a>
+                            </div>
+                            
+                            <div class="row mt-4">
+                                <div class="col-md-6 mb-4">
+                                    <div class="content-card p-4">
+                                        <h5><i class="fas fa-book me-2"></i> Educational Resources</h5>
+                                        <p>Materials for schools, community groups, and individuals learning about sanctuary issues.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="content-card p-4">
+                                        <h5><i class="fas fa-file-pdf me-2"></i> Policy Documents</h5>
+                                        <p>Reports, research papers, and policy briefings on asylum and refugee issues.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    ${facebookSidebarHTML}
+                </div>
+            `,
+            
+            'web-links': `
+                <div class="two-column-layout" style="display: flex; flex-wrap: wrap;">
+                    <div class="content-left-column">
+                        <section class="dynamic-content">
+                            <div class="list-group">
+                                <a href="https://www.resettlementinlancashire.org" target="_blank" class="list-group-item list-group-item-action">
+                                    <strong>LCC Refugee Resettlement Programme</strong>
+                                </a>
+                                <a href="https://www.asylummatters.org" target="_blank" class="list-group-item list-group-item-action">
+                                    <strong>Asylum Matters</strong>
+                                </a>
+                                <a href="https://righttoremain.org.uk" target="_blank" class="list-group-item list-group-item-action">
+                                    <strong>Right To Remain</strong>
+                                </a>
+                                <a href="https://www.refugeesathome.org" target="_blank" class="list-group-item list-group-item-action">
+                                    <strong>Refugees at Home</strong>
+                                </a>
+                            </div>
+                            
+                            <div class="row mt-4">
+                                <div class="col-md-6 mb-4">
+                                    <div class="content-card p-4">
+                                        <h5><i class="fas fa-hands-helping me-2"></i> Support Organisations</h5>
+                                        <p>Links to local and national organisations providing direct support to sanctuary seekers.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="content-card p-4">
+                                        <h5><i class="fas fa-gavel me-2"></i> Policy & Advocacy</h5>
+                                        <p>Organisations working on policy change, legal rights, and systemic advocacy.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    ${facebookSidebarHTML}
+                </div>
+            `,
+            
+            'facebook-posts': `
+                <div class="two-column-layout" style="display: flex; flex-wrap: wrap;">
+                    <div class="content-left-column">
+                        <section class="dynamic-content">
+                            <div class="facebook-post">
+                                <div class="post-date">30 January 2026</div>
+                                <h5>Campaigning with Confidence training session invite</h5>
+                                <p>The aim of this session is for us to come away with practical guidance to ensure any campaigning we do is firmly within the rules. There will also be time for Q&A. (Feed generated with FetchRSS)</p>
+                                <a href="https://data.cityofsanctuary.org/civicrm/mailing/view?reset=1&id=2642&cid=1821&cs=c826afa6c72ccb60df97e93f4b148655_1769777624_168" target="_blank">View Details</a>
+                            </div>
+                            
+                            <div class="info-box mt-4">
+                                <p><strong>Follow us on Facebook:</strong> <a href="https://www.facebook.com/people/Preston-City-of-Sanctuary/100067197351909/" target="_blank">Preston City of Sanctuary Facebook Page</a></p>
+                                <p>Stay updated with our latest news, events, and community activities.</p>
+                            </div>
+                        </section>
+                    </div>
+                    ${facebookSidebarHTML}
+                </div>
+            `,
+            
+            'contact': `
+                <div class="two-column-layout" style="display: flex; flex-wrap: wrap;">
+                    <div class="content-left-column">
+                        <section class="dynamic-content">
+                            <div class="contact-info">
+                                <p><strong>Email:</strong> <a href="mailto:prestoncityofsanctuary@gmail.com">prestoncityofsanctuary@gmail.com</a></p>
+                                <p><strong>Phone:</strong> Email first to request a callback</p>
+                                <p><strong>Address:</strong> Preston, Lancashire, UK</p>
+                                
+                                <p class="mt-3"><strong>Google Group:</strong><br>
+                                <a href="https://groups.google.com/g/preston-city-of-sanctuary" target="_blank">
+                                    https://groups.google.com/g/preston-city-of-sanctuary
+                                </a></p>
+                            </div>
+                            
+                            <div class="row mt-4">
+                                <div class="col-md-6 mb-4">
+                                    <div class="content-card p-4 text-center">
+                                        <div class="card-icon">
+                                            <i class="fas fa-envelope"></i>
+                                        </div>
+                                        <h4>Email Us</h4>
+                                        <p>Send us a message for general inquiries or support requests.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="content-card p-4 text-center">
+                                        <div class="card-icon">
+                                            <i class="fas fa-users"></i>
+                                        </div>
+                                        <h4>Join Our Network</h4>
+                                        <p>Connect with other volunteers and organisations in our community.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    ${facebookSidebarHTML}
+                </div>
+            `
+        };
+        
+        // DOM elements
+        const pageTitleArea = document.getElementById('page-title-area');
+        const contentArea = document.getElementById('content-area');
+        const searchModal = document.getElementById('searchModal');
+        const searchInput = document.getElementById('siteSearchInput');
+        const searchResultsContainer = document.getElementById('searchResultsContainer');
+        const closeSearchBtn = document.getElementById('closeSearchBtn');
+        
+        // Search index - contains all searchable content
+        const searchIndex = [
+            {
+                id: 'home',
+                title: 'Welcome to Preston City of Sanctuary',
+                keywords: ['welcome', 'sanctuary', 'Preston', 'community', 'movement', 'together'],
+                content: 'Building a culture of welcome for people seeking sanctuary in the UK. We are part of a national movement dedicated to building a culture of welcome.'
+            },
+            {
+                id: 'about',
+                title: 'About Us',
+                keywords: ['about', 'mission', 'vision', 'network', 'volunteers', 'professionals'],
+                content: 'Preston City of Sanctuary is part of a national movement dedicated to building a culture of welcome for people seeking sanctuary in the UK.'
+            },
+            {
+                id: 'what-we-do',
+                title: 'What We Do',
+                keywords: ['activities', 'initiatives', 'network', 'support', 'collaboration', 'events'],
+                content: 'Building networks, providing direct support, raising awareness and advocating for sanctuary seekers in Preston.'
+            },
+            {
+                id: 'who-we-are',
+                title: 'Who We Are',
+                keywords: ['team', 'core group', 'members', 'structure', 'experts', 'advisory'],
+                content: 'Core group members including Dawn Judd (Chair), Suely Ludgero-Newlove (Vice-chair), Greg Smith (Communications), and others.'
+            },
+            {
+                id: 'help',
+                title: 'Help For Sanctuary Seekers',
+                keywords: ['help', 'support', 'services', 'drop-in', 'housing', 'red cross'],
+                content: 'British Red Cross Refugee Support Preston, housing advice, drop-in services, and various support services.'
+            },
+            {
+                id: 'learning-english',
+                title: 'Learning English',
+                keywords: ['english', 'ESOL', 'courses', 'classes', 'Preston College', 'language'],
+                content: 'ESOL courses at Preston College, free courses for asylum seekers and refugees, conversation groups.'
+            },
+            {
+                id: 'immigration-rights',
+                title: 'Immigration Rights',
+                keywords: ['immigration', 'rights', 'legal', 'asylum', 'refugee', 'visa'],
+                content: 'Right to Remain Toolkit, Jubilee+ Asylum Process Guide, information about immigration rights and legal support.'
+            },
+            {
+                id: 'employment',
+                title: 'Employment',
+                keywords: ['jobs', 'work', 'employment', 'CV', 'interview', 'training'],
+                content: 'Job seeking support, employment opportunities, skills training for sanctuary seekers.'
+            },
+            {
+                id: 'health',
+                title: 'Health Services',
+                keywords: ['health', 'medical', 'GP', 'NHS', 'hospital', 'dental'],
+                content: 'Finding a GP, emergency services, Royal Preston Hospital, dental services for asylum seekers.'
+            },
+            {
+                id: 'housing',
+                title: 'Housing',
+                keywords: ['housing', 'accommodation', 'renting', 'council', 'Preston City Council'],
+                content: 'Preston City Council Housing Advice Service, social housing, private renting advice.'
+            },
+            {
+                id: 'libraries',
+                title: 'Libraries',
+                keywords: ['libraries', 'books', 'computers', 'internet', 'Lancashire', 'resources'],
+                content: 'All 64 Lancashire libraries have Libraries of Sanctuary status, free membership, computer access.'
+            },
+            {
+                id: 'sports',
+                title: 'Sports & Leisure',
+                keywords: ['sports', 'football', 'soccer', 'park run', 'cycling', 'leisure'],
+                content: 'Sir Tom Finney Soccer Centre, Preston Park Run, Preston Pedals cycling promotion.'
+            },
+            {
+                id: 'how-to-help',
+                title: 'How To Help',
+                keywords: ['volunteer', 'donate', 'campaign', 'schools', 'support', 'help'],
+                content: 'Ways to support our work including volunteering, donating, campaigning, and creating Schools of Sanctuary.'
+            },
+            {
+                id: 'volunteers',
+                title: 'For Volunteers',
+                keywords: ['volunteer', 'opportunities', 'time', 'skills', 'support', 'community'],
+                content: 'Volunteer opportunities including core group membership, website management, personal support, and event help.'
+            },
+            {
+                id: 'campaigns',
+                title: 'Current Campaigns',
+                keywords: ['campaigns', 'refugee rights', 'family reunion', 'asylum matters', 'advocacy'],
+                content: 'Campaigning with Asylum Matters, Refugee Family Reunion suspension, advocacy for refugee rights.'
+            },
+            {
+                id: 'donate',
+                title: 'Donate',
+                keywords: ['donate', 'funding', 'support', 'financial', 'gift aid', 'charity'],
+                content: 'Financial donations to support our work, information about Gift Aid and alternative organizations to support.'
+            },
+            {
+                id: 'events',
+                title: 'Events',
+                keywords: ['events', 'workshops', 'meetings', 'gatherings', 'calendar', 'upcoming'],
+                content: 'Upcoming events, workshops, community gatherings, and past event archives.'
+            },
+            {
+                id: 'resources',
+                title: 'Resources & Publications',
+                keywords: ['resources', 'publications', 'books', 'guides', 'materials', 'download'],
+                content: 'Educational resources, policy documents, booklets, and publications about sanctuary issues.'
+            },
+            {
+                id: 'contact',
+                title: 'Contact Us',
+                keywords: ['contact', 'email', 'phone', 'address', 'google group', 'get in touch'],
+                content: 'Contact information including email, Google Group, and ways to get involved with Preston City of Sanctuary.'
+            }
+        ];
+        
+        // Function to perform search
+        function performSearch(query) {
+            if (!query || query.trim() === '') {
+                return [];
+            }
+            
+            const searchTerm = query.toLowerCase().trim();
+            const results = [];
+            
+            searchIndex.forEach(item => {
+                let score = 0;
+                
+                // Check title
+                if (item.title.toLowerCase().includes(searchTerm)) {
+                    score += 3;
+                }
+                
+                // Check keywords
+                item.keywords.forEach(keyword => {
+                    if (keyword.toLowerCase().includes(searchTerm)) {
+                        score += 2;
+                    }
+                });
+                
+                // Check content
+                if (item.content.toLowerCase().includes(searchTerm)) {
+                    score += 1;
+                }
+                
+                // Check ID
+                if (item.id.toLowerCase().includes(searchTerm)) {
+                    score += 1;
+                }
+                
+                if (score > 0) {
+                    results.push({
+                        ...item,
+                        score: score
+                    });
+                }
+            });
+            
+            // Sort by score (highest first)
+            results.sort((a, b) => b.score - a.score);
+            
+            return results;
+        }
+        
+        // Function to display search results
+        function displaySearchResults(results, query) {
+            searchResultsContainer.innerHTML = '';
+            
+            if (results.length === 0) {
+                searchResultsContainer.innerHTML = `
+                    <div class="no-results">
+                        <i class="fas fa-search"></i>
+                        <h4>No results found for "${query}"</h4>
+                        <p>Try searching for different keywords or browse our sections using the menu above.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            results.forEach(result => {
+                const resultElement = document.createElement('div');
+                resultElement.className = 'search-result-item';
+                
+                // Create a snippet with highlighted search terms
+                let snippet = result.content;
+                const searchTerms = query.toLowerCase().split(' ');
+                
+                searchTerms.forEach(term => {
+                    if (term.length > 2) {
+                        const regex = new RegExp(term, 'gi');
+                        snippet = snippet.replace(regex, match => `<strong>${match}</strong>`);
+                    }
+                });
+                
+                // Limit snippet length
+                if (snippet.length > 200) {
+                    snippet = snippet.substring(0, 200) + '...';
+                }
+                
+                resultElement.innerHTML = `
+                    <div class="search-result-title">${result.title}</div>
+                    <div class="search-result-snippet">${snippet}</div>
+                    <a href="#" class="search-result-link" onclick="loadContent('${result.id}'); closeSearchModal(); return false;">
+                        Go to ${result.title} <i class="fas fa-arrow-right ms-1"></i>
+                    </a>
+                `;
+                
+                searchResultsContainer.appendChild(resultElement);
+            });
+        }
+        
+        // Function to open search modal
+        function openSearchModal() {
+            searchModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Focus on search input if there's a query
+            if (searchInput.value.trim() !== '') {
+                const query = searchInput.value.trim();
+                const results = performSearch(query);
+                displaySearchResults(results, query);
+            }
+        }
+        
+        // Function to close search modal
+        function closeSearchModal() {
+            searchModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Function to load content
+        function loadContent(section) {
+            console.log('Loading content for:', section);
+            
+            const pageTitle = pageTitleTemplates[section];
+            const content = contentTemplates[section];
+            
+            if (pageTitle && content) {
+                // Load page title
+                if (pageTitleArea) {
+                    pageTitleArea.innerHTML = pageTitle;
+                }
+                
+                // Load content
+                if (contentArea) {
+                    contentArea.innerHTML = content;
+                }
+                
+                // Trigger fade-in animation for new content
+                setTimeout(() => {
+                    const fadeElements = document.querySelectorAll('.fade-in');
+                    fadeElements.forEach(element => {
+                        element.classList.add('visible');
+                    });
+                }, 50);
+                
+                // Update active navigation link
+                updateActiveNavLink(section);
+                
+                // Scroll to top of page
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            } else {
+                console.error('No content found for section:', section);
+            }
+        }
+        
+        // Function to update active navigation link
+        function updateActiveNavLink(section) {
+            // Remove active class from all nav links
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Add active class to the appropriate link
+            const linkId = section === 'home' ? 'home-link' : `${section}-link`;
+            const link = document.getElementById(linkId);
+            if (link) {
+                link.classList.add('active');
+                
+                // If this is a dropdown item, also activate the parent dropdown
+                if (link.classList.contains('dropdown-item')) {
+                    const parentDropdown = link.closest('.dropdown-menu');
+                    if (parentDropdown) {
+                        const parentLink = parentDropdown.previousElementSibling;
+                        if (parentLink && parentLink.classList.contains('dropdown-toggle')) {
+                            parentLink.classList.add('active');
+                        }
+                    }
+                }
+            }
+        }
+        
+        // Initialize all event listeners
+        function initializeEventListeners() {
+            console.log('Initializing event listeners...');
+            
+            // Home link
+            const homeLink = document.getElementById('home-link');
+            if (homeLink) {
+                homeLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    loadContent('home');
+                });
+            }
+            
+            // About Us links
+            const aboutMainLink = document.getElementById('about-main-link');
+            if (aboutMainLink) {
+                aboutMainLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    loadContent('about');
+                });
+            }
+            
+            const aboutLink = document.getElementById('about-link');
+            if (aboutLink) {
+                aboutLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    loadContent('about');
+                });
+            }
+            
+            const whatWeDoLink = document.getElementById('what-we-do-link');
+            if (whatWeDoLink) {
+                whatWeDoLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    loadContent('what-we-do');
+                });
+            }
+            
+            const whoWeAreLink = document.getElementById('who-we-are-link');
+            if (whoWeAreLink) {
+                whoWeAreLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    loadContent('who-we-are');
+                });
+            }
+            
+            const policiesLink = document.getElementById('policies-link');
+            if (policiesLink) {
+                policiesLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    loadContent('policies');
+                });
+            }
+            
+            // Help & Support links
+            const helpMainLink = document.getElementById('help-main-link');
+            if (helpMainLink) {
+                helpMainLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    loadContent('help');
+                });
+            }
+            
+            const helpLink = document.getElementById('help-link');
+            if (helpLink) {
+                helpLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    loadContent('help');
+                });
+            }
+            
+            const learningEnglishLink = document.getElementById('learning-english-link');
+            if (learningEnglishLink) {
+                learningEnglishLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    loadContent('learning-english');
+                });
+            }
+            
+            const immigrationRightsLink = document.getElementById('immigration-rights-link');
+            if (immigrationRightsLink) {
+                immigrationRightsLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    loadContent('immigration-rights');
+                });
+            }
+            
+            const employmentLink = document.getElementById('employment-link');
+            if (employmentLink) {
+                employmentLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    loadContent('employment');
+                });
+            }
+            
+            const healthLink = document.getElementById('health-link');
+            if (healthLink) {
+                healthLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    loadContent('health');
+                });
+            }
+            
+            const housingLink = document.getElementById('housing-link');
+            if (housingLink) {
+                housingLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    loadContent('housing');
+                });
+            }
+            
+            const librariesLink = document.getElementById('libraries-link');
+            if (librariesLink) {
+                librariesLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    loadContent('libraries');
+                });
+            }
+            
+            const sportsLink = document.getElementById('sports-link');
+            if (sportsLink) {
+                sportsLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    loadContent('sports');
+                });
+            }
+            
+            // Get Involved links
+            const getInvolvedMainLink = document.getElementById('get-involved-main-link');
+            if (getInvolvedMainLink) {
+                getInvolvedMainLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    loadContent('how-to-help');
+                });
+            }
+            
+            const howToHelpLink = document.getElementById('how-to-help-link');
+            if (howToHelpLink) {
+                howToHelpLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    loadContent('how-to-help');
+                });
+            }
+            
+            const volunteersLink = document.getElementById('volunteers-link');
+            if (volunteersLink) {
+                volunteersLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    loadContent('volunteers');
+                });
+            }
+            
+            const campaignsLink = document.getElementById('campaigns-link');
+            if (campaignsLink) {
+                campaignsLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    loadContent('campaigns');
+                });
+            }
+            
+            const donateLink = document.getElementById('donate-link');
+            if (donateLink) {
+                donateLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    loadContent('donate');
+                });
+            }
+            
+            // Events link
+            const eventsLink = document.getElementById('events-link');
+            if (eventsLink) {
+                eventsLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    loadContent('events');
+                });
+            }
+            
+            // Resources links
+            const resourcesMainLink = document.getElementById('resources-main-link');
+            if (resourcesMainLink) {
+                resourcesMainLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    loadContent('resources');
+                });
+            }
+            
+            const resourcesLink = document.getElementById('resources-link');
+            if (resourcesLink) {
+                resourcesLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    loadContent('resources');
+                });
+            }
+            
+            const webLinksLink = document.getElementById('web-links-link');
+            if (webLinksLink) {
+                webLinksLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    loadContent('web-links');
+                });
+            }
+            
+            const facebookPostsLink = document.getElementById('facebook-posts-link');
+            if (facebookPostsLink) {
+                facebookPostsLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    loadContent('facebook-posts');
+                });
+            }
+            
+            // Contact link
+            const contactLink = document.getElementById('contact-link');
+            if (contactLink) {
+                contactLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    loadContent('contact');
+                });
+            }
+            
+            // Search functionality
+            if (searchInput) {
+                // Open search on focus
+                searchInput.addEventListener('focus', function() {
+                    openSearchModal();
+                });
+                
+                // Search on input
+                searchInput.addEventListener('input', function() {
+                    const query = this.value.trim();
+                    
+                    if (query === '') {
+                        searchResultsContainer.innerHTML = `
+                            <div class="no-results">
+                                <i class="fas fa-search"></i>
+                                <h4>Search within this site</h4>
+                                <p>Type keywords related to sanctuary, support, events, volunteering, or any other topic you're interested in.</p>
+                            </div>
+                        `;
+                        return;
+                    }
+                    
+                    const results = performSearch(query);
+                    displaySearchResults(results, query);
+                });
+                
+                // Search on Enter key
+                searchInput.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        const query = this.value.trim();
+                        
+                        if (query === '') {
+                            return;
+                        }
+                        
+                        const results = performSearch(query);
+                        displaySearchResults(results, query);
+                    }
+                });
+            }
+            
+            // Close search modal
+            if (closeSearchBtn) {
+                closeSearchBtn.addEventListener('click', closeSearchModal);
+            }
+            
+            // Close search modal when clicking outside results
+            searchModal.addEventListener('click', function(e) {
+                if (e.target === searchModal) {
+                    closeSearchModal();
+                }
+            });
+            
+            // Close search modal with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && searchModal.classList.contains('active')) {
+                    closeSearchModal();
+                }
+            });
+            
+            console.log('Event listeners initialized successfully');
+        }
+        
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM fully loaded');
+            
+            // Initialize event listeners
+            initializeEventListeners();
+            
+            // Load home content immediately
+            loadContent('home');
+            
+            // Initialize fade-in elements on page load
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+            
+            // Initialize navbar scroll effect
+            const navbar = document.querySelector('.navbar');
+            if (window.pageYOffset > 50) {
+                navbar.classList.add('scrolled');
+            }
+            
+            console.log('Page loaded successfully - All content should be visible');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                // Skip if it's a dynamic content link (handled elsewhere)
+                if (this.id && this.id.endsWith('-link')) {
+                    return;
+                }
+                
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 130,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Update active nav link on scroll
+        window.addEventListener('scroll', function() {
+            // Navbar scroll effect
+            const navbar = document.querySelector('.navbar');
+            if (window.pageYOffset > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            
+            // Back to top button visibility
+            const backToTopButton = document.querySelector('.back-to-top');
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+            
+            // Fade in elements on scroll
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        });
+        
+        // Back to top button functionality
+        const backToTopButton = document.querySelector('.back-to-top');
+        if (backToTopButton) {
+            backToTopButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+        
+        // Handle dropdown menu clicks on mobile
+        document.querySelectorAll('.dropdown-item').forEach(item => {
+            item.addEventListener('click', function() {
+                if(window.innerWidth < 992) {
+                    const navbarToggler = document.querySelector('.navbar-toggler');
+                    if(navbarToggler && !navbarToggler.classList.contains('collapsed')) {
+                        navbarToggler.click();
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+[file content end]

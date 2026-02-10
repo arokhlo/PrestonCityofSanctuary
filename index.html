@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ِِ<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -1852,8 +1852,8 @@ is a video produced by our friends at Kairos Housing, Blackburn. It captures San
                                         <div class="card-icon">
                                             <i class="fas fa-hands-helping"></i>
                                         </div>
-                                        <h4>Direct Support</h4>
-                                        <p>Providing practical assistance and guidance to sanctuary seekers in our community.</p>
+<h4>Running Events</h4>
+<p>Bringing people together through community events, especially during Refugee Week.</p>
                                     </div>
                                 </div>
                                 <div class="col-md-4 mb-4">
@@ -2419,42 +2419,359 @@ this folder
                     </div>
                     ${facebookSidebarHTML}
                 </div>
-            `,
-            
+            `,    
             'events': `
-                <div class="two-column-layout" style="display: flex; flex-wrap: wrap;">
-                    <div class="content-left-column">
-                        <section class="dynamic-content">
-                            <div class="event-card">
-                                <div class="event-date">21 Sep 2023</div>
-                                <div class="event-content">
-                                    <h5>Understanding Trauma Workshop</h5>
-                                    <p>Led by Dr Jeff Morgan at Salvation Army PR1 7BN</p>
-                                    <p>12:30 for refreshments, workshop 1pm-3pm</p>
-                                    <p>RSVP by 14 Sep to: <a href="mailto:prestoncityofsanctuary@gmail.com">prestoncityofsanctuary@gmail.com</a></p>
-                                </div>
+    <div class="two-column-layout" style="display: flex; flex-wrap: wrap;">
+        <div class="content-left-column">
+            <section class="dynamic-content">
+                <!-- Refugee Week Banner -->
+                <div class="refugee-week-banner" style="
+                    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+                    color: white;
+                    padding: 25px;
+                    border-radius: 12px;
+                    margin-bottom: 30px;
+                    text-align: center;
+                    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+                    border-left: 6px solid #ffcc00;
+                ">
+                    <div class="banner-content">
+                        <h3 style="margin-top: 0; color: #ffcc00; font-weight: bold;">
+                            <i class="fas fa-calendar-star me-2"></i>Refugee Week 2024
+                        </h3>
+                        <h2 style="font-size: 28px; margin: 10px 0;">"Our Home"</h2>
+                        <div class="banner-dates" style="
+                            display: flex;
+                            justify-content: center;
+                            gap: 30px;
+                            margin: 20px 0;
+                            flex-wrap: wrap;
+                        ">
+                            <div class="date-item" style="text-align: center;">
+                                <div class="date-label" style="font-size: 14px; opacity: 0.9;">STARTS</div>
+                                <div class="date-value" style="font-size: 22px; font-weight: bold;">17 June 2024</div>
                             </div>
-                            
-                            <div class="row mt-4">
-                                <div class="col-md-6 mb-4">
-                                    <div class="content-card p-4">
-                                        <h5><i class="fas fa-calendar me-2"></i> Upcoming Events</h5>
-                                        <p>Check back regularly for new events, workshops, and community gatherings.</p>
-                                        <p>Subscribe to our newsletter or follow us on social media for updates.</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 mb-4">
-                                    <div class="content-card p-4">
-                                        <h5><i class="fas fa-history me-2"></i> Past Events</h5>
-                                        <p>View reports, photos, and outcomes from our previous events and activities.</p>
-                                        <a href="#" class="btn btn-outline-primary btn-sm mt-2">View Event Archive</a>
-                                    </div>
-                                </div>
+                            <div class="date-item" style="text-align: center;">
+                                <div class="date-label" style="font-size: 14px; opacity: 0.9;">ENDS</div>
+                                <div class="date-value" style="font-size: 22px; font-weight: bold;">23 June 2024</div>
                             </div>
-                        </section>
+                        </div>
+                        <p style="font-size: 16px; max-width: 800px; margin: 0 auto 15px; opacity: 0.95;">
+                            Celebrating the contributions, creativity and resilience of refugees and people seeking sanctuary
+                        </p>
+                        <a href="#" class="btn btn-warning" style="
+                            background: #ffcc00;
+                            color: #1e3c72;
+                            font-weight: bold;
+                            padding: 10px 25px;
+                            border-radius: 50px;
+                            text-decoration: none;
+                            display: inline-block;
+                            margin-top: 10px;
+                            border: none;
+                        ">
+                            <i class="fas fa-info-circle me-2"></i>View Refugee Week Programme
+                        </a>
                     </div>
-                    ${facebookSidebarHTML}
                 </div>
+
+                <!-- Two Column Layout for Events -->
+                <div class="events-container" style="display: flex; flex-wrap: wrap; gap: 30px;">
+                    <!-- Column 1: Upcoming Events (Prominence) -->
+                    <div class="upcoming-events-column" style="flex: 1; min-width: 300px;">
+                        <div class="section-header" style="
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            margin-bottom: 20px;
+                            padding-bottom: 10px;
+                            border-bottom: 3px solid #2a5298;
+                        ">
+                            <h3 style="margin: 0; color: #2a5298;">
+                                <i class="fas fa-calendar-check me-2"></i>Upcoming Events
+                            </h3>
+                            <span class="badge bg-primary" style="font-size: 14px; padding: 5px 15px;">
+                                Coming Soon
+                            </span>
+                        </div>
+
+                        <!-- Upcoming Event Cards -->
+                        <div class="upcoming-event-card" style="
+                            background: #f8f9fa;
+                            border-radius: 10px;
+                            padding: 20px;
+                            margin-bottom: 20px;
+                            border-left: 5px solid #2a5298;
+                            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+                        ">
+                            <div class="event-date-badge" style="
+                                background: #2a5298;
+                                color: white;
+                                padding: 8px 15px;
+                                border-radius: 20px;
+                                display: inline-block;
+                                font-weight: bold;
+                                margin-bottom: 15px;
+                            ">
+                                <i class="fas fa-clock me-2"></i>21 September 2023 • 1:00 PM
+                            </div>
+                            <h5 style="color: #1e3c72; margin-bottom: 10px;">Understanding Trauma Workshop</h5>
+                            <div class="event-details" style="margin-bottom: 15px;">
+                                <p style="margin: 5px 0;">
+                                    <i class="fas fa-map-marker-alt me-2" style="color: #666;"></i>
+                                    <strong>Venue:</strong> Salvation Army, PR1 7BN
+                                </p>
+                                <p style="margin: 5px 0;">
+                                    <i class="fas fa-user-md me-2" style="color: #666;"></i>
+                                    <strong>Facilitator:</strong> Dr Jeff Morgan
+                                </p>
+                                <p style="margin: 5px 0;">
+                                    <i class="fas fa-coffee me-2" style="color: #666;"></i>
+                                    <strong>Refreshments:</strong> 12:30 PM
+                                </p>
+                            </div>
+                            <div class="event-description" style="background: white; padding: 15px; border-radius: 8px; margin: 15px 0;">
+                                <p style="margin: 0;">Join us for this important workshop exploring trauma-informed approaches in supporting sanctuary seekers.</p>
+                            </div>
+                            <div class="event-actions">
+                                <a href="mailto:prestoncityofsanctuary@gmail.com" class="btn btn-primary" style="
+                                    background: #2a5298;
+                                    color: white;
+                                    padding: 8px 20px;
+                                    text-decoration: none;
+                                    border-radius: 5px;
+                                    display: inline-block;
+                                    margin-right: 10px;
+                                ">
+                                    <i class="fas fa-envelope me-2"></i>RSVP by 14 Sep
+                                </a>
+                                <a href="#" class="btn btn-outline-primary" style="
+                                    border: 1px solid #2a5298;
+                                    color: #2a5298;
+                                    padding: 8px 20px;
+                                    text-decoration: none;
+                                    border-radius: 5px;
+                                    display: inline-block;
+                                ">
+                                    <i class="fas fa-info-circle me-2"></i>More Details
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- More Upcoming Events -->
+                        <div class="more-upcoming" style="margin-top: 25px;">
+                            <h5 style="color: #666; margin-bottom: 15px;">
+                                <i class="fas fa-list-ul me-2"></i>More Upcoming Events
+                            </h5>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="padding: 12px; background: white; margin-bottom: 10px; border-radius: 8px; border-left: 4px solid #28a745;">
+                                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                                        <div>
+                                            <strong>Community Dinner</strong>
+                                            <div style="font-size: 14px; color: #666;">October 5, 2023</div>
+                                        </div>
+                                        <span class="badge bg-success">New</span>
+                                    </div>
+                                </li>
+                                <li style="padding: 12px; background: white; margin-bottom: 10px; border-radius: 8px; border-left: 4px solid #17a2b8;">
+                                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                                        <div>
+                                            <strong>Cultural Exchange Workshop</strong>
+                                            <div style="font-size: 14px; color: #666;">October 12, 2023</div>
+                                        </div>
+                                        <span class="badge bg-info">Limited Spots</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Column 2: Past Events Archive -->
+                    <div class="past-events-column" style="flex: 1; min-width: 300px;">
+                        <div class="section-header" style="
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            margin-bottom: 20px;
+                            padding-bottom: 10px;
+                            border-bottom: 3px solid #6c757d;
+                        ">
+                            <h3 style="margin: 0; color: #6c757d;">
+                                <i class="fas fa-archive me-2"></i>Events Archive
+                            </h3>
+                            <span class="badge bg-secondary" style="font-size: 14px; padding: 5px 15px;">
+                                ${new Date().getFullYear() - 2015}+ Years
+                            </span>
+                        </div>
+
+                        <!-- Archive Overview -->
+                        <div class="archive-overview" style="
+                            background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+                            color: white;
+                            padding: 25px;
+                            border-radius: 12px;
+                            margin-bottom: 25px;
+                        ">
+                            <h4 style="color: white; margin-top: 0;">
+                                <i class="fas fa-history me-2"></i>Our Journey Since 2015
+                            </h4>
+                            <p>Browse through years of community events, workshops, celebrations, and advocacy activities.</p>
+                            <div class="archive-stats" style="
+                                display: grid;
+                                grid-template-columns: repeat(2, 1fr);
+                                gap: 15px;
+                                margin-top: 20px;
+                            ">
+                                <div style="text-align: center; background: rgba(255,255,255,0.1); padding: 15px; border-radius: 8px;">
+                                    <div style="font-size: 24px; font-weight: bold;">50+</div>
+                                    <div style="font-size: 14px;">Events Hosted</div>
+                                </div>
+                                <div style="text-align: center; background: rgba(255,255,255,0.1); padding: 15px; border-radius: 8px;">
+                                    <div style="font-size: 24px; font-weight: bold;">1000+</div>
+                                    <div style="font-size: 14px;">Participants</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Archive Categories -->
+                        <div class="archive-categories" style="margin-bottom: 25px;">
+                            <h5 style="color: #666; margin-bottom: 15px;">
+                                <i class="fas fa-folder-open me-2"></i>Browse by Category
+                            </h5>
+                            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                                <a href="#" class="archive-category" style="
+                                    background: #e9ecef;
+                                    padding: 10px 20px;
+                                    border-radius: 20px;
+                                    text-decoration: none;
+                                    color: #495057;
+                                    font-size: 14px;
+                                    display: inline-block;
+                                ">
+                                    Workshops
+                                </a>
+                                <a href="#" class="archive-category" style="
+                                    background: #e9ecef;
+                                    padding: 10px 20px;
+                                    border-radius: 20px;
+                                    text-decoration: none;
+                                    color: #495057;
+                                    font-size: 14px;
+                                    display: inline-block;
+                                ">
+                                    Community Dinners
+                                </a>
+                                <a href="#" class="archive-category" style="
+                                    background: #e9ecef;
+                                    padding: 10px 20px;
+                                    border-radius: 20px;
+                                    text-decoration: none;
+                                    color: #495057;
+                                    font-size: 14px;
+                                    display: inline-block;
+                                ">
+                                    Cultural Events
+                                </a>
+                                <a href="#" class="archive-category" style="
+                                    background: #e9ecef;
+                                    padding: 10px 20px;
+                                    border-radius: 20px;
+                                    text-decoration: none;
+                                    color: #495057;
+                                    font-size: 14px;
+                                    display: inline-block;
+                                ">
+                                    Advocacy
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Yearly Archive -->
+                        <div class="yearly-archive">
+                            <h5 style="color: #666; margin-bottom: 15px;">
+                                <i class="fas fa-calendar-alt me-2"></i>Browse by Year
+                            </h5>
+                            <div style="
+                                display: grid;
+                                grid-template-columns: repeat(3, 1fr);
+                                gap: 10px;
+                            ">
+                                ${Array.from({length: new Date().getFullYear() - 2014}, (_, i) => {
+                                    const year = new Date().getFullYear() - i;
+                                    return `
+                                        <a href="#" style="
+                                            display: block;
+                                            padding: 15px;
+                                            background: white;
+                                            border: 1px solid #dee2e6;
+                                            border-radius: 8px;
+                                            text-decoration: none;
+                                            text-align: center;
+                                            color: #2a5298;
+                                            transition: all 0.3s ease;
+                                        " onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 5px 15px rgba(0,0,0,0.1)';"
+                                        onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';">
+                                            <div style="font-size: 18px; font-weight: bold;">${year}</div>
+                                            <div style="font-size: 12px; color: #666;">View Events</div>
+                                        </a>
+                                    `;
+                                }).join('')}
+                            </div>
+                        </div>
+
+                        <!-- Quick Links -->
+                        <div class="archive-quick-links" style="margin-top: 25px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+                            <h5 style="color: #666; margin-bottom: 15px;">
+                                <i class="fas fa-external-link-alt me-2"></i>Quick Access
+                            </h5>
+                            <div style="display: flex; flex-direction: column; gap: 10px;">
+                                <a href="#" style="
+                                    display: flex;
+                                    align-items: center;
+                                    padding: 12px;
+                                    background: white;
+                                    border-radius: 8px;
+                                    text-decoration: none;
+                                    color: #495057;
+                                    border-left: 4px solid #ffcc00;
+                                ">
+                                    <i class="fas fa-photo-video me-2" style="color: #ffcc00;"></i>
+                                    <span>Event Photos & Galleries</span>
+                                </a>
+                                <a href="#" style="
+                                    display: flex;
+                                    align-items: center;
+                                    padding: 12px;
+                                    background: white;
+                                    border-radius: 8px;
+                                    text-decoration: none;
+                                    color: #495057;
+                                    border-left: 4px solid #28a745;
+                                ">
+                                    <i class="fas fa-file-pdf me-2" style="color: #28a745;"></i>
+                                    <span>Download Event Reports</span>
+                                </a>
+                                <a href="#" style="
+                                    display: flex;
+                                    align-items: center;
+                                    padding: 12px;
+                                    background: white;
+                                    border-radius: 8px;
+                                    text-decoration: none;
+                                    color: #495057;
+                                    border-left: 4px solid #17a2b8;
+                                ">
+                                    <i class="fas fa-video me-2" style="color: #17a2b8;"></i>
+                                    <span>Watch Recorded Sessions</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        ${facebookSidebarHTML}
+    </div>
             `,
             
             'resources': `

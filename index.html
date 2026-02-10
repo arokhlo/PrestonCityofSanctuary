@@ -1052,14 +1052,22 @@
             box-shadow: 0 6px 15px rgba(0,0,0,0.06);
         }
         
+
         /* Image in About Us section */
         .about-image-container {
-            margin: 20px 0;
+                       max-width: 420px;
+            margin: 0 auto;          /* margin: 20px 0;*/
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 10px 25px rgba(0,0,0,0.15);
             position: relative;
         }
+
+.about-image {
+    width: 100%;          
+    height: auto;
+    border-radius: 8px;
+}
         
         .about-image-container img {
             width: 100%;
@@ -1071,14 +1079,15 @@
         .about-image-container:hover img {
             transform: scale(1.05);
         }
-        
+       
         .about-image-caption {
+                    margin-top: 8px;
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
             background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-            color: white;
+            color: white;  /*   #555 */
             padding: 15px;
             font-size: 0.85rem;
             font-style: italic;
@@ -1799,13 +1808,15 @@ is a video produced by our friends at Kairos Housing, Blackburn. It captures San
                                 </div>
                             </div>
                             
-                            <div class="about-image-container smaller-version fade-in mt-4">
-                                <img src="AboutUs.jpg" 
-                                     alt="Community gathering with diverse people showing unity and support">
-                                <div class="about-image-caption">
-                                    Building bridges and fostering understanding in our diverse Preston community
-                                </div>
-                            </div>
+<div class="about-image-container fade-in mt-4 text-center">
+    <img src="AboutUs.jpg" 
+         alt="Community gathering with diverse people showing unity and support"
+         class="about-image">
+    <div class="about-image-caption">
+        Building bridges and fostering understanding in our diverse Preston community
+    </div>
+</div>
+
                         </section>
                     </div>
                     ${facebookSidebarHTML}
@@ -1870,8 +1881,20 @@ is a video produced by our friends at Kairos Housing, Blackburn. It captures San
                 <div class="two-column-layout" style="display: flex; flex-wrap: wrap;">
                     <div class="content-left-column">
                         <section class="dynamic-content">
-                            <p>Preston City of Sanctuary is an unincorporated organisation operating according to our <a href="#policies">constitution (revised December 2022)</a>.</p>
-                            
+
+<p>
+Preston City of Sanctuary is an unincorporated organisation operating under our 
+<a href="#policies">constitution (revised December 2022)</a>.
+A short history of our organisation is available 
+<a href="https://drive.google.com/file/d/1NPKsr7RYEdDYZh21KqMGmVb6zrzsb1FP/view" target="_blank">
+here
+</a>.
+Recent annual reports can be found in 
+<a href="https://drive.google.com/drive/folders/1jMWC6tRA2cb3ySyYGpDTKXxX3eQKOd8T" target="_blank">
+this folder
+</a>.
+</p>
+                           
                             <div class="learning-card mt-4">
                                 <h5>Core Group Members (2025)</h5>
                                 <ul>
@@ -2564,7 +2587,8 @@ is a video produced by our friends at Kairos Housing, Blackburn. It captures San
                             
                             <div class="info-box" style="margin-bottom: 15px;">
                                 <p style="margin-bottom: 6px;"><strong>Google Email Group:</strong></p>
-                                <p style="margin-bottom: 8px;">To receive occasional emails and announcements via our google group please email us and we will add you.</p>
+                                <p style="margin-bottom: 8px;">
+To receive news and occasional announcements about our activities, please email us to join our Google Group</p>
                                 <p style="margin-bottom: 8px;">Anyone can see our recent mailings at:</p>
                                 <a href="https://groups.google.com/g/preston-city-of-sanctuary" 
                                    target="_blank" 

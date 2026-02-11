@@ -2491,6 +2491,171 @@
                                             </a>
                                         </div>
                                     </div>
+
+                        <!-- Archive Overview -->
+                        <div class="archive-overview" style="
+                            background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+                            color: white;
+                            padding: 25px;
+                            border-radius: 12px;
+                            margin-bottom: 25px;
+                        ">
+                            <h4 style="color: white; margin-top: 0;">
+                                <i class="fas fa-history me-2"></i>Our Journey Since 2015
+                            </h4>
+                            <p>Browse through years of community events, workshops, celebrations, and advocacy activities.</p>
+                            <div class="archive-stats" style="
+                                display: grid;
+                                grid-template-columns: repeat(2, 1fr);
+                                gap: 15px;
+                                margin-top: 20px;
+                            ">
+                                <div style="text-align: center; background: rgba(255,255,255,0.1); padding: 15px; border-radius: 8px;">
+                                    <div style="font-size: 24px; font-weight: bold;">50+</div>
+                                    <div style="font-size: 14px;">Events Hosted</div>
+                                </div>
+                                <div style="text-align: center; background: rgba(255,255,255,0.1); padding: 15px; border-radius: 8px;">
+                                    <div style="font-size: 24px; font-weight: bold;">1000+</div>
+                                    <div style="font-size: 14px;">Participants</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Archive Categories -->
+                        <div class="archive-categories" style="margin-bottom: 25px;">
+                            <h5 style="color: #666; margin-bottom: 15px;">
+                                <i class="fas fa-folder-open me-2"></i>Browse by Category
+                            </h5>
+                            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                                <a href="#" class="archive-category" style="
+                                    background: #e9ecef;
+                                    padding: 10px 20px;
+                                    border-radius: 20px;
+                                    text-decoration: none;
+                                    color: #495057;
+                                    font-size: 14px;
+                                    display: inline-block;
+                                ">
+                                    Workshops
+                                </a>
+                                <a href="#" class="archive-category" style="
+                                    background: #e9ecef;
+                                    padding: 10px 20px;
+                                    border-radius: 20px;
+                                    text-decoration: none;
+                                    color: #495057;
+                                    font-size: 14px;
+                                    display: inline-block;
+                                ">
+                                    Community Dinners
+                                </a>
+                                <a href="#" class="archive-category" style="
+                                    background: #e9ecef;
+                                    padding: 10px 20px;
+                                    border-radius: 20px;
+                                    text-decoration: none;
+                                    color: #495057;
+                                    font-size: 14px;
+                                    display: inline-block;
+                                ">
+                                    Cultural Events
+                                </a>
+                                <a href="#" class="archive-category" style="
+                                    background: #e9ecef;
+                                    padding: 10px 20px;
+                                    border-radius: 20px;
+                                    text-decoration: none;
+                                    color: #495057;
+                                    font-size: 14px;
+                                    display: inline-block;
+                                ">
+                                    Advocacy
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Yearly Archive -->
+                        <div class="yearly-archive">
+                            <h5 style="color: #666; margin-bottom: 15px;">
+                                <i class="fas fa-calendar-alt me-2"></i>Browse by Year
+                            </h5>
+                            <div style="
+                                display: grid;
+                                grid-template-columns: repeat(3, 1fr);
+                                gap: 10px;
+                            ">
+                                ${Array.from({length: new Date().getFullYear() - 2014}, (_, i) => {
+                                    const year = new Date().getFullYear() - i;
+                                    return `
+                                        <a href="#" style="
+                                            display: block;
+                                            padding: 15px;
+                                            background: white;
+                                            border: 1px solid #dee2e6;
+                                            border-radius: 8px;
+                                            text-decoration: none;
+                                            text-align: center;
+                                            color: #2a5298;
+                                            transition: all 0.3s ease;
+                                        " onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 5px 15px rgba(0,0,0,0.1)';"
+                                        onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';">
+                                            <div style="font-size: 18px; font-weight: bold;">${year}</div>
+                                            <div style="font-size: 12px; color: #666;">View Events</div>
+                                        </a>
+                                    `;
+                                }).join('')}
+                            </div>
+                        </div>
+
+
+                        <!-- Quick Links -->
+                        <div class="archive-quick-links" style="margin-top: 25px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+                            <h5 style="color: #666; margin-bottom: 15px;">
+                                <i class="fas fa-external-link-alt me-2"></i>Quick Access
+                            </h5>
+                            <div style="display: flex; flex-direction: column; gap: 10px;">
+                                <a href="#" style="
+                                    display: flex;
+                                    align-items: center;
+                                    padding: 12px;
+                                    background: white;
+                                    border-radius: 8px;
+                                    text-decoration: none;
+                                    color: #495057;
+                                    border-left: 4px solid #ffcc00;
+                                ">
+                                    <i class="fas fa-photo-video me-2" style="color: #ffcc00;"></i>
+                                    <span>Event Photos & Galleries</span>
+                                </a>
+                                <a href="#" style="
+                                    display: flex;
+                                    align-items: center;
+                                    padding: 12px;
+                                    background: white;
+                                    border-radius: 8px;
+                                    text-decoration: none;
+                                    color: #495057;
+                                    border-left: 4px solid #28a745;
+                                ">
+                                    <i class="fas fa-file-pdf me-2" style="color: #28a745;"></i>
+                                    <span>Download Event Reports</span>
+                                </a>
+                                <a href="#" style="
+                                    display: flex;
+                                    align-items: center;
+                                    padding: 12px;
+                                    background: white;
+                                    border-radius: 8px;
+                                    text-decoration: none;
+                                    color: #495057;
+                                    border-left: 4px solid #17a2b8;
+                                ">
+                                    <i class="fas fa-video me-2" style="color: #17a2b8;"></i>
+                                    <span>Watch Recorded Sessions</span>
+                                </a>
+                            </div>
+                        </div>
+
                                 </div>
                             </div>
                         </section>
@@ -3800,9 +3965,7 @@
                                 <p style="margin-bottom: 8px;"><strong><i class="fas fa-envelope me-2" style="color: #A0125A;"></i>Email us on:&nbsp;&nbsp;&nbsp;</strong> <a href="mailto:prestoncityofsanctuary@gmail.com" style="color: #A0125A; font-weight: bold; font-size: 1.1rem;">prestoncityofsanctuary@gmail.com</a></p>
                                 <br style="margin-bottom: 8px;">
                                 
-                                <p style="margin-bottom: 8px;"><strong><i class="fab fa-facebook me-2" style="color: #1877f2;"></i>Or contact us via our Facebook page:</strong></p>
-                                <p style="margin-bottom: 15px;">
-                                    <a href="https://www.facebook.com/people/Preston-City-of-Sanctuary/100067197351909/" 
+                                <p style="margin-bottom: 8px;"><strong><i class="fab fa-facebook me-2" style="color: #1877f2;"></i>Or contact us via our Facebook page:&nbsp;&nbsp;&nbsp;</strong><a href="https://www.facebook.com/people/Preston-City-of-Sanctuary/100067197351909/" 
                                        target="_blank" 
                                        rel="noopener noreferrer"
                                        style="color: #1877f2; font-weight: bold;">

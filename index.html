@@ -6,6 +6,9 @@
     <title>Preston City of Sanctuary - Building a Culture of Welcome</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Facebook SDK -->
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v18.0"></script>
     <!-- Google Fonts for better typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -498,55 +501,26 @@
             margin-bottom: 15px;
         }
         
-        /* Facebook posts - UPDATED with disclaimer */
-        .facebook-post {
-            border-left: 4px solid #1877f2;
-            padding: 12px;
+        /* Facebook Page Plugin styles */
+        .fb-page-container {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
             margin-bottom: 15px;
-            background-color: white;
-            border-radius: 0 8px 8px 0;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
         }
         
-        .facebook-post:hover {
-            transform: translateX(3px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        .fb-page {
+            width: 100%;
         }
         
-        .post-date {
-            color: #6c757d;
-            font-size: 0.8rem;
-            margin-bottom: 5px;
+        .facebook-fallback {
+            display: none;
         }
         
-        .facebook-post h5 {
-            color: var(--primary-color);
-            font-size: 0.95rem;
-            margin-bottom: 8px;
-            line-height: 1.4;
-        }
-        
-        .facebook-post p {
-            font-size: 0.85rem;
-            line-height: 1.5;
-            color: #555;
-            margin-bottom: 10px;
-        }
-        
-        .facebook-post a {
-            color: #1877f2;
-            font-weight: 600;
-            font-size: 0.85rem;
-        }
-        
-        .facebook-disclaimer {
-            font-size: 0.8rem;
-            color: #6c757d;
-            font-style: italic;
-            margin-top: 10px;
-            padding-top: 10px;
-            border-top: 1px solid #eee;
+        .fb-page-wrapper {
+            min-height: 500px;
+            background: #f8f9fa;
         }
         
         /* Footer */
@@ -584,7 +558,7 @@
             visibility: visible;
         }
         
-        /* Facebook Sidebar - UPDATED with disclaimer */
+        /* Facebook Sidebar - Updated */
         .facebook-sidebar {
             max-height: calc(100vh - 150px);
             overflow-y: auto;
@@ -786,7 +760,7 @@
                 height: 28px;
             }
   .top-brand-text.short-text {
-        font-size: 0.9rem; /* Slightly smaller text on very small screens */
+        font-size: 0.9rem;
     }
         }
         
@@ -1424,7 +1398,7 @@
     </div>
 </div>
 
-    <!-- Navigation - COMPLETELY RESTRUCTURED with new top-level menu items -->
+    <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
             <a class="navbar-brand d-lg-none" href="#">
@@ -1676,45 +1650,56 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // ============ FIXED FACEBOOK SIDEBAR HTML - USING ACTUAL POSTS FROM FB PAGE ============
+        // ============ FIXED FACEBOOK SIDEBAR HTML - USING OFFICIAL FACEBOOK PAGE PLUGIN ============
         const facebookSidebarHTML = `
             <div class="content-right-column">
                 <div class="facebook-sidebar"> 
                     <div class="facebook-sidebar-title">
-                        <span><i class="fab fa-facebook me-2"></i> Latest from Facebook</span>
+                        <span><i class="fab fa-facebook me-2"></i> Follow Us on Facebook</span>
                         <a href="https://www.facebook.com/people/Preston-City-of-Sanctuary/100067197351909/" 
                            target="_blank" 
                            style="color: white; font-size: 0.9rem;">
-                            View All
+                            Visit Page
                         </a>
                     </div>
                     
-                    <!-- Note: These are sample posts for demonstration. 
-                         For live integration, please use Facebook's Page Plugin or Graph API -->
-                    <div class="facebook-post">
-                        <div class="post-date">February 2026</div>
-                        <h5>Follow us on Facebook for the most up-to-date news!</h5>
-                        <p>Our Facebook page is updated regularly with events, campaigns, and community activities. Visit us there for the latest information.</p>
-                        <a href="https://www.facebook.com/people/Preston-City-of-Sanctuary/100067197351909/" target="_blank">View on Facebook →</a>
+                    <!-- Official Facebook Page Plugin -->
+                    <div class="fb-page-container">
+                        <div class="fb-page" 
+                             data-href="https://www.facebook.com/people/Preston-City-of-Sanctuary/100067197351909/"
+                             data-tabs="timeline"
+                             data-width=""
+                             data-height="500"
+                             data-small-header="false"
+                             data-adapt-container-width="true"
+                             data-hide-cover="false"
+                             data-show-facepile="true">
+                            <blockquote cite="https://www.facebook.com/people/Preston-City-of-Sanctuary/100067197351909/" 
+                                        class="fb-xfbml-parse-ignore">
+                                <a href="https://www.facebook.com/people/Preston-City-of-Sanctuary/100067197351909/">
+                                    Preston City of Sanctuary
+                                </a>
+                            </blockquote>
+                        </div>
                     </div>
                     
-                    <div class="facebook-post">
-                        <div class="post-date">February 2026</div>
-                        <h5>Experts Group Meeting</h5>
-                        <p>Our Experts Group meets every Wednesday, 2-4pm at the Foxton Centre. All welcome to join and share your lived experience.</p>
-                        <a href="https://www.facebook.com/people/Preston-City-of-Sanctuary/100067197351909/" target="_blank">View on Facebook →</a>
-                    </div>
-                    
-                    <div class="facebook-post">
-                        <div class="post-date">February 2026</div>
-                        <h5>Refugee Week 2026: 15-21 June - Theme "Courage"</h5>
-                        <p>Planning is underway for Refugee Week 2026. Want to get involved? Contact us to join our planning group.</p>
-                        <a href="https://www.facebook.com/people/Preston-City-of-Sanctuary/100067197351909/" target="_blank">View on Facebook →</a>
-                    </div>
-                    
-                    <div class="facebook-disclaimer">
-                        <i class="fas fa-info-circle"></i> This page shows placeholder content. For real-time updates, please visit our Facebook page.
-                        <br><strong>Primary news channel:</strong> Our Facebook page is updated frequently. This website is updated 3-4 times per year.
+                    <!-- Direct link for mobile users or if plugin fails -->
+                    <div style="
+                        margin-top: 15px;
+                        text-align: center;
+                        padding: 10px;
+                        background: #f8f9fa;
+                        border-radius: 8px;
+                        font-size: 0.9rem;
+                        border: 1px solid #e0e0e0;
+                    ">
+                        <i class="fas fa-info-circle me-2" style="color: #1877f2;"></i>
+                        <strong>Can't see the feed?</strong> 
+                        <a href="https://www.facebook.com/people/Preston-City-of-Sanctuary/100067197351909/" 
+                           target="_blank"
+                           style="color: #1877f2; font-weight: 600;">
+                            Visit our Facebook page directly →
+                        </a>
                     </div>
                 </div>
             </div>
@@ -1746,7 +1731,6 @@
                     <p class="page-subtitle">Meet our team and core group members</p>
                 </div>
             `,
-            // NEW: Experts Group page
             'experts-group': `
                 <div class="container">
                     <h1 class="page-title">Experts Group</h1>
@@ -1910,8 +1894,7 @@
                             </p>
                             
                             <p>
-                                <strong>Website update frequency:</strong> This website is updated 3-4 times per year. 
-                                For the most current news, events, and campaigns, please visit our 
+                             For the most current news, events, and campaigns, please visit our 
                                 <a href="https://www.facebook.com/people/Preston-City-of-Sanctuary/100067197351909/" target="_blank">Facebook page</a> 
                                 or join our <a href="https://groups.google.com/g/preston-city-of-sanctuary" target="_blank">Google Group</a>.
                             </p>
@@ -1944,7 +1927,6 @@
                 </div>
             `,
             
-            // NEW: Experts Group page - written from experts' perspective
             'experts-group': `
                 <div class="two-column-layout" style="display: flex; flex-wrap: wrap;">
                     <div class="content-left-column">
@@ -1974,7 +1956,6 @@
                                 <li><strong>Connect:</strong> We help build bridges between newly arrived sanctuary seekers and established communities in Preston.</li>
                                 <li><strong>Shape:</strong> We help shape events, resources, and support services to make them more welcoming and useful.</li>
                             </ul>
-                            
                                                       
                             <div style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 20px;">
                                 <h5 style="color: var(--primary-color);">A Message from Our Members</h5>
@@ -2080,158 +2061,7 @@
                     font-weight: 700;
                     font-size: 1.5rem;
                 ">
-                    <i class="fas fa-calendar-alt me-2"></i>Regular Events
                 </h4>
-
-                <!-- Experts Group - Weekly -->
-                <div class="event-card" style="
-                    border: none;
-                    border-radius: 12px;
-                    margin-bottom: 25px;
-                    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-                    background: white;
-                    overflow: hidden;
-                ">
-                    <div style="
-                        background: var(--gradient-primary);
-                        color: white;
-                        padding: 15px 25px;
-                        font-weight: 700;
-                        font-size: 1.1rem;
-                        display: flex;
-                        align-items: center;
-                        gap: 10px;
-                    ">
-                        <i class="fas fa-calendar-check"></i>
-                        Every Wednesday • 2:00pm - 4:00pm
-                    </div>
-                    <div style="padding: 25px;">
-                        <h5 style="color: var(--primary-color); margin-bottom: 15px; font-size: 1.3rem;">
-                            Experts Group Meeting
-                        </h5>
-                        
-                        <div style="margin-bottom: 20px;">
-                            <p style="margin: 10px 0; display: flex; gap: 10px;">
-                                <i class="fas fa-map-marker-alt" style="color: var(--primary-color); width: 20px; margin-top: 3px;"></i>
-                                <span><strong>Venue:</strong> <a href="https://thefoxton.org/" target="_blank" style="color: var(--primary-color);">Foxton Centre</a>, Preston</span>
-                            </p>
-                            <p style="margin: 10px 0; display: flex; gap: 10px;">
-                                <i class="fas fa-users" style="color: var(--primary-color); width: 20px; margin-top: 3px;"></i>
-                                <span><strong>Open to:</strong> Individuals with lived experience of seeking sanctuary</span>
-                            </p>
-                        </div>
-                        
-                        <div style="
-                            background: #f8f9fa;
-                            padding: 18px;
-                            border-radius: 8px;
-                            margin: 20px 0;
-                            border-left: 4px solid var(--primary-color);
-                        ">
-                            <p style="margin: 0; color: #444;">
-                                Join our Experts by Experience advisory group. Your voice helps shape our work 
-                                and ensures it remains grounded in real needs and perspectives.
-                            </p>
-                        </div>
-                        
-                        <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-                            <a href="#experts-group" 
-                               onclick="loadContent('experts-group'); return false;" 
-                               class="btn btn-primary-custom" 
-                               style="
-                                   background: var(--gradient-primary);
-                                   color: white;
-                                   padding: 10px 25px;
-                                   border-radius: 6px;
-                                   text-decoration: none;
-                                   display: inline-block;
-                                   font-weight: 600;
-                                   border: none;
-                               ">
-                                <i class="fas fa-info-circle me-2"></i>Learn More
-                            </a>
-                            <a href="mailto:prestoncityofsanctuary@gmail.com" 
-                               style="
-                                   padding: 10px 25px;
-                                   border: 1px solid var(--primary-color);
-                                   color: var(--primary-color);
-                                   border-radius: 6px;
-                                   text-decoration: none;
-                                   display: inline-block;
-                                   font-weight: 500;
-                               ">
-                                <i class="fas fa-envelope me-2"></i>Contact
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Core Group Meeting - Monthly -->
-                <div class="event-card" style="
-                    border: none;
-                    border-radius: 12px;
-                    margin-bottom: 25px;
-                    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-                    background: white;
-                    overflow: hidden;
-                ">
-                    <div style="
-                        background: var(--gradient-secondary);
-                        color: white;
-                        padding: 15px 25px;
-                        font-weight: 700;
-                        font-size: 1.1rem;
-                        display: flex;
-                        align-items: center;
-                        gap: 10px;
-                    ">
-                        <i class="fas fa-calendar-check"></i>
-                        Monthly • Next: 10 March 2026 • 3:00pm - 5:00pm
-                    </div>
-                    <div style="padding: 25px;">
-                        <h5 style="color: var(--primary-color); margin-bottom: 15px; font-size: 1.3rem;">
-                            Core Group Meeting
-                        </h5>
-                        
-                        <div style="margin-bottom: 20px;">
-                            <p style="margin: 10px 0; display: flex; gap: 10px;">
-                                <i class="fas fa-map-marker-alt" style="color: var(--accent-color); width: 20px; margin-top: 3px;"></i>
-                                <span><strong>Venue:</strong> Preston Town Hall (TBC), Lancaster Road, PR1 2RL</span>
-                            </p>
-                            <p style="margin: 10px 0; display: flex; gap: 10px;">
-                                <i class="fas fa-clipboard-list" style="color: var(--accent-color); width: 20px; margin-top: 3px;"></i>
-                                <span><strong>Agenda:</strong> Refugee Week 2026 planning, 10th Birthday celebrations, Escape to Freedom exhibition</span>
-                            </p>
-                        </div>
-                        
-                        <div style="
-                            background: #f8f9fa;
-                            padding: 18px;
-                            border-radius: 8px;
-                            margin: 20px 0;
-                            border-left: 4px solid var(--accent-color);
-                        ">
-                            <p style="margin: 0; color: #444;">
-                                Monthly core group meeting open to all members. New volunteers always welcome.
-                            </p>
-                        </div>
-                        
-                        <a href="mailto:prestoncityofsanctuary@gmail.com?subject=RSVP%20Core%20Group%20Meeting%20March%202026" 
-                           class="btn btn-primary" 
-                           style="
-                               background: var(--gradient-secondary);
-                               color: white;
-                               padding: 10px 30px;
-                               border-radius: 6px;
-                               text-decoration: none;
-                               display: inline-block;
-                               font-weight: 600;
-                               border: none;
-                           ">
-                            <i class="fas fa-envelope me-2"></i>RSVP by 6 March
-                        </a>
-                    </div>
-                </div>
 
                 <!-- ========== UPCOMING EVENTS SECTION ========== -->
                 <div style="
@@ -2888,7 +2718,6 @@
                 </div>
             `,
             
-            // LOCAL SUPPORT GROUPS - Comprehensive, accurate content
             'local-support-red-cross': `
                 <div class="two-column-layout" style="display: flex; flex-wrap: wrap;">
                     <div class="content-left-column">
@@ -3034,7 +2863,6 @@
                 </div>
             `,
             
-            // LEARNING ENGLISH AND EDUCATION - Comprehensive content
             'learning-english': `
                 <div class="two-column-layout" style="display: flex; flex-wrap: wrap;">
                     <div class="content-left-column">
@@ -3207,7 +3035,6 @@
                 </div>
             `,
             
-            // PUBLIC SERVICES - Comprehensive content
             'housing': `
                 <div class="two-column-layout" style="display: flex; flex-wrap: wrap;">
                     <div class="content-left-column">
@@ -3394,7 +3221,6 @@
                 </div>
             `,
             
-            // Other existing content templates preserved but with updated content strategy
             'about': `
                 <div class="two-column-layout" style="display: flex; flex-wrap: wrap;">
                     <div class="content-left-column">
@@ -3783,7 +3609,7 @@
             `
         };
 
-        // ============ SEARCH INDEX (UPDATED WITH ALL NEW PAGES) ============
+        // ============ SEARCH INDEX ============
         const searchIndex = [
             {
                 id: 'home',
@@ -3903,7 +3729,7 @@
                 id: 'events',
                 title: 'Events',
                 keywords: ['events', 'workshops', 'meetings', 'gatherings', 'calendar', 'upcoming', 'Refugee Week', 'Courage'],
-                content: 'Regular events: Experts Group every Wednesday 2-4pm at Foxton Centre, Core Group meeting 10th March 2026. Annual events: Refugee Week 2026: 15-21 June with theme "Courage".'
+                content: 'Annual events: Refugee Week 2026: 15-21 June with theme "Courage".'
             },
             {
                 id: 'campaigns',

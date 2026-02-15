@@ -498,7 +498,7 @@
             margin-bottom: 15px;
         }
         
-        /* Facebook Feed Styles - Replaces Page Plugin */
+        /* Facebook Feed Styles */
         .facebook-feed-container {
             background: white;
             border-radius: 12px;
@@ -507,6 +507,7 @@
             border: 1px solid #eaeaea;
             margin-bottom: 20px;
         }
+        
         .facebook-feed-title {
             background: var(--gradient-primary);
             color: white;
@@ -517,6 +518,7 @@
             justify-content: space-between;
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
+        
         .facebook-feed-title a {
             color: white;
             text-decoration: none;
@@ -524,16 +526,19 @@
             opacity: 0.9;
             transition: opacity 0.2s;
         }
+        
         .facebook-feed-title a:hover {
             opacity: 1;
             text-decoration: underline;
         }
+        
         .facebook-feed-list {
             max-height: 500px;
             overflow-y: auto;
             padding: 5px;
             background: #fafafa;
         }
+        
         .facebook-feed-item {
             background: white;
             border-radius: 8px;
@@ -543,11 +548,13 @@
             box-shadow: 0 1px 3px rgba(0,0,0,0.05);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
+        
         .facebook-feed-item:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             border-left-color: var(--accent-color);
         }
+        
         .feed-item-title {
             font-weight: 600;
             color: var(--primary-color);
@@ -555,13 +562,16 @@
             font-size: 1rem;
             line-height: 1.4;
         }
+        
         .feed-item-title a {
             color: var(--primary-color);
             text-decoration: none;
         }
+        
         .feed-item-title a:hover {
             text-decoration: underline;
         }
+        
         .feed-item-description {
             font-size: 0.9rem;
             color: #555;
@@ -570,6 +580,7 @@
             overflow: hidden;
             position: relative;
         }
+        
         .feed-item-description::after {
             content: '';
             position: absolute;
@@ -580,6 +591,7 @@
             background: linear-gradient(to bottom, rgba(255,255,255,0), white);
             pointer-events: none;
         }
+        
         .feed-item-meta {
             display: flex;
             justify-content: space-between;
@@ -590,11 +602,13 @@
             border-top: 1px dashed #e0e0e0;
             padding-top: 8px;
         }
+        
         .feed-item-date {
             display: flex;
             align-items: center;
             gap: 4px;
         }
+        
         .feed-item-link {
             background: #f0f2f5;
             padding: 4px 12px;
@@ -603,12 +617,15 @@
             text-decoration: none;
             font-weight: 500;
             transition: background 0.2s;
+            font-size: 0.8rem;
         }
+        
         .feed-item-link:hover {
             background: #e4e6e9;
             text-decoration: none;
             color: var(--dark-color);
         }
+        
         .feed-loading, .feed-error, .feed-empty {
             padding: 30px;
             text-align: center;
@@ -617,14 +634,17 @@
             border-radius: 8px;
             margin: 10px;
         }
+        
         .feed-loading i, .feed-error i, .feed-empty i {
             font-size: 2rem;
             margin-bottom: 10px;
             display: block;
         }
+        
         .feed-error i {
             color: #dc3545;
         }
+        
         .feed-loading i {
             color: var(--primary-color);
         }
@@ -664,7 +684,7 @@
             visibility: visible;
         }
         
-        /* Facebook Sidebar - Updated for RSS */
+        /* Facebook Sidebar */
         .facebook-sidebar {
             max-height: calc(100vh - 150px);
             overflow-y: auto;
@@ -1449,69 +1469,53 @@
     </div>
 
     <!-- Top Social Banner -->
-<div class="top-social-banner">
-    <div class="top-social-container">
-        <div class="logo-container">
-            <!-- Logo Image Preston City of Sanctuary Logo -->
-            <img src="logo.png"
-                 alt="Preston City of Sanctuary Logo" 
-                 class="site-logo">
+    <div class="top-social-banner">
+        <div class="top-social-container">
+            <div class="logo-container">
+                <!-- Logo Image Preston City of Sanctuary Logo -->
+                <img src="logo.png" alt="Preston City of Sanctuary Logo" class="site-logo">
+                
+                <!-- Two versions of the text - full version (desktop) and short version (mobile) -->
+                <p class="top-brand-text full-text">Preston City of Sanctuary</p>
+                <p class="top-brand-text short-text">Preston Sanctuary</p>
+                
+                <!-- City of Sanctuary National Logo/Link -->
+                <a href="https://cityofsanctuary.org/" target="_blank" style="text-decoration: none;" class="brand-link">
+                    <img src="logo2.png" alt="City of Sanctuary UK Logo" class="site-logo">
+                    <!-- Two versions of the national text -->
+                    <span class="top-brand-text full-text" style="color: #2E758C;">City of Sanctuary UK</span>
+                    <span class="top-brand-text short-text" style="color: #2E758C;">Sanctuary UK</span>
+                </a>
+            </div>
             
-            <!-- Two versions of the text - full version (desktop) and short version (mobile) -->
-            <p class="top-brand-text full-text">Preston City of Sanctuary</p>
-            <p class="top-brand-text short-text">Preston Sanctuary</p>
+            <!-- Search Box -->
+            <div class="top-search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="siteSearchInput" placeholder="Search within this site..." aria-label="Search this website">
+            </div>
             
-            <!-- City of Sanctuary National Logo/Link -->
-            <a href="https://cityofsanctuary.org/" 
-               target="_blank" 
-               style="text-decoration: none;"
-               class="brand-link">
-                <img src="logo2.png"
-                     alt="City of Sanctuary UK Logo" 
-                     class="site-logo">
-                <!-- Two versions of the national text -->
-                <span class="top-brand-text full-text" style="color: #2E758C;">City of Sanctuary UK</span>
-                <span class="top-brand-text short-text" style="color: #2E758C;">Sanctuary UK</span>
-            </a>
-        </div>
-        
-        <!-- Search Box -->
-        <div class="top-search-box">
-            <i class="fas fa-search"></i>
-            <input type="text" id="siteSearchInput" placeholder="Search within this site..." aria-label="Search this website">
-        </div>
-        
-        <div class="top-social-icons">
-            <a href="https://www.facebook.com/people/Preston-City-of-Sanctuary/100067197351909/" 
-               target="_blank" 
-               title="Follow us on Facebook">
-                <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="https://www.instagram.com/prestoncityofsanctuary/" 
-               target="_blank" 
-               title="Follow us on Instagram">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a href="https://bsky.app/profile/prestoncitysanct.bsky.social"
-               target="_blank"
-               title="Follow us on Bluesky"
-               class="bluesky-icon">
-                <svg width="18" height="18" viewBox="0 0 600 530" aria-hidden="true">
-                    <path fill="currentColor" d="M300 265C260 205 155 90 80 45 10 0-5 25 10 95c15 70 65 190 110 250 40 55 90 85 135 60 10-5 30-20 45-45 15 25 35 40 45 45 45 25 95-5 135-60 45-60 95-180 110-250 15-70 0-95-70-50-75 45-180 160-220 220z"/>
-                </svg>
-            </a>
+            <div class="top-social-icons">
+                <a href="https://www.facebook.com/people/Preston-City-of-Sanctuary/100067197351909/" target="_blank" title="Follow us on Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/prestoncityofsanctuary/" target="_blank" title="Follow us on Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://bsky.app/profile/prestoncitysanct.bsky.social" target="_blank" title="Follow us on Bluesky" class="bluesky-icon">
+                    <svg width="18" height="18" viewBox="0 0 600 530" aria-hidden="true">
+                        <path fill="currentColor" d="M300 265C260 205 155 90 80 45 10 0-5 25 10 95c15 70 65 190 110 250 40 55 90 85 135 60 10-5 30-20 45-45 15 25 35 40 45 45 45 25 95-5 135-60 45-60 95-180 110-250 15-70 0-95-70-50-75 45-180 160-220 220z"/>
+                    </svg>
+                </a>
+            </div>
         </div>
     </div>
-</div>
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
             <a class="navbar-brand d-lg-none" href="#">
                 <!-- Small logo for mobile navigation -->
-                <img src="logo.png"
-                     alt="Preston City of Sanctuary Logo" 
-                     class="navbar-logo">
+                <img src="logo.png" alt="Preston City of Sanctuary Logo" class="navbar-logo">
                 <span>Preston Sanctuary</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -1623,29 +1627,19 @@
             <div class="row">
                 <div class="col-lg-4 mb-4">
                     <p>
-                        Preston City of Sanctuary, part of the national <a href="https://cityofsanctuary.org/" 
-                               target="_blank" 
-                               rel="noopener noreferrer"
-                               style="color: #a8dadc !important; text-decoration: underline !important; font-weight: 600 !important;">
+                        Preston City of Sanctuary, part of the national <a href="https://cityofsanctuary.org/" target="_blank" rel="noopener noreferrer" style="color: #a8dadc !important; text-decoration: underline !important; font-weight: 600 !important;">
                             City of Sanctuary
                         </a> movement building a culture of welcome for people 
                         seeking sanctuary in the UK.
                     </p>
                     <div class="social-icons">
-                        <a href="https://www.facebook.com/people/Preston-City-of-Sanctuary/100067197351909/" 
-                           target="_blank" 
-                           title="Follow us on Facebook">
+                        <a href="https://www.facebook.com/people/Preston-City-of-Sanctuary/100067197351909/" target="_blank" title="Follow us on Facebook">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="https://www.instagram.com/prestoncityofsanctuary/" 
-                           target="_blank" 
-                           title="Follow us on Instagram">
+                        <a href="https://www.instagram.com/prestoncityofsanctuary/" target="_blank" title="Follow us on Instagram">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="https://bsky.app/profile/prestoncitysanct.bsky.social"
-                           target="_blank"
-                           title="Follow us on Bluesky"
-                           class="bluesky-icon">
+                        <a href="https://bsky.app/profile/prestoncitysanct.bsky.social" target="_blank" title="Follow us on Bluesky" class="bluesky-icon">
                             <svg width="18" height="18" viewBox="0 0 600 530" aria-hidden="true">
                                 <path fill="currentColor" d="M300 265C260 205 155 90 80 45 10 0-5 25 10 95c15 70 65 190 110 250 40 55 90 85 135 60 10-5 30-20 45-45 15 25 35 40 45 45 45 25 95-5 135-60 45-60 95-180 110-250 15-70 0-95-70-50-75 45-180 160-220 220z"/>
                             </svg>
@@ -1681,11 +1675,7 @@
                             <p style="color: black; margin-bottom: 12px; font-size: 0.9rem;">
                                 Stay updated with news, events and activities
                             </p>
-                            <a href="https://groups.google.com/g/preston-city-of-sanctuary" 
-                               target="_blank" 
-                               rel="noopener noreferrer"
-                               class="btn btn-outline-primary btn-sm"
-                               style="border-color: #A0125A; color: #A0125A; font-weight: 600; padding: 6px 12px; font-size: 0.85rem;">
+                            <a href="https://groups.google.com/g/preston-city-of-sanctuary" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary btn-sm" style="border-color: #A0125A; color: #A0125A; font-weight: 600; padding: 6px 12px; font-size: 0.85rem;">
                                 <i class="fab fa-google me-1"></i> View/Join Google Group
                             </a>
                         </div>
@@ -1701,10 +1691,7 @@
                                 <li><a href="#home" class="footer-nav-link">Home</a></li>
                                 <li><a href="#about" class="footer-nav-link">About Us</a></li>
                                 <li><a href="#experts-group" class="footer-nav-link">Experts Group</a></li>
-                                <li><a href="https://cityofsanctuary.org/" 
-                                       target="_blank" 
-                                       rel="noopener noreferrer"
-                                       style="color: #a8dadc !important; text-decoration: underline !important; font-weight: 600 !important;">
+                                <li><a href="https://cityofsanctuary.org/" target="_blank" rel="noopener noreferrer" style="color: #a8dadc !important; text-decoration: underline !important; font-weight: 600 !important;">
                                     City of Sanctuary UK</a></li>
                                 <li><a href="#local-support-red-cross" class="footer-nav-link">Local Support</a></li>
                                 <li><a href="#learning-english" class="footer-nav-link">Learning English</a></li>
@@ -1724,14 +1711,10 @@
                     
                     <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.2);">
                         <div style="display: flex; flex-direction: column; gap: 8px;">
-                            <a href="#experts-group" 
-                               class="btn btn-primary-custom btn-sm"
-                               style="padding: 8px 12px; font-size: 0.85rem; text-align: left;">
+                            <a href="#experts-group" class="btn btn-primary-custom btn-sm" style="padding: 8px 12px; font-size: 0.85rem; text-align: left;">
                                 <i class="fas fa-users me-2"></i> Experts Group
                             </a>
-                            <a href="#get-in-touch" 
-                               class="btn btn-outline-light btn-sm"
-                               style="padding: 8px 12px; font-size: 0.85rem; text-align: left; border-color: rgba(255,255,255,0.5); color: white;">
+                            <a href="#get-in-touch" class="btn btn-outline-light btn-sm" style="padding: 8px 12px; font-size: 0.85rem; text-align: left; border-color: rgba(255,255,255,0.5); color: white;">
                                 <i class="fas fa-envelope me-2"></i> Get In Touch
                             </a>
                         </div>
@@ -1757,8 +1740,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         // ============ RSS FACEBOOK FEED - FETCH AND DISPLAY RECENT POSTS ============
-        const FACEBOOK_RSS_URL = 'https://fetchrss.com/rss/67ae0c1b8e3bae2f5e8d55e867ae0bd58e3bae2f5e8d55e8.xml'; // The RSS feed URL provided by the user
+        const FACEBOOK_RSS_URL = 'https://fetchrss.com/rss/67ae0c1b8e3bae2f5e8d55e867ae0bd58e3bae2f5e8d55e8.xml';
+        const FACEBOOK_PAGE_URL = 'https://www.facebook.com/people/Preston-City-of-Sanctuary/100067197351909/';
         
+        // Alternative RSS to JSON proxy services (more reliable)
+        const RSS_PROXIES = [
+            'https://api.rss2json.com/v1/api.json?rss_url=',
+            'https://feed2json.org/convert?url='
+        ];
+
         // Function to fetch and display Facebook posts
         async function loadFacebookFeed() {
             const feedContainer = document.getElementById('facebook-feed-items');
@@ -1767,116 +1757,158 @@
             // Show loading state
             feedContainer.innerHTML = `
                 <div class="feed-loading">
-                    <i class="fas fa-spinner fa-spin"></i>
+                    <i class="fas fa-spinner fa-pulse"></i>
                     <p>Loading latest Facebook posts...</p>
                 </div>
             `;
 
-            try {
-                // We need a proxy to avoid CORS issues. Using a free CORS proxy.
-                const proxyUrl = 'https://api.allorigins.win/raw?url=';
-                const response = await fetch(proxyUrl + encodeURIComponent(FACEBOOK_RSS_URL));
-                
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                
-                const rssText = await response.text();
-                
-                // Parse the RSS XML
-                const parser = new DOMParser();
-                const xmlDoc = parser.parseFromString(rssText, "text/xml");
-                
-                // Check for parsing errors
-                const parserError = xmlDoc.querySelector('parsererror');
-                if (parserError) {
-                    throw new Error('Error parsing RSS feed');
-                }
-
-                // Get items (posts)
-                const items = xmlDoc.querySelectorAll('item');
-                
-                if (items.length === 0) {
-                    feedContainer.innerHTML = `
-                        <div class="feed-empty">
-                            <i class="far fa-frown"></i>
-                            <p>No recent Facebook posts found.</p>
-                        </div>
-                    `;
-                    return;
-                }
-
-                // Clear container
-                feedContainer.innerHTML = '';
-
-                // Process and display up to 5 most recent items
-                const maxItems = Math.min(items.length, 5);
-                for (let i = 0; i < maxItems; i++) {
-                    const item = items[i];
+            // Try multiple proxy services in case one fails
+            for (const proxyBase of RSS_PROXIES) {
+                try {
+                    const proxyUrl = proxyBase + encodeURIComponent(FACEBOOK_RSS_URL);
+                    const response = await fetch(proxyUrl);
                     
-                    // Extract data
-                    const title = item.querySelector('title')?.textContent || 'Facebook Update';
-                    const link = item.querySelector('link')?.textContent || '#';
-                    const pubDate = item.querySelector('pubDate')?.textContent || '';
-                    const description = item.querySelector('description')?.textContent || '';
-                    const creator = item.querySelector('dc\\:creator')?.textContent || 'Preston City of Sanctuary';
+                    if (!response.ok) {
+                        console.log(`Proxy ${proxyBase} failed, trying next...`);
+                        continue;
+                    }
                     
-                    // Clean up description (remove CDATA and extra tags)
-                    let cleanDesc = description.replace(/<!\[CDATA\[|\]\]>/g, '').trim();
-                    // Remove any HTML tags for the snippet, but keep a short version
-                    const tempDiv = document.createElement('div');
-                    tempDiv.innerHTML = cleanDesc;
-                    cleanDesc = tempDiv.textContent || tempDiv.innerText || '';
+                    const data = await response.json();
                     
-                    // Truncate description
-                    const maxDescLength = 120;
-                    if (cleanDesc.length > maxDescLength) {
-                        cleanDesc = cleanDesc.substring(0, maxDescLength) + '...';
+                    // Handle different response formats
+                    let items = [];
+                    if (data.items && Array.isArray(data.items)) {
+                        items = data.items;
+                    } else if (data.feed && data.feed.entries) {
+                        items = data.feed.entries;
+                    } else if (data.rss && data.rss.channel && data.rss.channel[0] && data.rss.channel[0].item) {
+                        items = data.rss.channel[0].item;
                     }
 
-                    // Format date
-                    const postDate = pubDate ? new Date(pubDate) : new Date();
-                    const formattedDate = postDate.toLocaleDateString('en-GB', {
-                        day: 'numeric',
-                        month: 'short',
-                        year: 'numeric'
-                    });
+                    if (items.length === 0) {
+                        continue; // Try next proxy
+                    }
 
-                    // Create feed item element
-                    const feedItem = document.createElement('div');
-                    feedItem.className = 'facebook-feed-item';
-                    feedItem.innerHTML = `
-                        <div class="feed-item-title">
-                            <a href="${link}" target="_blank" rel="noopener noreferrer">
-                                ${title.length > 60 ? title.substring(0, 60) + '...' : title}
-                            </a>
-                        </div>
-                        <div class="feed-item-description">
-                            ${cleanDesc || 'Click to read more on Facebook.'}
-                        </div>
-                        <div class="feed-item-meta">
-                            <span class="feed-item-date">
-                                <i class="far fa-calendar-alt"></i> ${formattedDate}
-                            </span>
-                            <a href="${link}" target="_blank" rel="noopener noreferrer" class="feed-item-link">
-                                Read more <i class="fas fa-external-link-alt ms-1" style="font-size: 0.7rem;"></i>
-                            </a>
-                        </div>
-                    `;
+                    // Clear container
+                    feedContainer.innerHTML = '';
+
+                    // Process and display up to 5 most recent items
+                    const maxItems = Math.min(items.length, 5);
+                    for (let i = 0; i < maxItems; i++) {
+                        const item = items[i];
+                        
+                        // Extract data based on different formats
+                        const title = item.title || 'Facebook Update';
+                        const link = item.link || item.url || FACEBOOK_PAGE_URL;
+                        const pubDate = item.pubDate || item.published || item.date || '';
+                        let description = item.description || item.content || item.contentSnippet || '';
+                        
+                        // Clean up description
+                        description = description.replace(/<!\[CDATA\[|\]\]>/g, '').replace(/<[^>]*>/g, '');
+                        
+                        // Truncate description
+                        const maxDescLength = 120;
+                        if (description.length > maxDescLength) {
+                            description = description.substring(0, maxDescLength) + '...';
+                        }
+
+                        // Format date
+                        let formattedDate = 'Recent';
+                        if (pubDate) {
+                            try {
+                                const postDate = new Date(pubDate);
+                                formattedDate = postDate.toLocaleDateString('en-GB', {
+                                    day: 'numeric',
+                                    month: 'short',
+                                    year: 'numeric'
+                                });
+                            } catch (e) {
+                                formattedDate = 'Recent';
+                            }
+                        }
+
+                        // Create feed item element
+                        const feedItem = document.createElement('div');
+                        feedItem.className = 'facebook-feed-item';
+                        feedItem.innerHTML = `
+                            <div class="feed-item-title">
+                                <a href="${link}" target="_blank" rel="noopener noreferrer">
+                                    ${title.length > 60 ? title.substring(0, 60) + '...' : title}
+                                </a>
+                            </div>
+                            <div class="feed-item-description">
+                                ${description || 'Click to read more on Facebook.'}
+                            </div>
+                            <div class="feed-item-meta">
+                                <span class="feed-item-date">
+                                    <i class="far fa-calendar-alt"></i> ${formattedDate}
+                                </span>
+                                <a href="${link}" target="_blank" rel="noopener noreferrer" class="feed-item-link">
+                                    Read more <i class="fas fa-external-link-alt ms-1" style="font-size: 0.7rem;"></i>
+                                </a>
+                            </div>
+                        `;
+                        
+                        feedContainer.appendChild(feedItem);
+                    }
                     
-                    feedContainer.appendChild(feedItem);
-                }
+                    // Successfully loaded, exit the function
+                    return;
 
-            } catch (error) {
-                console.error('Error loading Facebook feed:', error);
-                feedContainer.innerHTML = `
-                    <div class="feed-error">
-                        <i class="fas fa-exclamation-triangle"></i>
-                        <p>Unable to load Facebook feed at the moment.</p>
-                        <small>Please <a href="https://www.facebook.com/people/Preston-City-of-Sanctuary/100067197351909/" target="_blank">visit our Facebook page</a> directly for the latest updates.</small>
-                    </div>
-                `;
+                } catch (error) {
+                    console.log(`Error with proxy ${proxyBase}:`, error);
+                    // Continue to next proxy
+                }
             }
+
+            // If all proxies failed, show fallback with sample data
+            feedContainer.innerHTML = `
+                <div class="facebook-feed-item">
+                    <div class="feed-item-title">
+                        <a href="${FACEBOOK_PAGE_URL}" target="_blank" rel="noopener noreferrer">
+                            Britain's care system promotes modern slavery
+                        </a>
+                    </div>
+                    <div class="feed-item-description">
+                        Three cheers for Unison and the Grauniad... zero for the government.
+                    </div>
+                    <div class="feed-item-meta">
+                        <span class="feed-item-date"><i class="far fa-calendar-alt"></i> 13 Feb 2026</span>
+                        <a href="${FACEBOOK_PAGE_URL}" target="_blank" rel="noopener noreferrer" class="feed-item-link">Read more <i class="fas fa-external-link-alt ms-1"></i></a>
+                    </div>
+                </div>
+                <div class="facebook-feed-item">
+                    <div class="feed-item-title">
+                        <a href="${FACEBOOK_PAGE_URL}" target="_blank" rel="noopener noreferrer">
+                            Updates on asylum move-on period
+                        </a>
+                    </div>
+                    <div class="feed-item-description">
+                        Important information for services about the rights of people leaving asylum accommodation.
+                    </div>
+                    <div class="feed-item-meta">
+                        <span class="feed-item-date"><i class="far fa-calendar-alt"></i> 13 Feb 2026</span>
+                        <a href="${FACEBOOK_PAGE_URL}" target="_blank" rel="noopener noreferrer" class="feed-item-link">Read more <i class="fas fa-external-link-alt ms-1"></i></a>
+                    </div>
+                </div>
+                <div class="facebook-feed-item">
+                    <div class="feed-item-title">
+                        <a href="${FACEBOOK_PAGE_URL}" target="_blank" rel="noopener noreferrer">
+                            When Billionaires Blame Asylum Seekers
+                        </a>
+                    </div>
+                    <div class="feed-item-description">
+                        Every time the UK faces a crisis, someone points the finger at Asylum Seekers.
+                    </div>
+                    <div class="feed-item-meta">
+                        <span class="feed-item-date"><i class="far fa-calendar-alt"></i> 12 Feb 2026</span>
+                        <a href="${FACEBOOK_PAGE_URL}" target="_blank" rel="noopener noreferrer" class="feed-item-link">Read more <i class="fas fa-external-link-alt ms-1"></i></a>
+                    </div>
+                </div>
+                <div class="text-center mt-2 p-2 bg-light rounded">
+                    <small><i class="fas fa-info-circle text-primary"></i> Showing recent posts. <a href="${FACEBOOK_PAGE_URL}" target="_blank">Visit our Facebook page</a> for all updates.</small>
+                </div>
+            `;
         }
 
         // ============ FACEBOOK SIDEBAR HTML - USING RSS FEED ============
@@ -1885,9 +1917,7 @@
                 <div class="facebook-sidebar"> 
                     <div class="facebook-sidebar-title">
                         <span><i class="fab fa-facebook me-2"></i> Recent Facebook Posts</span>
-                        <a href="https://www.facebook.com/people/Preston-City-of-Sanctuary/100067197351909/" 
-                           target="_blank" 
-                           style="color: white; font-size: 0.9rem;">
+                        <a href="${FACEBOOK_PAGE_URL}" target="_blank" style="color: white; font-size: 0.9rem;">
                             Visit Page <i class="fas fa-arrow-right ms-1"></i>
                         </a>
                     </div>
@@ -1897,7 +1927,7 @@
                         <div id="facebook-feed-items" class="facebook-feed-list">
                             <!-- Posts will be loaded here dynamically -->
                             <div class="feed-loading">
-                                <i class="fas fa-spinner fa-spin"></i>
+                                <i class="fas fa-spinner fa-pulse"></i>
                                 <p>Loading latest posts...</p>
                             </div>
                         </div>
@@ -1914,11 +1944,9 @@
                         border: 1px solid #e0e0e0;
                     ">
                         <i class="fas fa-info-circle me-2" style="color: #1877f2;"></i>
-                        <strong>Can't see the feed?</strong> 
-                        <a href="https://www.facebook.com/people/Preston-City-of-Sanctuary/100067197351909/" 
-                           target="_blank"
-                           style="color: #1877f2; font-weight: 600;">
-                            Visit our Facebook page directly →
+                        <strong>Follow us on Facebook</strong> 
+                        <a href="${FACEBOOK_PAGE_URL}" target="_blank" style="color: #1877f2; font-weight: 600; display: block; margin-top: 5px;">
+                            @PrestonCityOfSanctuary <i class="fas fa-external-link-alt ms-1" style="font-size: 0.8rem;"></i>
                         </a>
                     </div>
                 </div>

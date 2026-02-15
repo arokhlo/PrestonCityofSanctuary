@@ -6,9 +6,6 @@
     <title>Preston City of Sanctuary - Building a Culture of Welcome</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Facebook SDK -->
-    <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v18.0"></script>
     <!-- Google Fonts for better typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -501,26 +498,135 @@
             margin-bottom: 15px;
         }
         
-        /* Facebook Page Plugin styles */
-        .fb-page-container {
+        /* Facebook Feed Styles - Replaces Page Plugin */
+        .facebook-feed-container {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border: 1px solid #eaeaea;
+            margin-bottom: 20px;
+        }
+        .facebook-feed-title {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 15px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .facebook-feed-title a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            opacity: 0.9;
+            transition: opacity 0.2s;
+        }
+        .facebook-feed-title a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+        .facebook-feed-list {
+            max-height: 500px;
+            overflow-y: auto;
+            padding: 5px;
+            background: #fafafa;
+        }
+        .facebook-feed-item {
             background: white;
             border-radius: 8px;
+            padding: 15px;
+            margin: 8px 5px;
+            border-left: 4px solid var(--primary-color);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .facebook-feed-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-left-color: var(--accent-color);
+        }
+        .feed-item-title {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+            font-size: 1rem;
+            line-height: 1.4;
+        }
+        .feed-item-title a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        .feed-item-title a:hover {
+            text-decoration: underline;
+        }
+        .feed-item-description {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 10px;
+            max-height: 4.5em;
             overflow: hidden;
-            margin-bottom: 15px;
-            border: 1px solid #e0e0e0;
+            position: relative;
         }
-        
-        .fb-page {
+        .feed-item-description::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
             width: 100%;
+            height: 1.5em;
+            background: linear-gradient(to bottom, rgba(255,255,255,0), white);
+            pointer-events: none;
         }
-        
-        .facebook-fallback {
-            display: none;
+        .feed-item-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 8px;
+            font-size: 0.8rem;
+            color: #888;
+            border-top: 1px dashed #e0e0e0;
+            padding-top: 8px;
         }
-        
-        .fb-page-wrapper {
-            min-height: 500px;
-            background: #f8f9fa;
+        .feed-item-date {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .feed-item-link {
+            background: #f0f2f5;
+            padding: 4px 12px;
+            border-radius: 15px;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .feed-item-link:hover {
+            background: #e4e6e9;
+            text-decoration: none;
+            color: var(--dark-color);
+        }
+        .feed-loading, .feed-error, .feed-empty {
+            padding: 30px;
+            text-align: center;
+            color: #666;
+            background: white;
+            border-radius: 8px;
+            margin: 10px;
+        }
+        .feed-loading i, .feed-error i, .feed-empty i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .feed-error i {
+            color: #dc3545;
+        }
+        .feed-loading i {
+            color: var(--primary-color);
         }
         
         /* Footer */
@@ -558,11 +664,11 @@
             visibility: visible;
         }
         
-        /* Facebook Sidebar - Updated */
+        /* Facebook Sidebar - Updated for RSS */
         .facebook-sidebar {
             max-height: calc(100vh - 150px);
             overflow-y: auto;
-            padding-right: 10px;
+            padding-right: 5px;
             margin-top: 0;
         }
         
@@ -579,10 +685,11 @@
             font-size: 1rem;
         }
 
-/* Mobile text alternatives */
-.top-brand-text.short-text {
-    display: none;
-}
+        /* Mobile text alternatives */
+        .top-brand-text.short-text {
+            display: none;
+        }
+        
         /* MOBILE RESPONSIVE FIXES */
         @media (max-width: 1200px) {
             .nav-link {
@@ -660,14 +767,13 @@
             .site-logo {
                 height: 35px;
             }
-    .top-brand-text.full-text {
-        display: none;
-    }
-    
-    .top-brand-text.short-text {
-        display: inline-block;
-    }
-
+            .top-brand-text.full-text {
+                display: none;
+            }
+            
+            .top-brand-text.short-text {
+                display: inline-block;
+            }
         }
         
         @media (max-width: 768px) {
@@ -759,9 +865,9 @@
             .site-logo {
                 height: 28px;
             }
-  .top-brand-text.short-text {
-        font-size: 0.9rem;
-    }
+            .top-brand-text.short-text {
+                font-size: 0.9rem;
+            }
         }
         
         @media (max-width: 400px) {
@@ -1650,40 +1756,154 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // ============ FIXED FACEBOOK SIDEBAR HTML - USING OFFICIAL FACEBOOK PAGE PLUGIN ============
+        // ============ RSS FACEBOOK FEED - FETCH AND DISPLAY RECENT POSTS ============
+        const FACEBOOK_RSS_URL = 'https://fetchrss.com/rss/67ae0c1b8e3bae2f5e8d55e867ae0bd58e3bae2f5e8d55e8.xml'; // The RSS feed URL provided by the user
+        
+        // Function to fetch and display Facebook posts
+        async function loadFacebookFeed() {
+            const feedContainer = document.getElementById('facebook-feed-items');
+            if (!feedContainer) return;
+
+            // Show loading state
+            feedContainer.innerHTML = `
+                <div class="feed-loading">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Loading latest Facebook posts...</p>
+                </div>
+            `;
+
+            try {
+                // We need a proxy to avoid CORS issues. Using a free CORS proxy.
+                const proxyUrl = 'https://api.allorigins.win/raw?url=';
+                const response = await fetch(proxyUrl + encodeURIComponent(FACEBOOK_RSS_URL));
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const rssText = await response.text();
+                
+                // Parse the RSS XML
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(rssText, "text/xml");
+                
+                // Check for parsing errors
+                const parserError = xmlDoc.querySelector('parsererror');
+                if (parserError) {
+                    throw new Error('Error parsing RSS feed');
+                }
+
+                // Get items (posts)
+                const items = xmlDoc.querySelectorAll('item');
+                
+                if (items.length === 0) {
+                    feedContainer.innerHTML = `
+                        <div class="feed-empty">
+                            <i class="far fa-frown"></i>
+                            <p>No recent Facebook posts found.</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                // Clear container
+                feedContainer.innerHTML = '';
+
+                // Process and display up to 5 most recent items
+                const maxItems = Math.min(items.length, 5);
+                for (let i = 0; i < maxItems; i++) {
+                    const item = items[i];
+                    
+                    // Extract data
+                    const title = item.querySelector('title')?.textContent || 'Facebook Update';
+                    const link = item.querySelector('link')?.textContent || '#';
+                    const pubDate = item.querySelector('pubDate')?.textContent || '';
+                    const description = item.querySelector('description')?.textContent || '';
+                    const creator = item.querySelector('dc\\:creator')?.textContent || 'Preston City of Sanctuary';
+                    
+                    // Clean up description (remove CDATA and extra tags)
+                    let cleanDesc = description.replace(/<!\[CDATA\[|\]\]>/g, '').trim();
+                    // Remove any HTML tags for the snippet, but keep a short version
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = cleanDesc;
+                    cleanDesc = tempDiv.textContent || tempDiv.innerText || '';
+                    
+                    // Truncate description
+                    const maxDescLength = 120;
+                    if (cleanDesc.length > maxDescLength) {
+                        cleanDesc = cleanDesc.substring(0, maxDescLength) + '...';
+                    }
+
+                    // Format date
+                    const postDate = pubDate ? new Date(pubDate) : new Date();
+                    const formattedDate = postDate.toLocaleDateString('en-GB', {
+                        day: 'numeric',
+                        month: 'short',
+                        year: 'numeric'
+                    });
+
+                    // Create feed item element
+                    const feedItem = document.createElement('div');
+                    feedItem.className = 'facebook-feed-item';
+                    feedItem.innerHTML = `
+                        <div class="feed-item-title">
+                            <a href="${link}" target="_blank" rel="noopener noreferrer">
+                                ${title.length > 60 ? title.substring(0, 60) + '...' : title}
+                            </a>
+                        </div>
+                        <div class="feed-item-description">
+                            ${cleanDesc || 'Click to read more on Facebook.'}
+                        </div>
+                        <div class="feed-item-meta">
+                            <span class="feed-item-date">
+                                <i class="far fa-calendar-alt"></i> ${formattedDate}
+                            </span>
+                            <a href="${link}" target="_blank" rel="noopener noreferrer" class="feed-item-link">
+                                Read more <i class="fas fa-external-link-alt ms-1" style="font-size: 0.7rem;"></i>
+                            </a>
+                        </div>
+                    `;
+                    
+                    feedContainer.appendChild(feedItem);
+                }
+
+            } catch (error) {
+                console.error('Error loading Facebook feed:', error);
+                feedContainer.innerHTML = `
+                    <div class="feed-error">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p>Unable to load Facebook feed at the moment.</p>
+                        <small>Please <a href="https://www.facebook.com/people/Preston-City-of-Sanctuary/100067197351909/" target="_blank">visit our Facebook page</a> directly for the latest updates.</small>
+                    </div>
+                `;
+            }
+        }
+
+        // ============ FACEBOOK SIDEBAR HTML - USING RSS FEED ============
         const facebookSidebarHTML = `
             <div class="content-right-column">
                 <div class="facebook-sidebar"> 
                     <div class="facebook-sidebar-title">
-                        <span><i class="fab fa-facebook me-2"></i> Follow Us on Facebook</span>
+                        <span><i class="fab fa-facebook me-2"></i> Recent Facebook Posts</span>
                         <a href="https://www.facebook.com/people/Preston-City-of-Sanctuary/100067197351909/" 
                            target="_blank" 
                            style="color: white; font-size: 0.9rem;">
-                            Visit Page
+                            Visit Page <i class="fas fa-arrow-right ms-1"></i>
                         </a>
                     </div>
                     
-                    <!-- Official Facebook Page Plugin -->
-                    <div class="fb-page-container">
-                        <div class="fb-page" 
-                             data-href="https://www.facebook.com/people/Preston-City-of-Sanctuary/100067197351909/"
-                             data-tabs="timeline"
-                             data-width=""
-                             data-height="500"
-                             data-small-header="false"
-                             data-adapt-container-width="true"
-                             data-hide-cover="false"
-                             data-show-facepile="true">
-                            <blockquote cite="https://www.facebook.com/people/Preston-City-of-Sanctuary/100067197351909/" 
-                                        class="fb-xfbml-parse-ignore">
-                                <a href="https://www.facebook.com/people/Preston-City-of-Sanctuary/100067197351909/">
-                                    Preston City of Sanctuary
-                                </a>
-                            </blockquote>
+                    <!-- RSS Feed Container -->
+                    <div class="facebook-feed-container">
+                        <div id="facebook-feed-items" class="facebook-feed-list">
+                            <!-- Posts will be loaded here dynamically -->
+                            <div class="feed-loading">
+                                <i class="fas fa-spinner fa-spin"></i>
+                                <p>Loading latest posts...</p>
+                            </div>
                         </div>
                     </div>
                     
-                    <!-- Direct link for mobile users or if plugin fails -->
+                    <!-- Direct link for mobile users or if feed fails -->
                     <div style="
                         margin-top: 15px;
                         text-align: center;
@@ -3889,12 +4109,15 @@
                     contentArea.innerHTML = content;
                 }
                 
+                // After content is loaded, try to load the Facebook feed if the container exists
                 setTimeout(() => {
+                    loadFacebookFeed();
+                    
                     const fadeElements = document.querySelectorAll('.fade-in');
                     fadeElements.forEach(element => {
                         element.classList.add('visible');
                     });
-                }, 50);
+                }, 100);
                 
                 updateActiveNavLink(section);
                 
@@ -3926,6 +4149,9 @@
                 pageTitleArea.innerHTML = pageTitle;
                 contentArea.innerHTML = content;
                 updateActiveNavLink(section);
+                
+                // Load Facebook feed after content update
+                setTimeout(loadFacebookFeed, 100);
             }
         }
         

@@ -1542,7 +1542,7 @@
                         </ul>
                     </li>
                     
-                    <!-- NEW TOP-LEVEL: Local Support Groups (with new Help In Preston sub‑page) -->
+                    <!-- Local Support Groups (including Help In Preston) -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" id="local-support-main-link">
                             Local Support
@@ -1552,25 +1552,26 @@
                             <li><a class="dropdown-item" href="#local-support-kind-communities" id="local-support-kind-communities-link">Kind Communities</a></li>
                             <li><a class="dropdown-item" href="#local-support-muslim-forum" id="local-support-muslim-forum-link">Muslim Forum</a></li>
                             <li><a class="dropdown-item" href="#local-support-sports-leisure" id="local-support-sports-leisure-link">Sports & Leisure</a></li>
-                            <!-- NEW: Help In Preston sub‑page (dropdown) -->
                             <li><a class="dropdown-item" href="#local-support-help-in-preston" id="local-support-help-in-preston-link">Help In Preston</a></li>
                         </ul>
                     </li>
                     
-                    <!-- NEW TOP-LEVEL: Learning English and Education -->
+                    <!-- Learning English and Education (with new sub‑page) -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" id="learning-education-main-link">
                             Learning English
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#learning-english" id="learning-english-link">Learning English (ESOL)</a></li>
+                            <!-- NEW: Translation & interpreting subpage -->
+                            <li><a class="dropdown-item" href="#translation-interpreting" id="translation-interpreting-link">Translation & interpreting</a></li>
                             <li><a class="dropdown-item" href="#education-schools" id="education-schools-link">Schools</a></li>
                             <li><a class="dropdown-item" href="#libraries" id="libraries-link">Libraries</a></li>
                             <li><a class="dropdown-item" href="#education-universities" id="education-universities-link">Universities</a></li>
                         </ul>
                     </li>
                     
-                    <!-- NEW TOP-LEVEL: Public Services -->
+                    <!-- Public Services -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" id="public-services-main-link">
                             Public Services
@@ -2110,7 +2111,6 @@ const facebookSidebarHTML = `
                     <p class="page-subtitle">Activities and opportunities for sanctuary seekers</p>
                 </div>
             `,
-            // NEW: Help In Preston title
             'local-support-help-in-preston': `
                 <div class="container">
                     <h1 class="page-title">Help In Preston</h1>
@@ -2121,6 +2121,13 @@ const facebookSidebarHTML = `
                 <div class="container">
                     <h1 class="page-title">Learning English</h1>
                     <p class="page-subtitle">ESOL courses and language learning opportunities</p>
+                </div>
+            `,
+            // NEW: translation page title
+            'translation-interpreting': `
+                <div class="container">
+                    <h1 class="page-title">Translation & interpreting services</h1>
+                    <p class="page-subtitle">Help with communicating in English</p>
                 </div>
             `,
             'education-schools': `
@@ -3209,7 +3216,6 @@ const facebookSidebarHTML = `
                 </div>
             `,
             
-            // NEW: Help In Preston sub-page
             'local-support-help-in-preston': `
                 <div class="two-column-layout" style="display: flex; flex-wrap: wrap;">
                     <div class="content-left-column">
@@ -3246,7 +3252,6 @@ const facebookSidebarHTML = `
                 </div>
             `,
             
-            // ========== LEARNING ENGLISH SECTION – COMPLETELY OVERHAULED ==========
             'learning-english': `
                 <div class="two-column-layout" style="display: flex; flex-wrap: wrap;">
                     <div class="content-left-column">
@@ -3347,6 +3352,40 @@ const facebookSidebarHTML = `
                 </div>
             `,
             
+            // NEW: Translation & interpreting page
+            'translation-interpreting': `
+                <div class="two-column-layout" style="display: flex; flex-wrap: wrap;">
+                    <div class="content-left-column">
+                        <section class="dynamic-content">
+                            <div class="service-item" style="border-left-color: var(--accent-color);">
+                                <h5 style="color: var(--accent-color); font-size: 1.5rem; margin-bottom: 20px;">
+                                    <i class="fas fa-language me-2"></i> Help with translation and interpreting services
+                                </h5>
+                                
+                                <p>If you don’t feel confident speaking English it can feel frustrating trying to communicate with authorities. You may need to speak (or write to) a school, a college, a doctor or other people in the NHS, the Home Office, the council or a housing association. While some public organisations have funding for translators and interpreters, not all do. Often they will use an interpreter working over the phone, or a video link such as Zoom.</p>
+
+                                <p>If you need to attend a meeting in person, if you have a friend or family member who can speak English then you should ask if they can go with you.</p>
+
+                                <p>If you don’t feel like you will be able to express yourself well in English you can ask an organisation if they can provide an interpreter for your first language. Also you can ask a local organisation like us at Preston City of Sanctuary or the Red Cross for support. We will try to explain anything that you are struggling to understand and we will be able to signpost you to someone who can help.</p>
+
+                                <div class="warning-box" style="margin-top: 20px;">
+                                    <p><strong>We know that a lot of people try using Google Translate on a phone or computer. But you need to be careful.</strong> Some of the translations are not very accurate. We would not recommend this for official documents.</p>
+                                </div>
+
+                                <p>The Home Office may suggest that your personal identity documents need to be translated. It is important to double check this requirement with the home office or your immigration solicitor. Translation may not be necessary and a translation could cost you money.</p>
+
+                                <div class="info-box">
+                                    <p><i class="fas fa-hand-holding-heart me-2"></i> If you have recently moved to Preston and don’t know the area well, please contact us and we will try to help.</p>
+                                </div>
+
+                                <p style="margin-top: 25px;"><strong>Contact us:</strong> <a href="mailto:prestoncityofsanctuary@gmail.com">prestoncityofsanctuary@gmail.com</a></p>
+                            </div>
+                        </section>
+                    </div>
+                    ${facebookSidebarHTML}
+                </div>
+            `,
+            
             'education-schools': `
                 <div class="two-column-layout" style="display: flex; flex-wrap: wrap;">
                     <div class="content-left-column">
@@ -3394,9 +3433,9 @@ const facebookSidebarHTML = `
                 <div class="two-column-layout" style="display: flex; flex-wrap: wrap;">
                     <div class="content-left-column">
                         <section class="dynamic-content">
-                            <div class="info-box">
-                                <h5 style="color: var(--primary-color);">All 64 Lancashire libraries have Libraries of Sanctuary status!</h5>
-                                <p>This means they are committed to being welcoming and inclusive spaces for everyone, including sanctuary seekers.</p>
+                            <div class="info-box" style="border-left-color: #ffc107;">
+                                <h5 style="color: var(--primary-color);">All 64 Lancashire libraries had Libraries of Sanctuary status until February 2026!</h5>
+                                <p><strong>The Reform leadership of the County Council have made a political choice to remove this status which cost the Council nothing.</strong> However, library staff remain committed to being welcoming and inclusive spaces for everyone, including sanctuary seekers.</p>
                             </div>
                             
                             <div class="learning-card mt-4">
@@ -3430,16 +3469,13 @@ const facebookSidebarHTML = `
                                 </h5>
                                 
                                 <div style="margin-bottom: 25px;">
-                                    <p style="font-size: 1.1rem;">Higher education opportunities are available for sanctuary seekers, including scholarships and dedicated support programmes.</p>
+                                    <p style="font-size: 1.1rem;">Higher education opportunities are available for sanctuary seekers, including a few scholarships and dedicated support programmes to help bring your English up to entry standard.</p>
                                 </div>
                                 
                                 <div style="background: linear-gradient(135deg, #fef5fa, white); padding: 25px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 20px; border: 1px solid #e0e0e0;">
-                                    <h6 style="color: var(--primary-color); font-weight: 700; margin-bottom: 15px; font-size: 1.2rem;">Sanctuary Scholarships - Coming March 2026!</h6>
-                                    <p style="font-size: 1.1rem; font-weight: 600;">Good news! Sanctuary Scholarships will be available via our website in two weeks.</p>
-                                    <p>Spread the word! Opportunities for sanctuary seekers to access higher education at the University of Lancashire and other partner institutions.</p>
-                                    <div style="background: #fff3cd; padding: 15px; border-radius: 8px; margin-top: 15px;">
-                                        <strong>Register your interest now:</strong> Email <a href="mailto:prestoncityofsanctuary@gmail.com">prestoncityofsanctuary@gmail.com</a> to be notified when scholarships are launched.
-                                    </div>
+                                    <h6 style="color: var(--primary-color); font-weight: 700; margin-bottom: 15px; font-size: 1.2rem;">Sanctuary Scholarships</h6>
+                                    <p>Opportunities for sanctuary seekers to access higher education at the University of Lancashire: <a href="https://www.lancashire.ac.uk/study/fees-and-finance/bursaries-and-scholarships/sanctuary" target="_blank">lancashire.ac.uk/sanctuary-scholarships</a></p>
+                                    <p>For more about sanctuary scholarships at other UK universities see <a href="https://star-network.org.uk/access-to-university/scholarships/list/" target="_blank">star-network.org.uk/scholarships-list</a></p>
                                 </div>
                                 
                                 <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 20px;">
@@ -3451,18 +3487,12 @@ const facebookSidebarHTML = `
                                         <li>Dedicated support for sanctuary students</li>
                                         <li>Community events and partnership with PCOS</li>
                                     </ul>
-                                    <p><strong>Contact:</strong> Liz Granger (UCLAN representative to PCOS Core Group)</p>
+                                    <p><strong>Contact:</strong> Liz Granger (UCLAN representative to PCOS Core Group) at <a href="mailto:egranger@uclan.ac.uk">egranger@uclan.ac.uk</a></p>
                                     <p><strong>Website:</strong> <a href="https://www.uclan.ac.uk/" target="_blank">www.uclan.ac.uk</a></p>
                                 </div>
                                 
                                 <div class="info-box">
-                                    <p><strong>Other universities in the region with sanctuary commitments:</strong></p>
-                                    <ul>
-                                        <li>Lancaster University</li>
-                                        <li>University of Manchester</li>
-                                        <li>University of Liverpool</li>
-                                    </ul>
-                                    <p class="mt-2">Contact us for more information about higher education pathways.</p>
+                                    <p><strong>Other universities with sanctuary commitments:</strong> are listed <a href="https://star-network.org.uk/access-to-university/scholarships/list/" target="_blank">here</a>.</p>
                                 </div>
                             </div>
                         </section>
@@ -4044,7 +4074,7 @@ const facebookSidebarHTML = `
             `
         };
 
-        // ============ SEARCH INDEX ============
+        // ============ SEARCH INDEX (unchanged, but entries for new pages added) ============
         const searchIndex = [
             {
                 id: 'home',
@@ -4106,7 +4136,6 @@ const facebookSidebarHTML = `
                 keywords: ['sports', 'leisure', 'football', 'soccer', 'park run', 'cycling', 'preston pedals', 'tom finney'],
                 content: 'Sir Tom Finney Soccer Centre football activities, Preston Park Run every Saturday 9am at Avenham Park, Preston Pedals cycling promotion and bike help.'
             },
-            // NEW: Help In Preston search entry
             {
                 id: 'local-support-help-in-preston',
                 title: 'Help In Preston',
@@ -4119,6 +4148,13 @@ const facebookSidebarHTML = `
                 keywords: ['english', 'ESOL', 'courses', 'classes', 'Preston College', 'language', 'talk english', 'uclan', 'pukar', 'new roots', 'sanctuary cookalongs', 'kind communities', 'trinity college'],
                 content: 'ESOL courses at Preston College, free English classes at UCLan, conversation groups: Talk English, New Roots, Pukar, Kind Communities, Sanctuary Cookalongs. Trinity College resources for teachers.'
             },
+            // NEW: translation page search entry
+            {
+                id: 'translation-interpreting',
+                title: 'Translation & interpreting services',
+                keywords: ['translation', 'interpreting', 'language', 'interpret', 'google translate', 'documents', 'home office', 'communication'],
+                content: 'Help with translation and interpreting services: how to communicate with authorities, using friends/family, requesting interpreters, caution about Google Translate, Home Office translation requirements.'
+            },
             {
                 id: 'education-schools',
                 title: 'Schools of Sanctuary',
@@ -4128,14 +4164,14 @@ const facebookSidebarHTML = `
             {
                 id: 'libraries',
                 title: 'Libraries',
-                keywords: ['libraries', 'books', 'computers', 'internet', 'Lancashire', 'resources', 'library of sanctuary'],
-                content: 'All 64 Lancashire libraries have Libraries of Sanctuary status, free membership, no proof of address or ID required, computer access, books in foreign languages.'
+                keywords: ['libraries', 'books', 'computers', 'internet', 'Lancashire', 'resources', 'library of sanctuary', 'Reform', 'status removed'],
+                content: 'All 64 Lancashire libraries had Libraries of Sanctuary status until February 2026. Reform leadership removed it. Library staff remain welcoming. Free membership, no ID needed.'
             },
             {
                 id: 'education-universities',
                 title: 'Universities',
-                keywords: ['universities', 'higher education', 'sanctuary scholarships', 'uclan', 'university', 'scholarship'],
-                content: 'Sanctuary Scholarships coming March 2026. University of Lancashire (UCLAN) is a University of Sanctuary offering scholarships and support. Contact Liz Granger.'
+                keywords: ['universities', 'higher education', 'sanctuary scholarships', 'uclan', 'university', 'scholarship', 'star network'],
+                content: 'Higher education opportunities, scholarships. University of Lancashire sanctuary scholarships link, STAR network list. UCLAN offers scholarships, pre-sessional English. Contact Liz Granger egranger@uclan.ac.uk.'
             },
             {
                 id: 'housing',

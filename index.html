@@ -1739,157 +1739,309 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // ============ UPDATED RSS FACEBOOK FEED - AUTOMATIC UPDATES ============
-        // RSS feed URL from the user's XML
-        const FACEBOOK_RSS_URL = 'https://fetchrss.com/rss/67ae0c1b8e3bae2f5e8d55e867ae0bd58e3bae2f5e8d55e8.xml';
-        const FACEBOOK_PAGE_URL = 'https://www.facebook.com/people/Preston-City-of-Sanctuary/100067197351909/';
+
+
+// ============16 Feb 2026  22222222222222222222222222222222222222222222222222222 ============
+
+// ============ IMPROVED FACEBOOK FEED WITH MULTIPLE FALLBACK METHODS ============
+const FACEBOOK_PAGE_URL = 'https://www.facebook.com/people/Preston-City-of-Sanctuary/100067197351909/';
+const FACEBOOK_PAGE_ID = '100067197351909'; // Facebook page ID
+
+// Multiple RSS feed sources for redundancy
+const RSS_FEEDS = [
+    'https://fetchrss.com/rss/67ae0c1b8e3bae2f5e8d55e867ae0bd58e3bae2f5e8d55e8.xml',
+    'https://www.facebook.com/feeds/page.php?format=rss20&id=100067197351909',
+    'https://rss.app/feeds/123456.xml' // You would need to create a free RSS.app feed
+];
+
+// Multiple proxy services for redundancy
+const PROXIES = [
+    'https://api.rss2json.com/v1/api.json?rss_url=',
+    'https://feed2json.org/convert?url=',
+    'https://rss-to-json-serverless.vercel.app/api?feedURL=',
+    'https://api.rss-to-json.com/v1/api.json?rss_url='
+];
+
+// Fallback static data - UPDATED MANUALLY WHEN NEEDED (last updated: February 2026)
+// This is only used if ALL feed attempts fail
+const FALLBACK_POSTS = [
+    {
+        title: "The Ultimate Migration Cheatsheet",
+        link: FACEBOOK_PAGE_URL,
+        pubDate: "2026-02-16T10:00:00Z",
+        description: "You've probably seen the news by now: another tax-dodging billionaire blaming asylum seekers for the UK's problems. Here's what you need to know about the real facts..."
+    },
+    {
+        title: "Libraries withdrawn from Library of Sanctuary",
+        link: FACEBOOK_PAGE_URL,
+        pubDate: "2026-02-16T09:00:00Z",
+        description: "All of Lancashire County Council's libraries have been withdrawn from the Library of Sanctuary scheme. This is a disappointing decision that affects community integration."
+    },
+    {
+        title: "Britain's care system promotes modern slavery",
+        link: FACEBOOK_PAGE_URL,
+        pubDate: "2026-02-13T14:00:00Z",
+        description: "Three cheers for Unison and the Grauniad for exposing how the care system is failing vulnerable migrants. Zero for the government's response."
+    },
+    {
+        title: "When Billionaires Blame Asylum Seekers",
+        link: FACEBOOK_PAGE_URL,
+        pubDate: "2026-02-12T11:00:00Z",
+        description: "Every time the UK faces a crisis, someone points the finger at Asylum Seekers. Here's why they're wrong and what's really happening."
+    },
+    {
+        title: "Updates on asylum move-on period",
+        link: FACEBOOK_PAGE_URL,
+        pubDate: "2026-02-10T15:00:00Z",
+        description: "Important information for services about the rights of people leaving asylum accommodation. The move-on period has changed - here's what you need to know."
+    }
+];
+
+// Function to fetch with timeout
+async function fetchWithTimeout(url, timeout = 8000) {
+    const controller = new AbortController();
+    const id = setTimeout(() => controller.abort(), timeout);
+    
+    try {
+        const response = await fetch(url, { signal: controller.signal });
+        clearTimeout(id);
+        return response;
+    } catch (error) {
+        clearTimeout(id);
+        throw error;
+    }
+}
+
+// Function to extract text from XML node
+function getXmlText(xml, tagName) {
+    const node = xml.querySelector(tagName);
+    return node ? node.textContent : '';
+}
+
+// Function to parse XML feed
+function parseXMLFeed(xmlText) {
+    try {
+        const parser = new DOMParser();
+        const xml = parser.parseFromString(xmlText, 'text/xml');
         
-        // Reliable CORS proxy for RSS (rss2json works well)
-        const RSS2JSON_URL = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(FACEBOOK_RSS_URL);
-        // Fallback proxy
-        const FALLBACK_PROXY = 'https://feed2json.org/convert?url=' + encodeURIComponent(FACEBOOK_RSS_URL);
-
-        // Function to fetch and display Facebook posts (runs automatically when feed container exists)
-        async function loadFacebookFeed() {
-            const feedContainer = document.getElementById('facebook-feed-items');
-            if (!feedContainer) return; // only run on pages with sidebar
-
-            // Show loading state
-            feedContainer.innerHTML = `<div class="feed-loading"><i class="fas fa-spinner fa-pulse"></i><p>Loading latest Facebook posts...</p></div>`;
-
-            let items = [];
-            let success = false;
-
-            // Try primary proxy (rss2json)
-            try {
-                const response = await fetch(RSS2JSON_URL);
-                if (response.ok) {
-                    const data = await response.json();
-                    if (data.items && data.items.length > 0) {
-                        items = data.items; // rss2json gives items array
-                        success = true;
-                    }
-                }
-            } catch (e) { console.warn('Primary RSS proxy failed:', e); }
-
-            // If primary fails, try fallback proxy
-            if (!success) {
-                try {
-                    const response = await fetch(FALLBACK_PROXY);
-                    if (response.ok) {
-                        const data = await response.json();
-                        // feed2json format: data.items
-                        if (data.items && data.items.length > 0) {
-                            items = data.items;
-                            success = true;
-                        }
-                    }
-                } catch (e) { console.warn('Fallback RSS proxy failed:', e); }
-            }
-
-            // If still no success, try direct fetch via cors-anywhere (public demo, rate-limited) as last resort
-            if (!success) {
-                try {
-                    const CORS_ANYWHERE = 'https://cors-anywhere.herokuapp.com/';
-                    const response = await fetch(CORS_ANYWHERE + FACEBOOK_RSS_URL, {
-                        headers: { 'X-Requested-With': 'XMLHttpRequest' }
-                    });
-                    if (response.ok) {
-                        const text = await response.text();
-                        const parser = new DOMParser();
-                        const xml = parser.parseFromString(text, 'application/xml');
-                        const xmlItems = xml.querySelectorAll('item');
-                        if (xmlItems.length > 0) {
-                            items = [];
-                            xmlItems.forEach(item => {
-                                const title = item.querySelector('title')?.textContent || 'Facebook Update';
-                                const link = item.querySelector('link')?.textContent || FACEBOOK_PAGE_URL;
-                                const pubDate = item.querySelector('pubDate')?.textContent || '';
-                                const descNode = item.querySelector('description');
-                                let description = descNode ? descNode.textContent : '';
-                                // Remove CDATA and basic tags
-                                description = description.replace(/<!\[CDATA\[|\]\]>/g, '').replace(/<[^>]*>/g, ' ').trim();
-                                if (description.length > 180) description = description.substring(0,180)+'…';
-                                items.push({ title, link, pubDate, description });
-                            });
-                            success = true;
-                        }
-                    }
-                } catch (e) { console.warn('CORS fallback failed:', e); }
-            }
-
-            // If we have items, render them; otherwise show sample/friendly message
-            if (success && items.length > 0) {
-                feedContainer.innerHTML = ''; // clear loading
-                const maxItems = Math.min(items.length, 5); // show up to 5
-                for (let i = 0; i < maxItems; i++) {
-                    const item = items[i];
-                    let title = item.title || 'Facebook Update';
-                    let link = item.link || FACEBOOK_PAGE_URL;
-                    let pubDate = item.pubDate || '';
-                    let description = item.description || item.content || 'Click to read more on Facebook.';
-                    
-                    // Clean description from HTML entities and truncate
-                    description = description.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
-                    if (description.length > 120) description = description.substring(0,120) + '…';
-                    
-                    // Format date nicely
-                    let formattedDate = 'Recent';
-                    if (pubDate) {
-                        try {
-                            const d = new Date(pubDate);
-                            if (!isNaN(d.getTime())) {
-                                formattedDate = d.toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' });
-                            }
-                        } catch (e) { /* ignore */ }
-                    }
-                    
-                    const feedItem = document.createElement('div');
-                    feedItem.className = 'facebook-feed-item';
-                    feedItem.innerHTML = `
-                        <div class="feed-item-title"><a href="${link}" target="_blank" rel="noopener">${title.length > 60 ? title.substring(0,60)+'…' : title}</a></div>
-                        <div class="feed-item-description">${description || 'Latest update from our Facebook page.'}</div>
-                        <div class="feed-item-meta"><span class="feed-item-date"><i class="far fa-calendar-alt"></i> ${formattedDate}</span><a href="${link}" target="_blank" class="feed-item-link">Read more <i class="fas fa-external-link-alt ms-1"></i></a></div>
-                    `;
-                    feedContainer.appendChild(feedItem);
-                }
-                // Optional: add a "view more" hint
-                const viewMore = document.createElement('div');
-                viewMore.className = 'text-center mt-2 p-2 bg-light rounded';
-                viewMore.innerHTML = `<small><i class="fas fa-info-circle text-primary"></i> <a href="${FACEBOOK_PAGE_URL}" target="_blank">Visit our Facebook page</a> for all updates.</small>`;
-                feedContainer.appendChild(viewMore);
-            } else {
-                // Fallback to sample recent posts (but using actual post content from the provided XML as default)
-                feedContainer.innerHTML = `
-                    <div class="facebook-feed-item"><div class="feed-item-title"><a href="${FACEBOOK_PAGE_URL}" target="_blank">The Ultimate Migration Cheatsheet</a></div><div class="feed-item-description">You've probably seen the news by now: another tax-dodging billionaire ...</div><div class="feed-item-meta"><span class="feed-item-date"><i class="far fa-calendar-alt"></i> 16 Feb 2026</span><a href="${FACEBOOK_PAGE_URL}" target="_blank" class="feed-item-link">Read more</a></div></div>
-                    <div class="facebook-feed-item"><div class="feed-item-title"><a href="${FACEBOOK_PAGE_URL}" target="_blank">Libraries withdrawn from Library of Sanctuary</a></div><div class="feed-item-description">All of Lancashire County Council’s libraries withdrawn from scheme ...</div><div class="feed-item-meta"><span class="feed-item-date"><i class="far fa-calendar-alt"></i> 16 Feb 2026</span><a href="${FACEBOOK_PAGE_URL}" target="_blank" class="feed-item-link">Read more</a></div></div>
-                    <div class="facebook-feed-item"><div class="feed-item-title"><a href="${FACEBOOK_PAGE_URL}" target="_blank">Britain’s care system promotes modern slavery</a></div><div class="feed-item-description">Three cheers for Unison and the Grauniad... zero for the government.</div><div class="feed-item-meta"><span class="feed-item-date"><i class="far fa-calendar-alt"></i> 13 Feb 2026</span><a href="${FACEBOOK_PAGE_URL}" target="_blank" class="feed-item-link">Read more</a></div></div>
-                    <div class="text-center mt-2 p-2 bg-light rounded"><small><i class="fas fa-info-circle"></i> Showing recent posts. <a href="${FACEBOOK_PAGE_URL}" target="_blank">Visit our Facebook page</a>.</small></div>
-                `;
-            }
+        // Check for parser errors
+        const parserError = xml.querySelector('parsererror');
+        if (parserError) {
+            throw new Error('XML parsing error');
         }
 
-        // ============ FACEBOOK SIDEBAR HTML (dynamic container) ============
-        const facebookSidebarHTML = `
-            <div class="content-right-column">
-                <div class="facebook-sidebar"> 
-                    <div class="facebook-sidebar-title">
-                        <span><i class="fab fa-facebook me-2"></i> Recent Facebook Posts</span>
-                        <a href="${FACEBOOK_PAGE_URL}" target="_blank" style="color: white; font-size: 0.9rem;">Visit Page <i class="fas fa-arrow-right ms-1"></i></a>
-                    </div>
-                    <div class="facebook-feed-container">
-                        <div id="facebook-feed-items" class="facebook-feed-list">
-                            <div class="feed-loading"><i class="fas fa-spinner fa-pulse"></i><p>Loading latest posts...</p></div>
-                        </div>
-                    </div>
-                    <div style="margin-top: 15px; text-align: center; padding: 10px; background: #f8f9fa; border-radius: 8px; font-size: 0.9rem; border: 1px solid #e0e0e0;">
-                        <i class="fas fa-info-circle me-2" style="color: #1877f2;"></i><strong>Follow us on Facebook</strong> 
-                        <a href="${FACEBOOK_PAGE_URL}" target="_blank" style="color: #1877f2; font-weight: 600; display: block; margin-top: 5px;">@PrestonCityOfSanctuary <i class="fas fa-external-link-alt ms-1"></i></a>
-                    </div>
+        const items = xml.querySelectorAll('item');
+        if (items.length === 0) return null;
+
+        const feedItems = [];
+        items.forEach(item => {
+            const title = getXmlText(item, 'title') || 'Facebook Update';
+            const link = getXmlText(item, 'link') || FACEBOOK_PAGE_URL;
+            const pubDate = getXmlText(item, 'pubDate') || getXmlText(item, 'dc:date') || new Date().toISOString();
+            
+            // Get description and clean it
+            let description = getXmlText(item, 'description') || getXmlText(item, 'content:encoded') || '';
+            description = description
+                .replace(/<!\[CDATA\[|\]\]>/g, '')
+                .replace(/<[^>]*>/g, ' ')
+                .replace(/\s+/g, ' ')
+                .trim();
+            
+            if (description.length > 150) {
+                description = description.substring(0, 150) + '…';
+            }
+
+            feedItems.push({ title, link, pubDate, description });
+        });
+
+        return feedItems;
+    } catch (error) {
+        console.error('XML parsing error:', error);
+        return null;
+    }
+}
+
+// Main function to load Facebook feed
+async function loadFacebookFeed() {
+    const feedContainer = document.getElementById('facebook-feed-items');
+    if (!feedContainer) return;
+
+    // Show loading state
+    feedContainer.innerHTML = `
+        <div class="feed-loading">
+            <i class="fas fa-spinner fa-pulse"></i>
+            <p>Loading latest Facebook posts...</p>
+        </div>
+    `;
+
+    let items = null;
+    let attempts = 0;
+
+    // Try different combinations of RSS feeds and proxies
+    for (const rssUrl of RSS_FEEDS) {
+        if (items && items.length > 0) break;
+        
+        for (const proxy of PROXIES) {
+            if (items && items.length > 0) break;
+            attempts++;
+            
+            try {
+                const proxyUrl = proxy + encodeURIComponent(rssUrl);
+                console.log(`Attempt ${attempts}: Trying ${proxyUrl}`);
+                
+                const response = await fetchWithTimeout(proxyUrl, 10000);
+                
+                if (!response.ok) {
+                    console.warn(`Proxy ${proxy} failed with status: ${response.status}`);
+                    continue;
+                }
+
+                const contentType = response.headers.get('content-type') || '';
+                
+                if (contentType.includes('application/json') || proxy.includes('rss2json') || proxy.includes('rss-to-json')) {
+                    // Handle JSON response
+                    const data = await response.json();
+                    
+                    if (data.status === 'ok' && data.items && data.items.length > 0) {
+                        items = data.items.map(item => ({
+                            title: item.title || 'Facebook Update',
+                            link: item.link || FACEBOOK_PAGE_URL,
+                            pubDate: item.pubDate || '',
+                            description: (item.description || item.content || '')
+                                .replace(/<[^>]*>/g, ' ')
+                                .replace(/\s+/g, ' ')
+                                .trim()
+                                .substring(0, 150) + '…'
+                        }));
+                        break;
+                    } else if (data.items && data.items.length > 0) {
+                        items = data.items;
+                        break;
+                    }
+                } else {
+                    // Handle XML response
+                    const xmlText = await response.text();
+                    const parsedItems = parseXMLFeed(xmlText);
+                    if (parsedItems && parsedItems.length > 0) {
+                        items = parsedItems;
+                        break;
+                    }
+                }
+            } catch (error) {
+                console.warn(`Attempt ${attempts} failed:`, error.message);
+                // Continue to next attempt
+            }
+        }
+    }
+
+    // If all feed attempts failed, use fallback posts
+    if (!items || items.length === 0) {
+        console.log('All feed attempts failed, using fallback posts');
+        items = FALLBACK_POSTS;
+    }
+
+    // Display the items (whether from feed or fallback)
+    if (items && items.length > 0) {
+        feedContainer.innerHTML = ''; // Clear loading
+        
+        // Limit to 5 most recent items
+        const recentItems = items.slice(0, 5);
+        
+        recentItems.forEach(item => {
+            const title = item.title || 'Facebook Update';
+            const link = item.link || FACEBOOK_PAGE_URL;
+            let description = item.description || 'Click to read more on Facebook.';
+            let pubDate = item.pubDate || '';
+            
+            // Format date
+            let formattedDate = 'Recent';
+            if (pubDate) {
+                try {
+                    const date = new Date(pubDate);
+                    if (!isNaN(date.getTime())) {
+                        formattedDate = date.toLocaleDateString('en-GB', {
+                            day: 'numeric',
+                            month: 'short',
+                            year: 'numeric'
+                        });
+                    }
+                } catch (e) {
+                    console.warn('Date parsing error:', e);
+                }
+            }
+
+            const feedItem = document.createElement('div');
+            feedItem.className = 'facebook-feed-item';
+            feedItem.innerHTML = `
+                <div class="feed-item-title">
+                    <a href="${link}" target="_blank" rel="noopener noreferrer">
+                        ${title.length > 70 ? title.substring(0, 70) + '…' : title}
+                    </a>
                 </div>
+                <div class="feed-item-description">${description}</div>
+                <div class="feed-item-meta">
+                    <span class="feed-item-date">
+                        <i class="far fa-calendar-alt"></i> ${formattedDate}
+                    </span>
+                    <a href="${link}" target="_blank" rel="noopener noreferrer" class="feed-item-link">
+                        Read more <i class="fas fa-external-link-alt ms-1"></i>
+                    </a>
+                </div>
+            `;
+            feedContainer.appendChild(feedItem);
+        });
+
+        // Add "View More" link
+        const viewMore = document.createElement('div');
+        viewMore.className = 'text-center mt-2 p-2 bg-light rounded';
+        viewMore.innerHTML = `
+            <small>
+                <i class="fas fa-info-circle text-primary"></i> 
+                <a href="${FACEBOOK_PAGE_URL}" target="_blank" rel="noopener noreferrer">Visit our Facebook page</a> for all updates.
+                ${items === FALLBACK_POSTS ? '<br><span style="color: #999;">(Showing latest known posts - automatic feed temporarily unavailable)</span>' : ''}
+            </small>
+        `;
+        feedContainer.appendChild(viewMore);
+        
+    } else {
+        // This should never happen since we have fallback posts
+        feedContainer.innerHTML = `
+            <div class="feed-empty">
+                <i class="fab fa-facebook" style="color: #1877f2; font-size: 3rem; margin-bottom: 15px;"></i>
+                <h4>Connect With Us on Facebook</h4>
+                <p>For the latest updates, events, and news, please visit our Facebook page:</p>
+                <a href="${FACEBOOK_PAGE_URL}" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="background: #1877f2; border: none; margin-top: 10px; padding: 10px 20px; border-radius: 5px; color: white; text-decoration: none; display: inline-block;">
+                    <i class="fab fa-facebook me-2"></i>Visit Our Facebook Page
+                </a>
             </div>
         `;
+    }
+}
 
+// ============ FACEBOOK SIDEBAR HTML (dynamic container) ============
+const facebookSidebarHTML = `
+    <div class="content-right-column">
+        <div class="facebook-sidebar"> 
+            <div class="facebook-sidebar-title">
+                <span><i class="fab fa-facebook me-2"></i> Recent Facebook Posts</span>
+                <a href="${FACEBOOK_PAGE_URL}" target="_blank" style="color: white; font-size: 0.9rem;">Visit Page <i class="fas fa-arrow-right ms-1"></i></a>
+            </div>
+            <div class="facebook-feed-container">
+                <div id="facebook-feed-items" class="facebook-feed-list">
+                    <div class="feed-loading"><i class="fas fa-spinner fa-pulse"></i><p>Loading latest posts...</p></div>
+                </div>
+            </div>
+            <div style="margin-top: 15px; text-align: center; padding: 10px; background: #f8f9fa; border-radius: 8px; font-size: 0.9rem; border: 1px solid #e0e0e0;">
+                <i class="fas fa-info-circle me-2" style="color: #1877f2;"></i>
+                <strong>Follow us on Facebook</strong> 
+                <a href="${FACEBOOK_PAGE_URL}" target="_blank" style="color: #1877f2; font-weight: 600; display: block; margin-top: 5px;">
+                    @PrestonCityOfSanctuary <i class="fas fa-external-link-alt ms-1"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+`;
+// ============16 Feb 2026  22222222222222222222222222222222222222222222222222222 ============
         // ============ PAGE TITLE TEMPLATES (UPDATED WITH EXPERTS GROUP) ============
         const pageTitleTemplates = {
             'home': `

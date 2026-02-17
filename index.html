@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
+        /* … entire existing style block (kept exactly as provided) … */
         :root {
             --primary-color: #A0125A;
             --primary-light: #c93b84;
@@ -1541,7 +1542,7 @@
                         </ul>
                     </li>
                     
-                    <!-- NEW TOP-LEVEL: Local Support Groups -->
+                    <!-- NEW TOP-LEVEL: Local Support Groups (with new Help In Preston sub‑page) -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" id="local-support-main-link">
                             Local Support
@@ -1551,6 +1552,8 @@
                             <li><a class="dropdown-item" href="#local-support-kind-communities" id="local-support-kind-communities-link">Kind Communities</a></li>
                             <li><a class="dropdown-item" href="#local-support-muslim-forum" id="local-support-muslim-forum-link">Muslim Forum</a></li>
                             <li><a class="dropdown-item" href="#local-support-sports-leisure" id="local-support-sports-leisure-link">Sports & Leisure</a></li>
+                            <!-- NEW: Help In Preston sub‑page (dropdown) -->
+                            <li><a class="dropdown-item" href="#local-support-help-in-preston" id="local-support-help-in-preston-link">Help In Preston</a></li>
                         </ul>
                     </li>
                     
@@ -1739,10 +1742,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-
-
 // ============16 Feb 2026  22222222222222222222222222222222222222222222222222222 ============
-
 // ============ IMPROVED FACEBOOK FEED WITH MULTIPLE FALLBACK METHODS ============
 const FACEBOOK_PAGE_URL = 'https://www.facebook.com/people/Preston-City-of-Sanctuary/100067197351909/';
 const FACEBOOK_PAGE_ID = '100067197351909'; // Facebook page ID
@@ -2042,7 +2042,7 @@ const facebookSidebarHTML = `
     </div>
 `;
 // ============16 Feb 2026  22222222222222222222222222222222222222222222222222222 ============
-        // ============ PAGE TITLE TEMPLATES (UPDATED WITH EXPERTS GROUP) ============
+        // ============ PAGE TITLE TEMPLATES ============
         const pageTitleTemplates = {
             'home': `
                 <div class="container">
@@ -2108,6 +2108,13 @@ const facebookSidebarHTML = `
                 <div class="container">
                     <h1 class="page-title">Sports & Leisure</h1>
                     <p class="page-subtitle">Activities and opportunities for sanctuary seekers</p>
+                </div>
+            `,
+            // NEW: Help In Preston title
+            'local-support-help-in-preston': `
+                <div class="container">
+                    <h1 class="page-title">Help In Preston</h1>
+                    <p class="page-subtitle">A comprehensive directory of local services</p>
                 </div>
             `,
             'learning-english': `
@@ -2209,9 +2216,6 @@ const facebookSidebarHTML = `
         };
 
         // ============ CONTENT TEMPLATES (COMPREHENSIVE, ACCURATE CONTENT) ============
-        // For brevity, I'll include only a few templates here, but in the actual file all templates would be preserved.
-        // In the interest of space, I'm showing that the templates exist with the sidebar included.
-        
         const contentTemplates = {
             'home': `
                 <div class="two-column-layout" style="display: flex; flex-wrap: wrap;">
@@ -3102,7 +3106,7 @@ const facebookSidebarHTML = `
                         <section class="dynamic-content">
                             <div class="service-item" style="border-left-color: var(--primary-color);">
                                 <h5 style="color: var(--primary-color); font-size: 1.5rem; margin-bottom: 20px;">
-                                    <i class="fas fa-heart me-2"></i> <a href="https://www.blogpreston.co.uk/tag/kind-communities/" target="_blank" style="color: inherit; text-decoration: underline;">Kind Communities</a>
+                                    <i class="fas fa-heart me-2"></i> <a href="https://kind-communities.org/projects/refugees-asylum-seekers/" target="_blank" style="color: inherit; text-decoration: underline;">Kind Communities</a>
                                 </h5>
                                 
                                 <div style="margin-bottom: 25px;">
@@ -3136,7 +3140,7 @@ const facebookSidebarHTML = `
                         <section class="dynamic-content">
                             <div class="service-item" style="border-left-color: var(--primary-color);">
                                 <h5 style="color: var(--primary-color); font-size: 1.5rem; margin-bottom: 20px;">
-                                    <i class="fas fa-mosque me-2"></i> Muslim Forum Preston
+                                    <i class="fas fa-mosque me-2"></i> <a href="https://www.facebook.com/groups/923209618798722/" target="_blank" style="color: inherit; text-decoration: underline;">Muslim Forum Preston</a>
                                 </h5>
                                 
                                 <div style="margin-bottom: 25px;">
@@ -3205,40 +3209,118 @@ const facebookSidebarHTML = `
                 </div>
             `,
             
+            // NEW: Help In Preston sub-page
+            'local-support-help-in-preston': `
+                <div class="two-column-layout" style="display: flex; flex-wrap: wrap;">
+                    <div class="content-left-column">
+                        <section class="dynamic-content">
+                            <div class="service-item" style="border-left-color: var(--accent-color);">
+                                <h5 style="color: var(--accent-color); font-size: 1.5rem; margin-bottom: 20px;">
+                                    <i class="fas fa-info-circle me-2"></i> <a href="https://www.helpinpreston.com/" target="_blank" style="color: inherit; text-decoration: underline;">Help In Preston</a>
+                                </h5>
+                                
+                                <div style="margin-bottom: 25px;">
+                                    <p style="font-size: 1.1rem;">Help In Preston is a comprehensive directory of local services and support for people in need across Preston and the surrounding area.</p>
+                                </div>
+                                
+                                <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 20px;">
+                                    <h6 style="color: var(--accent-color); font-weight: 700; margin-bottom: 15px;">What you can find</h6>
+                                    <ul>
+                                        <li>Food banks and emergency food parcels</li>
+                                        <li>Advice on benefits, debt, housing, and employment</li>
+                                        <li>Mental health and wellbeing support</li>
+                                        <li>Children, young people, and family services</li>
+                                        <li>Addiction support and domestic abuse services</li>
+                                        <li>Activities, social groups, and volunteering opportunities</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="info-box" style="border-left-color: var(--accent-color);">
+                                    <p><strong>It's a one‑stop shop for finding help.</strong> Whether you are a sanctuary seeker or someone supporting them, this website makes it easy to discover what's available locally.</p>
+                                    <p class="mt-3"><strong>Visit:</strong> <a href="https://www.helpinpreston.com/" target="_blank" style="font-weight: bold;">www.helpinpreston.com</a></p>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    ${facebookSidebarHTML}
+                </div>
+            `,
+            
+            // ========== LEARNING ENGLISH SECTION – COMPLETELY OVERHAULED ==========
             'learning-english': `
                 <div class="two-column-layout" style="display: flex; flex-wrap: wrap;">
                     <div class="content-left-column">
                         <section class="dynamic-content">
-                            <p>Classes for Sanctuary seekers / Asylum seekers / Refugees in the Preston area.</p>
-                            
+                            <!-- Top resource guide (point 4) -->
+                            <div class="info-box" style="background: #e7f3ff; border-left-color: var(--accent-color);">
+                                <p>
+                                    <i class="fas fa-external-link-alt me-2"></i>
+                                    <strong>Useful guide about learning English in Lancashire:</strong><br>
+                                    <a href="https://www.lancashire.gov.uk/resettlement-in-lancashire/support-for-resettlers/esol/" target="_blank">
+                                        lancashire.gov.uk/resettlement-in-lancashire/support-for-resettlers/esol/
+                                    </a>
+                                </p>
+                            </div>
+
+                            <!-- Preston College (point 5: fee details removed) -->
                             <div class="learning-card mt-4">
                                 <h5>Preston College</h5>
                                 <p>The main centre for learning English and getting qualifications is Preston College. Asylum seekers and refugees can register for free courses.</p>
                                 <p><strong>Website:</strong> <a href="https://www.preston.ac.uk/adults/esol/" target="_blank">https://www.preston.ac.uk/adults/esol/</a></p>
                                 <p><strong>Phone:</strong> <a href="tel:01772225522">01772 225522</a> to organise an assessment date</p>
-                                
-                                <h6 class="mt-3">Fee Information:</h6>
-                                <ul>
-                                    <li>If you do not work and receive a benefit - courses may be free (bring recent evidence)</li>
-                                    <li>If you work and individual income is less than £16009.50 - 100% reduction in fees</li>
-                                    <li>If household income is less than £30,994 - eligible for discount</li>
-                                    <li>Otherwise fees are £175 for all qualifications</li>
-                                </ul>
+                                <!-- Fee information list removed as requested -->
                             </div>
-                            
+
+                            <!-- University of Lancashire (new section, point 6) -->
+                            <div class="learning-card mt-4" style="background: #f0f7ff; border-left: 5px solid #2c5aa0;">
+                                <h5 style="color: #2c5aa0;">University of Lancashire (UCLan)</h5>
+                                <p>UCLan are providing free English classes for adults (18+) who do not have English as a first language. They now have a webpage with all the details:</p>
+                                <p><a href="https://www.uclan.ac.uk/cpd/courses/free-english-classes" target="_blank">https://www.uclan.ac.uk/cpd/courses/free-english-classes</a></p>
+                                <p>Email Tina at <a href="mailto:TESOL@uclan.ac.uk">TESOL@uclan.ac.uk</a> if you have any questions.</p>
+                            </div>
+
+                            <!-- Informal Classes – completely expanded (point 7) -->
                             <div class="learning-card mt-4">
-                                <h5>Talk English - Lancashire</h5>
-                                <p>Free English conversation classes for people who cannot access formal ESOL courses.</p>
-                                <p><strong>Website:</strong> <a href="https://www.talkenglish.org.uk/lancashire/" target="_blank">www.talkenglish.org.uk/lancashire/</a></p>
+                                <h5>Informal English Classes & Conversation Groups</h5>
+
+                                <!-- Talk English -->
+                                <div style="margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px dashed #ccc;">
+                                    <h6 style="color: var(--primary-color);">Talk English</h6>
+                                    <p>English lessons every Tuesday from 10:30 at St Cuthberts Church, Lytham Road, Fulwood, Preston PR2 3AR.</p>
+                                    <p>Contact: <a href="mailto:liz.jackson1956@gmail.com">liz.jackson1956@gmail.com</a></p>
+                                </div>
+
+                                <!-- New Roots -->
+                                <div style="margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px dashed #ccc;">
+                                    <h6 style="color: var(--primary-color);">New Roots</h6>
+                                    <p>Free English conversation class – Wednesday 1‑3pm at the Community Centre, Church Road, Wesham.</p>
+                                    <p>Run by 'New Roots' volunteers with a qualified teacher, supported by The Salvation Army Refugee Support Team. Open to asylum seekers or refugees from Kirkham, Wesham and Wrea Green.</p>
+                                </div>
+
+                                <!-- Pukar -->
+                                <div style="margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px dashed #ccc;">
+                                    <h6 style="color: var(--primary-color);">Pukar</h6>
+                                    <p>Pukar have ESOL classes along with classes to help IT and health literacy at 3 Oakham Court, Preston, PR1 3XP.</p>
+                                    <p>For the full timetable see <a href="https://pukar.org.uk/wordpress/timetable/" target="_blank">https://pukar.org.uk/wordpress/timetable/</a></p>
+                                    <p>Call 01772 822700 or email <a href="mailto:enquiries@pukar.org.uk">enquiries@pukar.org.uk</a>.</p>
+                                </div>
+
+                                <!-- Kind Communities (ESOL) -->
+                                <div style="margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px dashed #ccc;">
+                                    <h6 style="color: var(--primary-color);">Kind Communities – Kind Local</h6>
+                                    <p>Kind Local provides informal ESOL classes at community venues in Preston and Leyland to help resettlers integrate and socialise.</p>
+                                    <p>Contact: <a href="mailto:esol@kind-communities.org">esol@kind-communities.org</a> for details.</p>
+                                </div>
+
+                                <!-- Sanctuary Cookalongs -->
+                                <div style="margin-bottom: 20px;">
+                                    <h6 style="color: var(--primary-color);">Sanctuary Cookalongs</h6>
+                                    <p>Unaccredited informal English conversation through cooking and communication games, led by a CELTA-qualified teacher with a creche available.</p>
+                                    <p>Contact Jen Rankin on 07754622911 or <a href="mailto:sanctuarycookalongs@gmail.com">sanctuarycookalongs@gmail.com</a>.</p>
+                                </div>
                             </div>
-                            
-                            <div class="learning-card mt-4">
-                                <h5>Lancashire Adult Learning</h5>
-                                <p>ESOL courses at various venues across Preston.</p>
-                                <p><strong>Website:</strong> <a href="https://www.lal.ac.uk/courses/english-esol/" target="_blank">www.lal.ac.uk/courses/english-esol/</a></p>
-                                <p><strong>Phone:</strong> 0300 003 1718</p>
-                            </div>
-                            
+
+                            <!-- Online Learning Resources (kept from original) -->
                             <div class="learning-card mt-4">
                                 <h5>Online Learning Resources</h5>
                                 <ul>
@@ -3246,6 +3328,18 @@ const facebookSidebarHTML = `
                                     <li><strong>BBC Learning English:</strong> <a href="https://www.bbc.co.uk/learningenglish/" target="_blank">www.bbc.co.uk/learningenglish/</a></li>
                                     <li><strong>Duolingo:</strong> Free app for learning English</li>
                                 </ul>
+                            </div>
+
+                            <!-- Resources for Teachers (point 8) -->
+                            <div class="learning-card mt-4" style="background: #f5f5f5;">
+                                <h5>Resources for Teachers</h5>
+                                <p>Trinity College London has developed an online area with access to lots of useful free resources for people teaching English to sanctuary seekers in informal classes and groups. Just follow this link:</p>
+                                <p><a href="https://resources.trinitycollege.com/hub/english" target="_blank">https://resources.trinitycollege.com/hub/english</a></p>
+                            </div>
+
+                            <!-- Note (optional) -->
+                            <div class="info-box mt-4">
+                                <p>Most classes listed here are free or very low cost. If you need help choosing the right class, email <a href="mailto:prestoncityofsanctuary@gmail.com">prestoncityofsanctuary@gmail.com</a>.</p>
                             </div>
                         </section>
                     </div>
@@ -3794,7 +3888,7 @@ const facebookSidebarHTML = `
                                 <h5 style="color: var(--accent-color);"><i class="fas fa-external-link-alt me-2"></i>Help In Preston Website</h5>
                                 <p style="font-size: 1.1rem;">This website lists almost all the local support services for people in need in Preston and the surrounding area.</p>
                                 <p>It's an excellent resource for finding volunteering opportunities across the city, from food banks to community centres, advice services to befriending schemes.</p>
-                                <a href="https://www.helpinpreston.org" target="_blank" class="btn btn-primary-custom" style="background: var(--accent-color);">Visit Help In Preston</a>
+                                <a href="https://www.helpinpreston.com" target="_blank" class="btn btn-primary-custom" style="background: var(--accent-color);">Visit Help In Preston</a>
                             </div>
                             
                             <div class="learning-card mt-4" style="background: #fef5fa; border-left: 5px solid var(--primary-color);">
@@ -4012,11 +4106,18 @@ const facebookSidebarHTML = `
                 keywords: ['sports', 'leisure', 'football', 'soccer', 'park run', 'cycling', 'preston pedals', 'tom finney'],
                 content: 'Sir Tom Finney Soccer Centre football activities, Preston Park Run every Saturday 9am at Avenham Park, Preston Pedals cycling promotion and bike help.'
             },
+            // NEW: Help In Preston search entry
+            {
+                id: 'local-support-help-in-preston',
+                title: 'Help In Preston',
+                keywords: ['help in preston', 'directory', 'local services', 'food banks', 'advice', 'volunteering'],
+                content: 'Comprehensive directory of local services in Preston: food banks, advice, mental health, activities, and volunteering.'
+            },
             {
                 id: 'learning-english',
                 title: 'Learning English',
-                keywords: ['english', 'ESOL', 'courses', 'classes', 'Preston College', 'language', 'talk english'],
-                content: 'ESOL courses at Preston College, free courses for asylum seekers and refugees, conversation groups. Talk English Lancashire free conversation classes.'
+                keywords: ['english', 'ESOL', 'courses', 'classes', 'Preston College', 'language', 'talk english', 'uclan', 'pukar', 'new roots', 'sanctuary cookalongs', 'kind communities', 'trinity college'],
+                content: 'ESOL courses at Preston College, free English classes at UCLan, conversation groups: Talk English, New Roots, Pukar, Kind Communities, Sanctuary Cookalongs. Trinity College resources for teachers.'
             },
             {
                 id: 'education-schools',

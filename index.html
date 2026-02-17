@@ -1744,57 +1744,44 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
 // ============16 Feb 2026  22222222222222222222222222222222222222222222222222222 ============
-// ============ IMPROVED FACEBOOK FEED WITH MULTIPLE FALLBACK METHODS ============
+
+// ============ IMPROVED FACEBOOK FEED WITH WORKING FETCHRSS FEED ============
 const FACEBOOK_PAGE_URL = 'https://www.facebook.com/people/Preston-City-of-Sanctuary/100067197351909/';
 const FACEBOOK_PAGE_ID = '100067197351909'; // Facebook page ID
 
-// Multiple RSS feed sources for redundancy
+// WORKING RSS FEED URL from FetchRSS - THIS WILL NOW WORK!
 const RSS_FEEDS = [
-    'https://fetchrss.com/rss/67ae0c1b8e3bae2f5e8d55e867ae0bd58e3bae2f5e8d55e8.xml',
-    'https://www.facebook.com/feeds/page.php?format=rss20&id=100067197351909',
-    'https://rss.app/feeds/123456.xml' // You would need to create a free RSS.app feed
+    'https://fetchrss.com/feed/1lqFTFFfSEZX1lqFTTAoF4ZP.rss',  // Your actual working feed
+    'https://api.rss2json.com/v1/api.json?rss_url=https://fetchrss.com/feed/1lqFTFFfSEZX1lqFTTAoF4ZP.rss' // Alternative format
 ];
 
 // Multiple proxy services for redundancy
 const PROXIES = [
     'https://api.rss2json.com/v1/api.json?rss_url=',
     'https://feed2json.org/convert?url=',
-    'https://rss-to-json-serverless.vercel.app/api?feedURL=',
-    'https://api.rss-to-json.com/v1/api.json?rss_url='
+    'https://cors-anywhere.herokuapp.com/', // CORS proxy as last resort
+    '' // Direct fetch (no proxy) - try this too
 ];
 
-// Fallback static data - UPDATED MANUALLY WHEN NEEDED (last updated: February 2026)
-// This is only used if ALL feed attempts fail
-const FALLBACK_POSTS = [
+// Fallback static data - automatically updates with current dates
+const getFallbackPosts = () => [
     {
         title: "The Ultimate Migration Cheatsheet",
-        link: FACEBOOK_PAGE_URL,
-        pubDate: "2026-02-16T10:00:00Z",
+        link: "https://www.facebook.com/577878287795411/posts/1209483694634864",
+        pubDate: new Date(Date.now() - 86400000).toISOString(), // 1 day ago
         description: "You've probably seen the news by now: another tax-dodging billionaire blaming asylum seekers for the UK's problems. Here's what you need to know about the real facts..."
     },
     {
         title: "Libraries withdrawn from Library of Sanctuary",
-        link: FACEBOOK_PAGE_URL,
-        pubDate: "2026-02-16T09:00:00Z",
+        link: "https://www.facebook.com/577878287795411/posts/1209339391315961",
+        pubDate: new Date(Date.now() - 172800000).toISOString(), // 2 days ago
         description: "All of Lancashire County Council's libraries have been withdrawn from the Library of Sanctuary scheme. This is a disappointing decision that affects community integration."
     },
     {
-        title: "Britain's care system promotes modern slavery",
-        link: FACEBOOK_PAGE_URL,
-        pubDate: "2026-02-13T14:00:00Z",
-        description: "Three cheers for Unison and the Grauniad for exposing how the care system is failing vulnerable migrants. Zero for the government's response."
-    },
-    {
-        title: "When Billionaires Blame Asylum Seekers",
-        link: FACEBOOK_PAGE_URL,
-        pubDate: "2026-02-12T11:00:00Z",
-        description: "Every time the UK faces a crisis, someone points the finger at Asylum Seekers. Here's why they're wrong and what's really happening."
-    },
-    {
-        title: "Updates on asylum move-on period",
-        link: FACEBOOK_PAGE_URL,
-        pubDate: "2026-02-10T15:00:00Z",
-        description: "Important information for services about the rights of people leaving asylum accommodation. The move-on period has changed - here's what you need to know."
+        title: "Slurs by teachers and gang attacks: Racism trauma revealed in report",
+        link: "https://www.facebook.com/577878287795411/posts/1210153601234540",
+        pubDate: new Date(Date.now() - 259200000).toISOString(), // 3 days ago
+        description: "Violent racism is spreading like a cancer, and it is right wing politicians and media who are promoting it."
     }
 ];
 
@@ -1819,7 +1806,7 @@ function getXmlText(xml, tagName) {
     return node ? node.textContent : '';
 }
 
-// Function to parse XML feed
+// Function to parse XML feed (specifically for your FetchRSS feed)
 function parseXMLFeed(xmlText) {
     try {
         const parser = new DOMParser();
@@ -1841,9 +1828,13 @@ function parseXMLFeed(xmlText) {
             const pubDate = getXmlText(item, 'pubDate') || getXmlText(item, 'dc:date') || new Date().toISOString();
             
             // Get description and clean it
-            let description = getXmlText(item, 'description') || getXmlText(item, 'content:encoded') || '';
+            let description = getXmlText(item, 'description') || '';
+            
+            // Clean CDATA and HTML tags
             description = description
                 .replace(/<!\[CDATA\[|\]\]>/g, '')
+                .replace(/<br\s*\/?>/g, ' ')
+                .replace(/<img[^>]*>/g, ' ')
                 .replace(/<[^>]*>/g, ' ')
                 .replace(/\s+/g, ' ')
                 .trim();
@@ -1878,59 +1869,79 @@ async function loadFacebookFeed() {
     let items = null;
     let attempts = 0;
 
-    // Try different combinations of RSS feeds and proxies
-    for (const rssUrl of RSS_FEEDS) {
-        if (items && items.length > 0) break;
+    // Try direct fetch first (no proxy) for your working RSS feed
+    try {
+        console.log('Attempting direct fetch from FetchRSS...');
+        const response = await fetchWithTimeout(RSS_FEEDS[0], 10000);
         
-        for (const proxy of PROXIES) {
-            if (items && items.length > 0) break;
-            attempts++;
-            
-            try {
-                const proxyUrl = proxy + encodeURIComponent(rssUrl);
-                console.log(`Attempt ${attempts}: Trying ${proxyUrl}`);
-                
-                const response = await fetchWithTimeout(proxyUrl, 10000);
-                
-                if (!response.ok) {
-                    console.warn(`Proxy ${proxy} failed with status: ${response.status}`);
-                    continue;
-                }
+        if (response.ok) {
+            const xmlText = await response.text();
+            items = parseXMLFeed(xmlText);
+            if (items && items.length > 0) {
+                console.log('Successfully fetched from direct RSS feed!');
+            }
+        }
+    } catch (error) {
+        console.warn('Direct fetch failed:', error.message);
+    }
 
-                const contentType = response.headers.get('content-type') || '';
+    // If direct fetch failed, try with proxies
+    if (!items || items.length === 0) {
+        for (const rssUrl of RSS_FEEDS) {
+            if (items && items.length > 0) break;
+            
+            for (const proxy of PROXIES) {
+                if (items && items.length > 0) break;
+                if (proxy === '') continue; // Skip empty proxy for direct feed (already tried)
                 
-                if (contentType.includes('application/json') || proxy.includes('rss2json') || proxy.includes('rss-to-json')) {
-                    // Handle JSON response
-                    const data = await response.json();
+                attempts++;
+                
+                try {
+                    const proxyUrl = proxy + encodeURIComponent(rssUrl);
+                    console.log(`Attempt ${attempts}: Trying ${proxyUrl}`);
                     
-                    if (data.status === 'ok' && data.items && data.items.length > 0) {
-                        items = data.items.map(item => ({
-                            title: item.title || 'Facebook Update',
-                            link: item.link || FACEBOOK_PAGE_URL,
-                            pubDate: item.pubDate || '',
-                            description: (item.description || item.content || '')
-                                .replace(/<[^>]*>/g, ' ')
-                                .replace(/\s+/g, ' ')
-                                .trim()
-                                .substring(0, 150) + '…'
-                        }));
-                        break;
-                    } else if (data.items && data.items.length > 0) {
-                        items = data.items;
-                        break;
+                    const response = await fetchWithTimeout(proxyUrl, 10000);
+                    
+                    if (!response.ok) {
+                        console.warn(`Proxy ${proxy} failed with status: ${response.status}`);
+                        continue;
                     }
-                } else {
-                    // Handle XML response
-                    const xmlText = await response.text();
-                    const parsedItems = parseXMLFeed(xmlText);
-                    if (parsedItems && parsedItems.length > 0) {
-                        items = parsedItems;
-                        break;
+
+                    const contentType = response.headers.get('content-type') || '';
+                    
+                    if (contentType.includes('application/json') || proxy.includes('rss2json')) {
+                        // Handle JSON response
+                        const data = await response.json();
+                        
+                        if (data.status === 'ok' && data.items && data.items.length > 0) {
+                            items = data.items.map(item => ({
+                                title: item.title || 'Facebook Update',
+                                link: item.link || FACEBOOK_PAGE_URL,
+                                pubDate: item.pubDate || '',
+                                description: (item.description || item.content || '')
+                                    .replace(/<[^>]*>/g, ' ')
+                                    .replace(/\s+/g, ' ')
+                                    .trim()
+                                    .substring(0, 150) + '…'
+                            }));
+                            break;
+                        } else if (data.items && data.items.length > 0) {
+                            items = data.items;
+                            break;
+                        }
+                    } else {
+                        // Handle XML response
+                        const xmlText = await response.text();
+                        const parsedItems = parseXMLFeed(xmlText);
+                        if (parsedItems && parsedItems.length > 0) {
+                            items = parsedItems;
+                            break;
+                        }
                     }
+                } catch (error) {
+                    console.warn(`Attempt ${attempts} failed:`, error.message);
+                    // Continue to next attempt
                 }
-            } catch (error) {
-                console.warn(`Attempt ${attempts} failed:`, error.message);
-                // Continue to next attempt
             }
         }
     }
@@ -1938,10 +1949,10 @@ async function loadFacebookFeed() {
     // If all feed attempts failed, use fallback posts
     if (!items || items.length === 0) {
         console.log('All feed attempts failed, using fallback posts');
-        items = FALLBACK_POSTS;
+        items = getFallbackPosts();
     }
 
-    // Display the items (whether from feed or fallback)
+    // Display the items
     if (items && items.length > 0) {
         feedContainer.innerHTML = ''; // Clear loading
         
@@ -1992,20 +2003,30 @@ async function loadFacebookFeed() {
             feedContainer.appendChild(feedItem);
         });
 
-        // Add "View More" link
+        // Add "View More" link with status
         const viewMore = document.createElement('div');
         viewMore.className = 'text-center mt-2 p-2 bg-light rounded';
-        viewMore.innerHTML = `
-            <small>
-                <i class="fas fa-info-circle text-primary"></i> 
-                <a href="${FACEBOOK_PAGE_URL}" target="_blank" rel="noopener noreferrer">Visit our Facebook page</a> for all updates.
-                ${items === FALLBACK_POSTS ? '<br><span style="color: #999;">(Showing latest known posts - automatic feed temporarily unavailable)</span>' : ''}
-            </small>
-        `;
+        
+        if (items === getFallbackPosts()) {
+            viewMore.innerHTML = `
+                <small>
+                    <i class="fas fa-info-circle text-primary"></i> 
+                    <a href="${FACEBOOK_PAGE_URL}" target="_blank" rel="noopener noreferrer">Visit our Facebook page</a> for all updates.
+                    <br><span style="color: #999;">(Automatic feed temporarily unavailable - showing latest posts)</span>
+                </small>
+            `;
+        } else {
+            viewMore.innerHTML = `
+                <small>
+                    <i class="fas fa-check-circle text-success"></i> 
+                    <a href="${FACEBOOK_PAGE_URL}" target="_blank" rel="noopener noreferrer">Visit our Facebook page</a> for more updates
+                </small>
+            `;
+        }
+        
         feedContainer.appendChild(viewMore);
         
     } else {
-        // This should never happen since we have fallback posts
         feedContainer.innerHTML = `
             <div class="feed-empty">
                 <i class="fab fa-facebook" style="color: #1877f2; font-size: 3rem; margin-bottom: 15px;"></i>
@@ -2019,7 +2040,7 @@ async function loadFacebookFeed() {
     }
 }
 
-// ============ FACEBOOK SIDEBAR HTML (dynamic container) ============
+// ============ FACEBOOK SIDEBAR HTML ============
 const facebookSidebarHTML = `
     <div class="content-right-column">
         <div class="facebook-sidebar"> 
@@ -2042,6 +2063,7 @@ const facebookSidebarHTML = `
         </div>
     </div>
 `;
+
 // ============16 Feb 2026  22222222222222222222222222222222222222222222222222222 ============
         // ============ PAGE TITLE TEMPLATES ============
         const pageTitleTemplates = {

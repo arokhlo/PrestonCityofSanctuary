@@ -3523,18 +3523,37 @@ const facebookSidebarHTML = `
                 </div>
             `,
             
+            // ========== UPDATED HOUSING PAGE ==========
             'housing': `
                 <div class="two-column-layout" style="display: flex; flex-wrap: wrap;">
                     <div class="content-left-column">
                         <section class="dynamic-content">
-                            <div class="service-item">
-                                <h5><i class="fas fa-home me-2"></i> Preston City Council Housing Advice Service</h5>
-                                <p>Address: Town Hall, Lancaster Road, PR1 2RL</p>
-                                <p>Email: <a href="mailto:housing@preston.gov.uk">housing@preston.gov.uk</a></p>
-                                <p>Phone: <a href="tel:01772906412">01772 906412</a></p>
-                                <p>Drop-in hours: Mon, Wed-Thu, Fri 8:45am–4pm; Tue 8:45am–3pm</p>
+                            <!-- 1.1 New Introductory Paragraph (top) -->
+                            <div class="info-box" style="border-left-color: var(--accent-color);">
+                                <p><strong>Asylum seekers are usually housed in shared accommodation or a hotel managed by Serco. If claiming support from the Home Office, you have no choice about where or how you are housed. If there are any problems with the accommodation, you need to contact Migrant Help.</strong></p>
                             </div>
                             
+                            <!-- 1.3 Refugee Move-On Guidance Section (placed first as per 'Asylum box above council' logic) -->
+                            <div class="learning-card" style="border-left: 5px solid var(--accent-color);">
+                                <h5 style="color: var(--accent-color);">Refugee Move-On Guidance</h5>
+                                <ul style="list-style-type: none; padding-left: 0;">
+                                    <li style="margin-bottom: 10px;">• Refugees may have as little as 28 days to leave asylum accommodation.</li>
+                                    <li style="margin-bottom: 10px;">• They must find their own accommodation and pay rent and bills.</li>
+                                    <li style="margin-bottom: 10px;">• Benefits will not cover the full cost of rent.</li>
+                                    <li style="margin-bottom: 10px;">• Acting quickly is essential to avoid homelessness.</li>
+                                    <li style="margin-bottom: 10px;">• They must either find work or apply for Universal Credit immediately.</li>
+                                    <li style="margin-bottom: 10px;">• They should contact the local Jobcentre straight away.</li>
+                                    <li style="margin-bottom: 10px;">• They must contact the Housing Advice Centre of the local council (Preston or South Ribble) within the first week of receiving status.</li>
+                                    <li style="margin-bottom: 10px;">• If they move to another town, they will not be entitled to support.</li>
+                                    <li style="margin-bottom: 10px;">• The Council may offer limited help but will not normally provide a council or housing association property.</li>
+                                    <li style="margin-bottom: 10px;">• Private landlord referrals may be possible.</li>
+                                    <li style="margin-bottom: 10px;">• Families may be placed in temporary accommodation, often in another town.</li>
+                                    <li style="margin-bottom: 10px;">• Refugees moving into an empty property can apply for help with furniture through organisations such as Gift 92.</li>
+                                    <li style="margin-bottom: 10px;">• If facing homelessness or with no recourse to public funds, they can contact Refugees at Home.</li>
+                                </ul>
+                            </div>
+                            
+                            <!-- Asylum box (now above Council Advice) -->
                             <div class="service-item mt-4">
                                 <h5><i class="fas fa-hotel me-2"></i> Asylum Accommodation</h5>
                                 <p>Asylum seekers unable to support themselves are provided with accommodation through the Home Office asylum support system.</p>
@@ -3542,6 +3561,16 @@ const facebookSidebarHTML = `
                                 <p><strong>Migrant Help:</strong> Independent advice for asylum seekers - <a href="tel:08088006303">0808 800 6303</a></p>
                             </div>
                             
+                            <!-- Preston City Council Housing Advice Service (moved below Asylum) -->
+                            <div class="service-item mt-4">
+                                <h5><i class="fas fa-home me-2"></i> Preston City Council Housing Advice Service</h5>
+                                <p>Address: Town Hall, Lancaster Road, PR1 2RL</p>
+                                <p>Email: <a href="mailto:housing@preston.gov.uk">housing@preston.gov.uk</a></p>
+                                <p>Phone: <a href="tel:01772906412">01772 906412</a></p>
+                                <p>Drop-in hours: Mon, Wed-Thu, Fri 8:45am–4pm; Tue 8:45am–3pm</p>
+                            </div>
+                            
+                            <!-- Refugees at Home (kept as existing) -->
                             <div class="service-item mt-4">
                                 <h5><i class="fas fa-hand-holding-heart me-2"></i> Refugees at Home</h5>
                                 <p>A national charity connecting people with spare rooms to refugees and asylum seekers needing somewhere to stay.</p>
@@ -3553,24 +3582,33 @@ const facebookSidebarHTML = `
                 </div>
             `,
             
+            // ========== UPDATED HEALTH PAGE ==========
             'health': `
                 <div class="two-column-layout" style="display: flex; flex-wrap: wrap;">
                     <div class="content-left-column">
                         <section class="dynamic-content">
-                            <p><strong>Finding a GP:</strong> <a href="https://www.nhs.uk/service-search/find-a-gp" target="_blank">https://www.nhs.uk/service-search/find-a-gp</a></p>
-                            <p><strong>Emergency:</strong> Call 999</p>
-                            <p><strong>Advice:</strong> Call 111</p>
-                            <p><strong>Royal Preston Hospital:</strong> Sharoe Green Lane North, Fulwood, PR2 9HT</p>
+                            <!-- 2.1 Emergency and Advice Information at Top -->
+                            <div class="warning-box" style="margin-bottom: 20px;">
+                                <p><strong>Emergency: Call 999</strong><br>If someone is seriously ill or badly injured, call 999 for an ambulance.</p>
+                                <p><strong>Advice: Call 111</strong><br>If someone is unwell but it is not serious or urgent, call 111 for medical advice at any time.<br>Online advice is also available at: <a href="https://111.nhs.uk/" target="_blank">https://111.nhs.uk/</a></p>
+                            </div>
                             
+                            <!-- 2.2 Urgent Care Centre Information -->
+                            <div class="info-box">
+                                <p><strong>Royal Preston Hospital</strong><br>Sharoe Green Lane North, Fulwood, PR2 9HT</p>
+                                <p>There is also an urgent care centre at Chorley Hospital, but sick children should always go to Preston.</p>
+                            </div>
+                            
+                            <!-- 2.3 GP Box (updated) -->
+                            <div class="learning-card">
+                                <h5>GPs (Family Doctors)</h5>
+                                <p>GPs (sometimes known as Family Doctors) work from Health Centres or local surgeries. They treat everyday illnesses and provide services such as health checks and vaccinations.</p>
+                                <p><strong>Finding a GP:</strong> <a href="https://www.nhs.uk/service-search/find-a-gp" target="_blank">https://www.nhs.uk/service-search/find-a-gp</a></p>
+                                <p>Asylum seekers can register with a GP for free healthcare.</p>
+                            </div>
+                            
+                            <!-- Original dental and mental health (unchanged) -->
                             <div class="row mt-4">
-                                <div class="col-md-6 mb-4">
-                                    <div class="service-item">
-                                        <h5><i class="fas fa-stethoscope me-2"></i> General Practice</h5>
-                                        <p>Registering with a GP, understanding NHS services, and accessing primary care.</p>
-                                        <p>Asylum seekers can register with a GP for free healthcare.</p>
-                                    </div>
-                                </div>
-                                
                                 <div class="col-md-6 mb-4">
                                     <div class="service-item">
                                         <h5><i class="fas fa-tooth me-2"></i> Dental Services</h5>
@@ -3579,13 +3617,21 @@ const facebookSidebarHTML = `
                                         <p>Free dental treatment for: 0-18 years, pregnant women, asylum seekers (with Home Office ID card showing 'employment: forbidden')</p>
                                     </div>
                                 </div>
+                                
+                                <div class="col-md-6 mb-4">
+                                    <div class="service-item">
+                                        <h5><i class="fas fa-brain me-2"></i> Mental Health Support</h5>
+                                        <p><strong>Lancashire Talking Therapies:</strong> Free NHS psychological therapies - <a href="tel:03001232009">0300 123 2009</a></p>
+                                        <p><strong>Samaritans:</strong> 24/7 emotional support - <a href="tel:116123">116 123</a></p>
+                                        <p><strong>Boarding Bridges:</strong> Specialist mental health support for refugees and asylum seekers</p>
+                                    </div>
+                                </div>
                             </div>
                             
-                            <div class="service-item">
-                                <h5><i class="fas fa-brain me-2"></i> Mental Health Support</h5>
-                                <p><strong>Lancashire Talking Therapies:</strong> Free NHS psychological therapies - <a href="tel:03001232009">0300 123 2009</a></p>
-                                <p><strong>Samaritans:</strong> 24/7 emotional support - <a href="tel:116123">116 123</a></p>
-                                <p><strong>Boarding Bridges:</strong> Specialist mental health support for refugees and asylum seekers</p>
+                            <!-- 2.4 Pharmacy Box (Pending Text) placeholder -->
+                            <div class="learning-card mt-4" style="border-left: 5px solid #17a2b8;">
+                                <h5>Pharmacies (information coming soon)</h5>
+                                <p>This section will explain the role of pharmacies in providing advice and minor treatments.</p>
                             </div>
                         </section>
                     </div>
@@ -4198,14 +4244,14 @@ const facebookSidebarHTML = `
             {
                 id: 'housing',
                 title: 'Housing',
-                keywords: ['housing', 'accommodation', 'renting', 'council', 'Preston City Council', 'asylum support'],
-                content: 'Preston City Council Housing Advice Service, social housing, private renting advice. Asylum accommodation through Home Office support system. Migrant Help advice line.'
+                keywords: ['housing', 'accommodation', 'renting', 'council', 'Preston City Council', 'asylum support', 'migrant help', 'serco', '28 days', 'move-on'],
+                content: 'Asylum seekers housed by Serco. Contact Migrant Help for problems. Refugees have 28 days to leave asylum accommodation. Must find own housing, contact Jobcentre and Housing Advice Centre. Gift 92, Refugees at Home.'
             },
             {
                 id: 'health',
                 title: 'Health Services',
-                keywords: ['health', 'medical', 'GP', 'NHS', 'hospital', 'dental', 'mental health'],
-                content: 'Finding a GP, emergency services, Royal Preston Hospital, dental services for asylum seekers. Free dental treatment for asylum seekers. Mental health support through Lancashire Talking Therapies.'
+                keywords: ['health', 'medical', 'GP', 'NHS', 'hospital', 'dental', 'mental health', '999', '111', 'urgent care'],
+                content: 'Emergency: 999. Non-urgent advice: 111. Royal Preston Hospital, Chorley urgent care (sick children to Preston). GPs treat everyday illnesses. Dental services for asylum seekers. Mental health support.'
             },
             {
                 id: 'employment',

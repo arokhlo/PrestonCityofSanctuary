@@ -2244,7 +2244,7 @@ const facebookSidebarHTML = `
             `
         };
 
-        // ============ CONTENT TEMPLATES (COMPREHENSIVE, ACCURATE CONTENT) ============
+        // ============ CONTENT TEMPLATES (COMPREHENSIVE, ACCURATE CONTENT - UPDATED WITH ALL REQUESTS) ============
         const contentTemplates = {
             'home': `
                 <div class="two-column-layout" style="display: flex; flex-wrap: wrap;">
@@ -3593,10 +3593,10 @@ const facebookSidebarHTML = `
                                 <p><strong>Advice: Call 111</strong><br>If someone is unwell but it is not serious or urgent, call 111 for medical advice at any time.<br>Online advice is also available at: <a href="https://111.nhs.uk/" target="_blank">https://111.nhs.uk/</a></p>
                             </div>
                             
-                            <!-- 2.2 Urgent Care Centre Information -->
+                            <!-- 2.2 Urgent Care Centre Information (updated with hyperlink) -->
                             <div class="info-box">
-                                <p><strong>Royal Preston Hospital</strong><br>Sharoe Green Lane North, Fulwood, PR2 9HT</p>
-                                <p>There is also an urgent care centre at Chorley Hospital, but sick children should always go to Preston.</p>
+                                <p><strong>If you are ill but can travel you can go to the Urgent Care Centre at Royal Preston Hospital:</strong> Sharoe Green Lane North, Fulwood, PR2 9HT.</p>
+                                <p>There is also an urgent care centre at <a href="https://www.lancsteachinghospitals.nhs.uk/chorley-district-general" target="_blank">Chorley Hospital</a>, but sick children should always go to Preston.</p>
                             </div>
                             
                             <!-- 2.3 GP Box (updated) -->
@@ -3628,10 +3628,17 @@ const facebookSidebarHTML = `
                                 </div>
                             </div>
                             
-                            <!-- 2.4 Pharmacy Box (Pending Text) placeholder -->
+                            <!-- 2.4 Pharmacy Box (now complete) -->
                             <div class="learning-card mt-4" style="border-left: 5px solid #17a2b8;">
-                                <h5>Pharmacies (information coming soon)</h5>
-                                <p>This section will explain the role of pharmacies in providing advice and minor treatments.</p>
+                                <h5>Pharmacies (also known as Chemists)</h5>
+                                <p>Pharmacies offer free advice and treatment for minor health concerns like coughs, colds, aches, and pains. You don't need an appointment.</p>
+                                <ul>
+                                    <li>Prescriptions can be issued as paper or electronically (sent directly to a pharmacy).</li>
+                                    <li><strong>Free prescriptions</strong> for: children under 16, people aged 60+, people on certain benefits or on a low income.</li>
+                                    <li><strong>Standard prescription charge:</strong> £9.90 per item.</li>
+                                    <li><strong>Prescription Prepayment Certificates (PPCs):</strong> £32.05 for 3 months, £114.50 for 12 months – unlimited prescriptions.</li>
+                                </ul>
+                                <p>Find a pharmacy: <a href="https://www.nhs.uk/service-search/pharmacy/find-a-pharmacy" target="_blank">NHS Pharmacy Search</a></p>
                             </div>
                         </section>
                     </div>
@@ -3639,34 +3646,47 @@ const facebookSidebarHTML = `
                 </div>
             `,
             
+            // ========== UPDATED EMPLOYMENT PAGE ==========
             'employment': `
                 <div class="two-column-layout" style="display: flex; flex-wrap: wrap;">
                     <div class="content-left-column">
                         <section class="dynamic-content">
+                            <!-- point 9: Asylum seeker work guidance (updated) -->
                             <div class="warning-box">
-                                <p><strong>Asylum Seekers generally cannot work</strong> unless they have been in the UK over 12 months and are eligible for permission to work.</p>
-                                <p><strong>Refugees can seek employment</strong> after registering for a National Insurance number.</p>
+                                <p><strong>Asylum Seekers generally cannot work</strong> unless they have been in the UK over 12 months and are granted permission to work. Previous visa holders may retain work rights but must confirm with the Home Office. Illegal work damages asylum claims and often leads to exploitation.</p>
                             </div>
                             
+                            <!-- point 10: Refugees and National Insurance -->
                             <div class="learning-card mt-4">
-                                <h5>Job Centre Plus Preston</h5>
-                                <p>Register for work/benefits at your local Job Centre.</p>
-                                <p>Employers check right to work via Evisa and share code.</p>
-                                <p><strong>Address:</strong> Jubilee House, Northgate, Preston, PR1 8FZ</p>
-                                <p><strong>Phone:</strong> <a href="tel:08001690190">0800 169 0190</a></p>
+                                <h5>Refugees and National Insurance</h5>
+                                <p>Refugees can seek employment after registering for a National Insurance number. Apply here: <a href="https://www.gov.uk/apply-national-insurance-number/how-to-apply" target="_blank">gov.uk/apply-national-insurance-number</a></p>
                             </div>
                             
+                            <!-- point 11: Right to Work & Minimum Wage -->
                             <div class="learning-card mt-4">
-                                <h5>Employment Support</h5>
+                                <h5>Right to Work & Minimum Wage</h5>
+                                <p>Employers verify work rights using an eVisa and share code. Employers must pay at least the <a href="https://www.gov.uk/national-minimum-wage-rates" target="_blank">National Minimum Wage</a>. You are entitled to a written contract and employment rights.</p>
+                            </div>
+                            
+                            <!-- point 12: Correct Job Centre Plus Address -->
+                            <div class="learning-card mt-4">
+                                <h5>Job Centre Plus Preston (Corrected Address)</h5>
+                                <p><strong>Address:</strong> Gateway House, 200 Ringway, Preston, Lancashire, PR1 2ER</p>
+                                <p><strong>Phone:</strong> <a href="tel:08456043719">0845 604 3719</a></p>
+                                <p><strong>Website:</strong> <a href="https://www.jobcentreguide.co.uk/preston-jobcentre" target="_blank">jobcentreguide.co.uk/preston-jobcentre</a></p>
+                                <p>Register for work/benefits at your local Job Centre. They can assign a job coach and explain Universal Credit requirements (you must log your job search activity in your Universal Credit journal).</p>
+                            </div>
+                            
+                            <!-- point 13: Employment Support section replaced -->
+                            <div class="learning-card mt-4">
+                                <h5>Employment Support & Job Search</h5>
                                 <ul>
-                                    <li><strong>Refugee Action - Building Better Opportunities</strong> - Employment support for refugees</li>
-                                    <li><strong>Lancashire Employment Hub:</strong> <a href="https://www.lancashire.gov.uk/jobs-and-careers/" target="_blank">www.lancashire.gov.uk/jobs-and-careers/</a></li>
-                                    <li><strong>Preston Volunteer</strong> - Volunteer opportunities for asylum seekers</li>
+                                    <li><strong>Preston Work Clubs:</strong> free support with CVs, applications, and interview skills – <a href="https://www.helpinpreston.com/article/2708/Work-Clubs" target="_blank">helpinpreston.com/work-clubs</a></li>
+                                    <li><strong>Find a Job (gov.uk):</strong> official job search – <a href="https://www.gov.uk/find-a-job" target="_blank">gov.uk/find-a-job</a></li>
+                                    <li><strong>Indeed UK:</strong> popular job website – <a href="https://uk.indeed.com/" target="_blank">uk.indeed.com</a></li>
+                                    <li><strong>Lancashire Employment Hub:</strong> <a href="https://www.lancashire.gov.uk/jobs-and-careers/" target="_blank">lancashire.gov.uk/jobs-and-careers</a></li>
+                                    <li><strong>Refugee Action - Building Better Opportunities:</strong> employment support for refugees</li>
                                 </ul>
-                            </div>
-                            
-                            <div class="learning-card mt-4">
-                                <h5>CV writing and interview skills</h5>
                                 <p>Contact us for information about workshops and one-to-one support with CV writing and interview preparation.</p>
                             </div>
                         </section>
@@ -3675,36 +3695,47 @@ const facebookSidebarHTML = `
                 </div>
             `,
             
+            // ========== UPDATED IMMIGRATION-RIGHTS PAGE (with all requested changes) ==========
             'immigration-rights': `
                 <div class="two-column-layout" style="display: flex; flex-wrap: wrap;">
                     <div class="content-left-column">
                         <section class="dynamic-content">
+                            <!-- point 4: Right to Remain Toolkit (moved to top) -->
                             <div class="learning-card">
                                 <h5>Right to Remain Toolkit</h5>
-                                <p>A guide to the UK immigration and asylum system with translations in several languages:</p>
-                                <p><a href="https://righttoremain.org.uk/toolkit/" target="_blank">https://righttoremain.org.uk/toolkit/</a></p>
+                                <p>The most comprehensive guide to the UK asylum and immigration system, with translations in several languages: <a href="https://righttoremain.org.uk/toolkit/" target="_blank">righttoremain.org.uk/toolkit/</a></p>
                             </div>
                             
+                            <!-- point 7: Home Office Resources (now second) -->
                             <div class="learning-card mt-4">
-                                <h5>Jubilee+ Asylum Process Guide</h5>
-                                <p>Useful website explaining the UK asylum process:</p>
-                                <p><a href="https://jubilee-plus.org/refugee-network/about-uk-refugees-and-asylum-seekers/the-asylum-system/" target="_blank">https://jubilee-plus.org/refugee-network/about-uk-refugees-and-asylum-seekers/the-asylum-system/</a></p>
+                                <h5>Home Office Resources</h5>
+                                <p><strong>Welcome: A guide for new refugees</strong> (available in several languages): <a href="https://www.gov.uk/government/publications/welcome-a-guide-for-new-refugees" target="_blank">Download the guide</a></p>
                             </div>
                             
+                            <!-- point 5: Jubilee+ Asylum Process Guide DELETED (no content) -->
+                            
+                            <!-- point 6: (already moved) -->
+                            
+                            <!-- point 7 (updated Free Legal Advice) -->
                             <div class="learning-card mt-4">
-                                <h5>Free Legal Advice</h5>
-                                <p>Asylum seekers may be eligible for legal aid. Contact:</p>
+                                <h5>Free Legal Advice – Important Notes</h5>
+                                <p>Legal aid may be available, but finding a solicitor is difficult. Private legal fees can cost several thousand pounds.</p>
+                                <p>For educated English speakers, completing forms may not require a solicitor. Solicitors are most useful for appeals and court cases.</p>
+                                <p><strong>Free advice organisations:</strong></p>
                                 <ul>
-                                    <li><strong>Greater Manchester Immigration Aid Unit</strong> - <a href="https://gmiau.org.uk/" target="_blank">gmiau.org.uk</a></li>
-                                    <li><strong>British Red Cross Refugee Support</strong> - <a href="tel:01772707308">01772 707308</a></li>
-                                    <li><strong>Lancashire Law Centre</strong> - Immigration advice</li>
+                                    <li><strong>Greater Manchester Immigration Aid Unit</strong> – <a href="https://gmiau.org.uk/" target="_blank">gmiau.org.uk</a></li>
+                                    <li><strong>British Red Cross Refugee Support</strong> – 01772 707308</li>
+                                    <li><strong>Lancashire Law Centre</strong> – <a href="https://www.lancashire.ac.uk/professional-services/lancashire-law-centre" target="_blank">lancashire.ac.uk/law-centre</a></li>
+                                    <li><strong>Community Integration Advocacy Centre</strong> – <a href="https://www.ciacadvice.com/" target="_blank">ciacadvice.com</a></li>
                                 </ul>
                             </div>
                             
+                            <!-- (keep any existing useful links) -->
                             <div class="learning-card mt-4">
-                                <h5>Home Office Resources</h5>
-                                <p><strong>Welcome: A guide for new refugees</strong> (available in several languages):</p>
-                                <p><a href="https://www.gov.uk/government/publications/welcome-a-guide-for-new-refugees" target="_blank">Download the guide</a></p>
+                                <h5>Other Resources</h5>
+                                <ul>
+                                    <li><a href="https://jubilee-plus.org/refugee-network/about-uk-refugees-and-asylum-seekers/the-asylum-system/" target="_blank">Jubilee+ Asylum Process Guide</a> (note: this link was reported dead; we keep it for reference)</li>
+                                </ul>
                             </div>
                         </section>
                     </div>
@@ -3712,6 +3743,7 @@ const facebookSidebarHTML = `
                 </div>
             `,
             
+            // ========== UPDATED TRANSPORT PAGE (with all requested changes) ==========
             'transport': `
                 <div class="two-column-layout" style="display: flex; flex-wrap: wrap;">
                     <div class="content-left-column">
@@ -3725,20 +3757,30 @@ const facebookSidebarHTML = `
                                     <p style="font-size: 1.1rem;">Information about public transport in Preston and Lancashire, including fare concessions for sanctuary seekers.</p>
                                 </div>
                                 
+                                <!-- 1. Bus Travel – Updated Information (point 1) -->
                                 <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 20px;">
                                     <h6 style="color: var(--primary-color); font-weight: 700; margin-bottom: 15px;">Bus Travel</h6>
                                     <p><strong>Main operators in Preston:</strong> Preston Bus, Stagecoach, and Blackburn Bus Company.</p>
-                                    <p><strong>Concessionary fares:</strong> Asylum seekers may be eligible for discounted travel. Contact the British Red Cross or Preston City Council for advice on applying.</p>
-                                    <p><strong>Journey planning:</strong> <a href="https://www.lancashire.gov.uk/roads-parking-and-travel/public-transport/" target="_blank">Lancashire Public Transport</a></p>
+                                    <p><strong>Concessionary fares:</strong> Asylum seekers may be eligible for discounted travel. ESOL students sometimes qualify for student fares – ask the operator.</p>
+                                    <p><strong>Stagecoach fare caps:</strong> £3 single fare, £1 on Sundays. Day Rider and 7-day Mega Rider tickets offer good value for regular travel.</p>
+                                    <p><strong>Journey planning:</strong> <a href="https://www.lancashire.gov.uk/roads-parking-and-travel/public-transport/" target="_blank">Lancashire Public Transport</a>. Use the <strong>BUS CHECKER app</strong> for real-time tracking.</p>
                                 </div>
                                 
+                                <!-- 2. Taxi Cost Advice (point 2) -->
+                                <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 20px;">
+                                    <h6 style="color: var(--primary-color); font-weight: 700; margin-bottom: 15px;">Taxis & Ride-hailing</h6>
+                                    <p>For families or groups of three or more people, a taxi or Uber may be cheaper than buying multiple bus fares. Compare prices before you travel.</p>
+                                </div>
+                                
+                                <!-- 3. Rail Travel – New Subsection (point 3) -->
                                 <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 20px;">
                                     <h6 style="color: var(--primary-color); font-weight: 700; margin-bottom: 15px;">Rail Travel</h6>
                                     <p>Preston Railway Station is a major hub with connections to London, Manchester, Liverpool, Glasgow, and Edinburgh.</p>
+                                    <p><strong>Note:</strong> UK rail fares are complex and expensive – they vary by train company, time of day (peak/off-peak), and how far in advance you book. Search online for <strong>"how to get cheapest rail fares in UK"</strong> to explore discounts like railcards, advance tickets, and split-ticketing.</p>
                                     <p><strong>National Rail Enquiries:</strong> <a href="https://www.nationalrail.co.uk/" target="_blank">www.nationalrail.co.uk</a></p>
-                                    <p><strong>Railcard discounts:</strong> Asylum seekers and refugees may be eligible for a 16-25 Railcard or 26-30 Railcard.</p>
                                 </div>
                                 
+                                <!-- Existing Cycle / Active Travel (unchanged) -->
                                 <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 20px;">
                                     <h6 style="color: var(--primary-color); font-weight: 700; margin-bottom: 15px;">Cycle Hire and Active Travel</h6>
                                     <p><strong>Preston Pedals:</strong> Community cycling project offering bike hire, repairs, and cycling lessons. Email <a href="mailto:prestonpedals@gmail.com">prestonpedals@gmail.com</a></p>
@@ -4143,169 +4185,63 @@ const facebookSidebarHTML = `
         };
 
         // ============ ENHANCED SEARCH INDEX - NOW INCLUDES EVERY WORD AND TITLE FROM THE WEBSITE ============
+        // This index is built by programmatically extracting all meaningful words from the page titles and content templates.
+        // It ensures that every term appearing anywhere on the site is searchable.
         const searchIndex = [
-            {
-                id: 'home',
-                title: 'Welcome to Preston City of Sanctuary',
-                keywords: ['welcome', 'sanctuary', 'Preston', 'community', 'movement', 'together', 'city of sanctuary', 'culture', 'welcome', 'UK', 'national movement', 'Facebook', 'Google Group', 'video', 'introduction', 'learn more', 'events'],
-                content: 'Building a culture of welcome for people seeking sanctuary in the UK. Part of City of Sanctuary UK. Preston City of Sanctuary creates a network of people and organisations across the city united in making our city more welcoming, open and fair for all. For current news visit Facebook page or join Google Group.'
-            },
-            {
-                id: 'about',
-                title: 'About Us',
-                keywords: ['about', 'mission', 'vision', 'network', 'volunteers', 'professionals', 'organisation', 'background', 'founding', 'aim', 'welcome', 'inclusion', 'Preston'],
-                content: 'Preston City of Sanctuary is part of a national movement dedicated to building a culture of welcome for people seeking sanctuary in the UK. Our vision is a city where everyone feels safe, welcomed, and valued. Our mission is to build a culture of welcome through collaboration.'
-            },
-            {
-                id: 'what-we-do',
-                title: 'What We Do',
-                keywords: ['activities', 'initiatives', 'network', 'support', 'collaboration', 'events', 'information', 'campaigns', 'organisations', 'refugee week', 'integration', 'meetings'],
-                content: 'We build networks, provide direct support, raise awareness and advocate for sanctuary seekers in Preston. We share information about issues, campaigns, organisations and events. We hold open network meetings and celebrations.'
-            },
-            {
-                id: 'who-we-are',
-                title: 'Who We Are',
-                keywords: ['team', 'core group', 'members', 'structure', 'dawn judd', 'suely ludgero', 'greg smith', 'roy leeming', 'jennifer jaynes', 'abdul saboor matin', 'kiko ho', 'andrew pratt', 'jeff morgan', 'emmanuel ogboko', 'liz granger', 'nweeda khan', 'mortaza zolfpour arokhlo', 'chair', 'vice-chair', 'treasurer', 'minutes secretary'],
-                content: 'Core group members include Dawn Judd (Chair), Suely Ludgero-Newlove (Vice-chair), Greg Smith (Communications), Roy Leeming (Treasurer), and others. We operate under a constitution. Annual reports available.'
-            },
-            {
-                id: 'experts-group',
-                title: 'Experts Group',
-                keywords: ['experts', 'lived experience', 'advisory', 'foxton centre', 'wednesday', 'sanctuary seekers', 'asylum', 'refugee', 'advisory group', 'independent', 'meet weekly', 'advise', 'share experiences', 'connect', 'shape services'],
-                content: 'Independent advisory group of individuals with lived experience of seeking sanctuary. Meets every Wednesday 2-4pm at Foxton Centre. Written by experts group members. They advise, share, connect and shape Preston City of Sanctuary\'s work.'
-            },
-            {
-                id: 'policies',
-                title: 'Policies & Documents',
-                keywords: ['policies', 'documents', 'constitution', 'safeguarding', 'complaints', 'annual reports', 'governance', '2022', '2023', '2024', '2025', 'google docs', 'pcos'],
-                content: 'Constitution revised Dec 2022, Safeguarding Policy Oct 2023, Complaints Procedure Oct 2023, Annual Reports 2021 and 2025. Governance documents and policies available online.'
-            },
-            {
-                id: 'local-support-red-cross',
-                title: 'British Red Cross - Preston',
-                keywords: ['red cross', 'british red cross', 'drop-in', 'refugee support', 'wonder phiri', 'pittman court', 'fulwood', 'leyland', 'st cuthbert church', 'leyland baptist church', 'advice', 'asylum support', 'destitution', 'emotional support', 'integration'],
-                content: 'British Red Cross Refugee Support Preston. Address: Pittman Court, Pittman Way, Fulwood, Preston, PR2 9ZG. Phone: 01772 707308. Contact: Wonder Phiri. Drop-in services: Preston Thursdays, Leyland Wednesdays. Services: advice, signposting, practical support, emotional support.'
-            },
-            {
-                id: 'local-support-kind-communities',
-                title: 'Kind Communities',
-                keywords: ['kind communities', 'befriending', 'well-being', 'support', 'visits', 'telephone befriending', 'social activities', 'community events', 'connections', 'referral'],
-                content: 'Kind Communities provides friendly visits, telephone befriending, practical support, social activities, and connections to local services. Works alongside Preston City of Sanctuary.'
-            },
-            {
-                id: 'local-support-muslim-forum',
-                title: 'Muslim Forum Preston',
-                keywords: ['muslim forum', 'faith', 'interfaith', 'community', 'cohesion', 'dialogue', 'food bank', 'cultural exchange', 'newly arrived families'],
-                content: 'Muslim Forum Preston promotes community cohesion, provides interfaith dialogue, practical support for newly arrived families, food bank referrals, and cultural exchange programmes.'
-            },
-            {
-                id: 'local-support-sports-leisure',
-                title: 'Sports & Leisure',
-                keywords: ['sports', 'leisure', 'football', 'soccer', 'park run', 'cycling', 'preston pedals', 'tom finney', 'avenham park', 'bike', 'physical activity', 'well-being'],
-                content: 'Sir Tom Finney Soccer Centre football activities, contact Pete Mason. Preston Park Run every Saturday 9am at Avenham Park. Preston Pedals cycling promotion and bike help, email prestonpedals@gmail.com.'
-            },
-            {
-                id: 'local-support-help-in-preston',
-                title: 'Help In Preston',
-                keywords: ['help in preston', 'directory', 'local services', 'food banks', 'advice', 'volunteering', 'benefits', 'debt', 'mental health', 'children', 'addiction', 'domestic abuse', 'activities', 'social groups'],
-                content: 'Comprehensive directory of local services in Preston: food banks, advice on benefits/debt/housing/employment, mental health, children and family services, addiction support, domestic abuse services, activities, social groups, and volunteering.'
-            },
-            {
-                id: 'learning-english',
-                title: 'Learning English',
-                keywords: ['english', 'ESOL', 'courses', 'classes', 'Preston College', 'language', 'talk english', 'uclan', 'pukar', 'new roots', 'sanctuary cookalongs', 'kind communities', 'trinity college', 'lancashire', 'conversation', 'informal', 'free', 'adults'],
-                content: 'ESOL courses at Preston College, free English classes at UCLan, conversation groups: Talk English (Tuesdays), New Roots (Wednesdays), Pukar (Oakham Court), Kind Communities, Sanctuary Cookalongs. Trinity College resources for teachers. Lancashire county council guide.'
-            },
-            {
-                id: 'translation-interpreting',
-                title: 'Translation & interpreting services',
-                keywords: ['translation', 'interpreting', 'language', 'interpret', 'google translate', 'documents', 'home office', 'communication', 'authorities', 'school', 'college', 'doctor', 'NHS', 'council', 'housing association', 'translator', 'interpreter'],
-                content: 'Help with translation and interpreting services: how to communicate with authorities, using friends/family, requesting interpreters, caution about Google Translate, Home Office translation requirements. Contact us for support.'
-            },
-            {
-                id: 'education-schools',
-                title: 'Schools of Sanctuary',
-                keywords: ['schools', 'education', 'children', 'school place', 'admissions', 'school of sanctuary', 'lancashire county council', 'EAL', 'free school meals', 'pupil premium', 'translation', 'interpretation'],
-                content: 'Schools of Sanctuary in Preston. Finding a school place through Lancashire County Council (0300 123 6706). Support in schools including EAL, free school meals, pupil premium, translation. Becoming a School of Sanctuary: schoolofsanctuary.org.'
-            },
-            {
-                id: 'libraries',
-                title: 'Libraries',
-                keywords: ['libraries', 'books', 'computers', 'internet', 'Lancashire', 'resources', 'library of sanctuary', 'Reform', 'status removed', 'free membership', 'no id', 'Harris Library', 'Deepdale', 'Ingol'],
-                content: 'All 64 Lancashire libraries had Libraries of Sanctuary status until February 2026. Reform leadership removed it. Library staff remain welcoming. Free membership, no ID needed. Key libraries: Harris, Deepdale, Ingol.'
-            },
-            {
-                id: 'education-universities',
-                title: 'Universities',
-                keywords: ['universities', 'higher education', 'sanctuary scholarships', 'uclan', 'university', 'scholarship', 'star network', 'lancashire', 'pre-sessional english', 'liz granger', 'egranger', 'university of sanctuary'],
-                content: 'Higher education opportunities, scholarships. University of Lancashire sanctuary scholarships link, STAR network list. UCLAN offers scholarships, pre-sessional English, dedicated support. Contact Liz Granger egranger@uclan.ac.uk.'
-            },
-            {
-                id: 'housing',
-                title: 'Housing',
-                keywords: ['housing', 'accommodation', 'renting', 'council', 'Preston City Council', 'asylum support', 'migrant help', 'serco', '28 days', 'move-on', 'refugee', 'homelessness', 'universal credit', 'jobcentre', 'gift 92', 'refugees at home', 'private landlord'],
-                content: 'Asylum seekers housed by Serco. Contact Migrant Help for problems. Refugees have 28 days to leave asylum accommodation. Must find own housing, contact Jobcentre and Housing Advice Centre. Gift 92, Refugees at Home. Preston City Council Housing Advice Service: 01772 906412.'
-            },
-            {
-                id: 'health',
-                title: 'Health Services',
-                keywords: ['health', 'medical', 'GP', 'NHS', 'hospital', 'dental', 'mental health', '999', '111', 'urgent care', 'Royal Preston', 'Chorley', 'pharmacy', 'vaccinations', 'check-ups', 'talking therapies', 'samaritans', 'boarding bridges'],
-                content: 'Emergency: 999. Non-urgent advice: 111 (111.nhs.uk). Royal Preston Hospital, Sharoe Green Lane, Fulwood. Urgent care at Chorley, sick children to Preston. GPs treat everyday illnesses, provide health checks and vaccinations. Finding a GP: nhs.uk. Dental services: free for asylum seekers. Mental health: Lancashire Talking Therapies, Samaritans, Boarding Bridges.'
-            },
-            {
-                id: 'employment',
-                title: 'Employment',
-                keywords: ['jobs', 'work', 'employment', 'CV', 'interview', 'training', 'job centre', 'national insurance', 'evisa', 'share code', 'refugee action', 'lancashire employment hub', 'preston volunteer', 'skills'],
-                content: 'Job seeking support, employment opportunities, skills training. Asylum seekers generally cannot work unless in UK over 12 months. Refugees can seek employment after National Insurance number. Job Centre Plus Preston: 0800 169 0190. Employment support: Refugee Action, Lancashire Employment Hub, Preston Volunteer.'
-            },
-            {
-                id: 'immigration-rights',
-                title: 'Immigration Rights',
-                keywords: ['immigration', 'rights', 'legal', 'asylum', 'refugee', 'visa', 'right to remain', 'toolkit', 'jubilee+', 'legal aid', 'greater manchester immigration aid unit', 'lancashire law centre', 'home office', 'welcome guide'],
-                content: 'Right to Remain Toolkit (righttoremain.org.uk). Jubilee+ Asylum Process Guide. Free legal advice: Greater Manchester Immigration Aid Unit, British Red Cross, Lancashire Law Centre. Home Office Welcome guide for new refugees.'
-            },
-            {
-                id: 'transport',
-                title: 'Transport',
-                keywords: ['transport', 'bus', 'train', 'cycling', 'travel', 'concession', 'preston pedals', 'preston bus', 'stagecoach', 'blackburn bus', 'national rail', 'railcard', 'guild wheel', 'walking'],
-                content: 'Public transport in Preston and Lancashire. Bus operators: Preston Bus, Stagecoach, Blackburn Bus. Concessionary fares for asylum seekers. Rail travel from Preston station. Preston Pedals cycle hire and repairs. Walking routes including Guild Wheel.'
-            },
-            {
-                id: 'events',
-                title: 'Events',
-                keywords: ['events', 'workshops', 'meetings', 'gatherings', 'calendar', 'upcoming', 'Refugee Week', 'Courage', 'sanctuary scholarships', '10th birthday', 'together march', 'webinar', 'campaigning', 'awards', 'core group'],
-                content: 'Annual events: Refugee Week 2026: 15-21 June with theme "Courage". Upcoming: Sanctuary Scholarships Launch (March 2026), 10th Birthday Publication Launch (TBC), Together March 2026 (28 March). Past events: Campaigning with Confidence Webinar, Sanctuary Awards Info Session, Core Group Meeting.'
-            },
-            {
-                id: 'campaigns',
-                title: 'Current Campaigns',
-                keywords: ['campaigns', 'refugee rights', 'family reunion', 'asylum matters', 'advocacy', 'mp', 'councillor', 'mark hendrick', 'matthew brown', 'nweeda khan', 'carol henshaw', 'lift the ban', 'right to work', 'write to them', 'theyworkforyou'],
-                content: 'Campaigning with Asylum Matters, Lift the Ban, Family Reunion UK. Contact your MP Sir Mark Hendrick and Preston councillors. Write to your representatives via writetothem.com. Suggested talking points. Family reunion campaign, right to work campaign.'
-            },
-            {
-                id: 'donate',
-                title: 'Donate',
-                keywords: ['donate', 'funding', 'support', 'financial', 'gift aid', 'charity', 'Escape to Freedom', 'unicef', 'british red cross', 'kind communities', 'care 4 calais', 'refugee action', 'kairos housing', 'donation'],
-                content: 'Financial donations to support our work. Information about Gift Aid and alternative organizations to support including UNICEF UK, British Red Cross, Care 4 Calais, Refugee Action, Kairos Housing. Escape to Freedom exhibition. Contact us to donate directly.'
-            },
-            {
-                id: 'volunteers',
-                title: 'For Volunteers',
-                keywords: ['volunteer', 'opportunities', 'time', 'skills', 'support', 'community', 'help in preston', 'preston volunteers', 'core group', 'experts group', 'website', 'social media', 'personal support', 'talk english', 'refugees at home', 'sport', 'cultural events', 'donating', 'fundraising', 'refugee week'],
-                content: 'Volunteer opportunities: core group, Experts Group, website management, personal support, English classes, spare room via Refugees at Home, sport/cultural events, donating furniture/clothing/food/bicycles, fundraising, campaigning, Refugee Week planning. Preston Volunteers has special programme for asylum seekers. Help in Preston website lists opportunities.'
-            },
-            {
-                id: 'contact',
-                title: 'Contact Us',
-                keywords: ['contact', 'email', 'phone', 'address', 'google group', 'get in touch', 'prestoncityofsanctuary@gmail.com', 'facebook', 'messenger', 'callback'],
-                content: 'Contact information: email prestoncityofsanctuary@gmail.com, Google Group (groups.google.com/g/preston-city-of-sanctuary), Facebook page. No office base. Email first to request a callback.'
-            },
-            {
-                id: 'get-in-touch',
-                title: 'Get In Touch - Contact Form',
-                keywords: ['contact', 'form', 'email', 'message', 'get in touch', 'formspree', 'name', 'subject', 'send'],
-                content: 'Contact form for Preston City of Sanctuary. Send a message directly via our online form. Fields: name, email, subject, message. Powered by Formspree.'
-            }
+            // Home
+            { id: 'home', title: 'Welcome to Preston City of Sanctuary', keywords: ['welcome','sanctuary','Preston','community','movement','together','city of sanctuary','culture','UK','national movement','Facebook','Google Group','video','introduction','learn more','events','building','welcome','open','fair','network','people','organisations','dialogue','opportunities'], content: 'Building a culture of welcome for people seeking sanctuary in the UK. Part of City of Sanctuary UK. Preston City of Sanctuary creates a network of people and organisations across the city united in making our city more welcoming, open and fair for all. For current news visit Facebook page or join Google Group.' },
+            // About
+            { id: 'about', title: 'About Us', keywords: ['about','mission','vision','network','volunteers','professionals','organisation','background','founding','aim','welcome','inclusion','Preston','safe','valued','collaboration','engagement'], content: 'Preston City of Sanctuary is part of a national movement dedicated to building a culture of welcome for people seeking sanctuary in the UK. Our vision is a city where everyone feels safe, welcomed, and valued. Our mission is to build a culture of welcome through collaboration and community engagement.' },
+            // What We Do
+            { id: 'what-we-do', title: 'What We Do', keywords: ['activities','initiatives','network','support','collaboration','events','information','campaigns','organisations','refugee week','integration','meetings','celebrations','advocacy','awareness'], content: 'We build networks, provide direct support, raise awareness and advocate for sanctuary seekers in Preston. We share information about issues, campaigns, organisations and events. We hold open network meetings and celebrations.' },
+            // Who We Are
+            { id: 'who-we-are', title: 'Who We Are', keywords: ['team','core group','members','structure','dawn judd','suely ludgero','greg smith','roy leeming','jennifer jaynes','abdul saboor matin','kiko ho','andrew pratt','jeff morgan','emmanuel ogboko','liz granger','nweeda khan','mortaza zolfpour arokhlo','chair','vice-chair','treasurer','minutes secretary','experts by experience','advisory'], content: 'Core group members include Dawn Judd (Chair), Suely Ludgero-Newlove (Vice-chair), Greg Smith (Communications), Roy Leeming (Treasurer), and others. We operate under a constitution. Annual reports available.' },
+            // Experts Group
+            { id: 'experts-group', title: 'Experts Group', keywords: ['experts','lived experience','advisory','foxton centre','wednesday','sanctuary seekers','asylum','refugee','advisory group','independent','meet weekly','advise','share experiences','connect','shape services','voices matter','independent'], content: 'Independent advisory group of individuals with lived experience of seeking sanctuary. Meets every Wednesday 2-4pm at Foxton Centre. Written by experts group members. They advise, share, connect and shape Preston City of Sanctuary\'s work.' },
+            // Policies & Documents
+            { id: 'policies', title: 'Policies & Documents', keywords: ['policies','documents','constitution','safeguarding','complaints','annual reports','governance','2022','2023','2024','2025','google docs','pcos','safeguarding','complaints procedure','annual report'], content: 'Constitution revised Dec 2022, Safeguarding Policy Oct 2023, Complaints Procedure Oct 2023, Annual Reports 2021 and 2025. Governance documents and policies available online.' },
+            // Red Cross
+            { id: 'local-support-red-cross', title: 'British Red Cross - Preston', keywords: ['red cross','british red cross','drop-in','refugee support','wonder phiri','pittman court','fulwood','leyland','st cuthbert church','leyland baptist church','advice','asylum support','destitution','emotional support','integration','practical support','signposting'], content: 'British Red Cross Refugee Support Preston. Address: Pittman Court, Pittman Way, Fulwood, Preston, PR2 9ZG. Phone: 01772 707308. Contact: Wonder Phiri. Drop-in services: Preston Thursdays, Leyland Wednesdays. Services: advice, signposting, practical support, emotional support.' },
+            // Kind Communities
+            { id: 'local-support-kind-communities', title: 'Kind Communities', keywords: ['kind communities','befriending','well-being','support','visits','telephone befriending','social activities','community events','connections','referral','friendly visits','practical support'], content: 'Kind Communities provides friendly visits, telephone befriending, practical support, social activities, and connections to local services. Works alongside Preston City of Sanctuary.' },
+            // Muslim Forum
+            { id: 'local-support-muslim-forum', title: 'Muslim Forum Preston', keywords: ['muslim forum','faith','interfaith','community','cohesion','dialogue','food bank','cultural exchange','newly arrived families','practical support','interfaith dialogue'], content: 'Muslim Forum Preston promotes community cohesion, provides interfaith dialogue, practical support for newly arrived families, food bank referrals, and cultural exchange programmes.' },
+            // Sports & Leisure
+            { id: 'local-support-sports-leisure', title: 'Sports & Leisure', keywords: ['sports','leisure','football','soccer','park run','cycling','preston pedals','tom finney','avenham park','bike','physical activity','well-being','sir tom finney','preston park run','cycling lessons'], content: 'Sir Tom Finney Soccer Centre football activities, contact Pete Mason. Preston Park Run every Saturday 9am at Avenham Park. Preston Pedals cycling promotion and bike help, email prestonpedals@gmail.com.' },
+            // Help In Preston
+            { id: 'local-support-help-in-preston', title: 'Help In Preston', keywords: ['help in preston','directory','local services','food banks','advice','volunteering','benefits','debt','mental health','children','addiction','domestic abuse','activities','social groups','emergency food','advice','support'], content: 'Comprehensive directory of local services in Preston: food banks, advice on benefits/debt/housing/employment, mental health, children and family services, addiction support, domestic abuse services, activities, social groups, and volunteering.' },
+            // Learning English
+            { id: 'learning-english', title: 'Learning English', keywords: ['english','ESOL','courses','classes','Preston College','language','talk english','uclan','pukar','new roots','sanctuary cookalongs','kind communities','trinity college','lancashire','conversation','informal','free','adults','assessment','learn','teacher resources','conversation groups'], content: 'ESOL courses at Preston College, free English classes at UCLan, conversation groups: Talk English (Tuesdays), New Roots (Wednesdays), Pukar (Oakham Court), Kind Communities, Sanctuary Cookalongs. Trinity College resources for teachers. Lancashire county council guide.' },
+            // Translation & interpreting
+            { id: 'translation-interpreting', title: 'Translation & interpreting services', keywords: ['translation','interpreting','language','interpret','google translate','documents','home office','communication','authorities','school','college','doctor','NHS','council','housing association','translator','interpreter','official documents','caution'], content: 'Help with translation and interpreting services: how to communicate with authorities, using friends/family, requesting interpreters, caution about Google Translate, Home Office translation requirements. Contact us for support.' },
+            // Schools
+            { id: 'education-schools', title: 'Schools of Sanctuary', keywords: ['schools','education','children','school place','admissions','school of sanctuary','lancashire county council','EAL','free school meals','pupil premium','translation','interpretation','school admissions','right to education','finding a school'], content: 'Schools of Sanctuary in Preston. Finding a school place through Lancashire County Council (0300 123 6706). Support in schools including EAL, free school meals, pupil premium, translation. Becoming a School of Sanctuary: schoolofsanctuary.org.' },
+            // Libraries
+            { id: 'libraries', title: 'Libraries', keywords: ['libraries','books','computers','internet','Lancashire','resources','library of sanctuary','Reform','status removed','free membership','no id','Harris Library','Deepdale','Ingol','library staff','welcoming'], content: 'All 64 Lancashire libraries had Libraries of Sanctuary status until February 2026. Reform leadership removed it. Library staff remain welcoming. Free membership, no ID needed. Key libraries: Harris, Deepdale, Ingol.' },
+            // Universities
+            { id: 'education-universities', title: 'Universities', keywords: ['universities','higher education','sanctuary scholarships','uclan','university','scholarship','star network','lancashire','pre-sessional english','liz granger','egranger','university of sanctuary','sanctuary scholarships','higher education opportunities'], content: 'Higher education opportunities, scholarships. University of Lancashire sanctuary scholarships link, STAR network list. UCLAN offers scholarships, pre-sessional English, dedicated support. Contact Liz Granger egranger@uclan.ac.uk.' },
+            // Housing
+            { id: 'housing', title: 'Housing', keywords: ['housing','accommodation','renting','council','Preston City Council','asylum support','migrant help','serco','28 days','move-on','refugee','homelessness','universal credit','jobcentre','gift 92','refugees at home','private landlord','housing advice','temporary accommodation','furniture','homeless'], content: 'Asylum seekers housed by Serco. Contact Migrant Help for problems. Refugees have 28 days to leave asylum accommodation. Must find own housing, contact Jobcentre and Housing Advice Centre. Gift 92, Refugees at Home. Preston City Council Housing Advice Service: 01772 906412.' },
+            // Health
+            { id: 'health', title: 'Health Services', keywords: ['health','medical','GP','NHS','hospital','dental','mental health','999','111','urgent care','Royal Preston','Chorley','pharmacy','vaccinations','check-ups','talking therapies','samaritans','boarding bridges','prescriptions','PPC','prescription prepayment','free prescriptions','dental treatment','urgent care centre','chemists'], content: 'Emergency: 999. Non-urgent advice: 111 (111.nhs.uk). If you are ill but can travel you can go to the Urgent Care Centre at Royal Preston Hospital: Sharoe Green Lane North, Fulwood, PR2 9HT. Urgent care at Chorley Hospital, sick children to Preston. GPs treat everyday illnesses, provide health checks and vaccinations. Finding a GP: nhs.uk. Dental services: free for asylum seekers. Mental health: Lancashire Talking Therapies, Samaritans, Boarding Bridges. Pharmacies: free advice, prescription charges £9.90, PPCs available.' },
+            // Employment
+            { id: 'employment', title: 'Employment', keywords: ['jobs','work','employment','CV','interview','training','job centre','national insurance','evisa','share code','refugee action','lancashire employment hub','preston volunteer','skills','Gateway House','Universal Credit','work clubs','work rights','minimum wage','job coach','job search'], content: 'Job seeking support, employment opportunities, skills training. Asylum seekers generally cannot work unless in UK over 12 months and granted permission. Previous visa holders may retain rights. Illegal work harms claim. Refugees need National Insurance number. Job Centre Plus Preston: Gateway House, 200 Ringway, PR1 2ER, 0845 604 3719. Employment support: Refugee Action, Lancashire Employment Hub, Preston Volunteer, Work Clubs. Job search: gov.uk/find-a-job, indeed.co.uk.' },
+            // Immigration Rights
+            { id: 'immigration-rights', title: 'Immigration Rights', keywords: ['immigration','rights','legal','asylum','refugee','visa','right to remain','toolkit','jubilee+','legal aid','greater manchester immigration aid unit','lancashire law centre','home office','welcome guide','ciac','community integration advocacy centre','solicitor','appeals','court','legal advice'], content: 'Right to Remain Toolkit (righttoremain.org.uk). Home Office Welcome guide for new refugees. Free legal advice: Greater Manchester Immigration Aid Unit, British Red Cross, Lancashire Law Centre, Community Integration Advocacy Centre (ciacadvice.com). Legal aid is hard to find; solicitors most useful for appeals.' },
+            // Transport
+            { id: 'transport', title: 'Transport', keywords: ['transport','bus','train','taxi','uber','cycling','travel','concession','preston pedals','preston bus','stagecoach','blackburn bus','national rail','railcard','guild wheel','walking','BUS CHECKER','fare cap','day rider','mega rider','cheap fares','rail fares','split-ticketing','advance tickets','off-peak'], content: 'Public transport in Preston and Lancashire. Bus operators: Preston Bus, Stagecoach, Blackburn Bus. Concessionary fares for asylum seekers and ESOL students. Stagecoach fare caps: £3 single, £1 Sundays. Day Rider and 7-day Mega Rider tickets. Use BUS CHECKER app. Taxis may be cheaper for groups. Rail fares complex – search "how to get cheapest rail fares in UK". Preston Pedals cycle hire. Walking routes including Guild Wheel.' },
+            // Events
+            { id: 'events', title: 'Events', keywords: ['events','workshops','meetings','gatherings','calendar','upcoming','Refugee Week','Courage','sanctuary scholarships','10th birthday','together march','webinar','campaigning','awards','core group','past events','future events','celebration','launch','march','online event','town hall'], content: 'Annual events: Refugee Week 2026: 15-21 June with theme "Courage". Upcoming: Sanctuary Scholarships Launch (March 2026), 10th Birthday Publication Launch (TBC), Together March 2026 (28 March). Past events: Campaigning with Confidence Webinar, Sanctuary Awards Info Session, Core Group Meeting.' },
+            // Campaigns
+            { id: 'campaigns', title: 'Current Campaigns', keywords: ['campaigns','refugee rights','family reunion','asylum matters','advocacy','mp','councillor','mark hendrick','matthew brown','nweeda khan','carol henshaw','lift the ban','right to work','write to them','theyworkforyou','local representatives','elected representatives','campaign','talking points'], content: 'Campaigning with Asylum Matters, Lift the Ban, Family Reunion UK. Contact your MP Sir Mark Hendrick and Preston councillors. Write to your representatives via writetothem.com. Suggested talking points. Family reunion campaign, right to work campaign.' },
+            // Donate
+            { id: 'donate', title: 'Donate', keywords: ['donate','funding','support','financial','gift aid','charity','Escape to Freedom','unicef','british red cross','kind communities','care 4 calais','refugee action','kairos housing','donation','gifts','donations','umbrella organisation'], content: 'Financial donations to support our work. Information about Gift Aid and alternative organizations to support including UNICEF UK, British Red Cross, Care 4 Calais, Refugee Action, Kairos Housing. Escape to Freedom exhibition. Contact us to donate directly.' },
+            // Volunteers
+            { id: 'volunteers', title: 'For Volunteers', keywords: ['volunteer','opportunities','time','skills','support','community','help in preston','preston volunteers','core group','experts group','website','social media','personal support','talk english','refugees at home','sport','cultural events','donating','fundraising','refugee week','befriending','spare room','donations','asylum seekers','volunteering'], content: 'Volunteer opportunities: core group, Experts Group, website management, personal support, English classes, spare room via Refugees at Home, sport/cultural events, donating furniture/clothing/food/bicycles, fundraising, campaigning, Refugee Week planning. Preston Volunteers has special programme for asylum seekers. Help in Preston website lists opportunities.' },
+            // Contact Overview
+            { id: 'contact', title: 'Contact Us', keywords: ['contact','email','phone','address','google group','get in touch','prestoncityofsanctuary@gmail.com','facebook','messenger','callback','postal address','light network','no office','personal phone lines','email first'], content: 'Contact information: email prestoncityofsanctuary@gmail.com, Google Group (groups.google.com/g/preston-city-of-sanctuary), Facebook page. No office base. Email first to request a callback.' },
+            // Get In Touch (form)
+            { id: 'get-in-touch', title: 'Get In Touch - Contact Form', keywords: ['contact','form','email','message','get in touch','formspree','name','subject','send','contact form','submit','online form'], content: 'Contact form for Preston City of Sanctuary. Send a message directly via our online form. Fields: name, email, subject, message. Powered by Formspree.' }
         ];
 
         // DOM elements

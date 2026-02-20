@@ -3939,8 +3939,8 @@ Asylum seekers and refugees who are ESOL students sometimes qualify for a free b
             }
             
             const searchTerm = query.toLowerCase().trim();
-            // Also split into individual words for better matching
-            const searchWords = searchTerm.split(/\s+/).filter(word => word.length > 1);
+            // Split into individual words but also keep the full phrase for exact matching
+            const searchWords = searchTerm.split(/\s+/).filter(word => word.length > 0);
             
             const results = [];
             
@@ -3950,12 +3950,46 @@ Asylum seekers and refugees who are ESOL students sometimes qualify for a free b
                 const keywordsLower = item.keywords.map(k => k.toLowerCase());
                 const contentLower = item.content.toLowerCase();
                 
-                // Exact match in title gets highest score
+                // Check for exact phrase match in title (highest priority)
                 if (titleLower.includes(searchTerm)) {
-                    score += 5;
+                    score += 10;
                 }
                 
-                // Check each search word against title, keywords, content
+                // Check for exact phrase match in keywords
+                if (item.keywords.some(k => k.toLowerCase().includes(searchTerm))) {
+                    score += 8;
+                }
+                
+                // Check for exact phrase match in content
+                if (contentLower.includes(searchTerm)) {
+                    score += 6;
+                }
+                
+                // For multi-word searches, also check if all individual words appear in the content
+                // This ensures that searches like "volunteer asylum seeker" match pages containing all three words
+                if (searchWords.length > 1) {
+                    const allWordsPresent = searchWords.every(word => 
+                        titleLower.includes(word) || 
+                        keywordsLower.some(k => k.includes(word)) || 
+                        contentLower.includes(word)
+                    );
+                    
+                    if (allWordsPresent) {
+                        score += 5;
+                    }
+                    
+                    // Count how many words appear
+                    const wordsFound = searchWords.filter(word => 
+                        titleLower.includes(word) || 
+                        keywordsLower.some(k => k.includes(word)) || 
+                        contentLower.includes(word)
+                    ).length;
+                    
+                    // Add partial score based on proportion of words found
+                    score += (wordsFound / searchWords.length) * 3;
+                }
+                
+                // Check each search word individually (for single word searches or as fallback)
                 searchWords.forEach(word => {
                     if (titleLower.includes(word)) {
                         score += 3;
@@ -3970,7 +4004,7 @@ Asylum seekers and refugees who are ESOL students sometimes qualify for a free b
                     }
                 });
                 
-                // Also check if any keyword contains the full search term
+                // Check if any keyword contains the full search term (important for phrases)
                 item.keywords.forEach(keyword => {
                     if (keyword.toLowerCase().includes(searchTerm)) {
                         score += 4;

@@ -363,6 +363,7 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
             transition: all 0.3s ease;
             border-left: 3px solid transparent;
+            cursor: pointer;
         }
         
         .search-result-item:hover {
@@ -382,6 +383,14 @@
             color: #666;
             font-size: 0.95rem;
             line-height: 1.5;
+        }
+        
+        .search-result-snippet mark {
+            background-color: #ffeb3b;
+            color: #333;
+            padding: 2px 0;
+            border-radius: 2px;
+            font-weight: 500;
         }
         
         .search-result-link {
@@ -1445,6 +1454,16 @@
             margin-top: 20px;
             font-size: 0.9rem;
             border-left: 4px solid var(--accent-color);
+        }
+
+        /* Search highlight styles for page content */
+        .search-highlight {
+            background-color: #ffeb3b;
+            color: #333;
+            padding: 2px 0;
+            border-radius: 2px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
         }
     </style>
 </head>
@@ -3864,63 +3883,34 @@ Asylum seekers and refugees who are ESOL students sometimes qualify for a free b
             `
         };
 
-        // ============ ENHANCED SEARCH INDEX - NOW INCLUDES EVERY WORD AND TITLE FROM THE WEBSITE ============
-        // This index is built by programmatically extracting all meaningful words from the page titles and content templates.
-        // It ensures that every term appearing anywhere on the site is searchable.
+        // ============ SEARCH INDEX ============
         const searchIndex = [
-            // Home
-            { id: 'home', title: 'Welcome to Preston City of Sanctuary', keywords: ['welcome','sanctuary','Preston','community','movement','together','city of sanctuary','culture','UK','national movement','Facebook','Google Group','video','introduction','learn more','events','building','welcome','open','fair','network','people','organisations','dialogue','opportunities'], content: 'Building a culture of welcome for people seeking sanctuary in the UK. Part of City of Sanctuary UK. Preston City of Sanctuary creates a network of people and organisations across the city united in making our city more welcoming, open and fair for all. For current news visit Facebook page or join Google Group.' },
-            // About
+            { id: 'home', title: 'Home', keywords: ['welcome','sanctuary','Preston','community','movement','together','city of sanctuary','culture','UK','national movement','Facebook','Google Group','video','introduction','learn more','events','building','welcome','open','fair','network','people','organisations','dialogue','opportunities'], content: 'Building a culture of welcome for people seeking sanctuary in the UK. Part of City of Sanctuary UK. Preston City of Sanctuary creates a network of people and organisations across the city united in making our city more welcoming, open and fair for all. For current news visit Facebook page or join Google Group.' },
             { id: 'about', title: 'About Us', keywords: ['about','mission','vision','network','volunteers','professionals','organisation','background','founding','aim','welcome','inclusion','Preston','safe','valued','collaboration','engagement'], content: 'Preston City of Sanctuary is part of a national movement dedicated to building a culture of welcome for people seeking sanctuary in the UK. Our vision is a city where everyone feels safe, welcomed, and valued. Our mission is to build a culture of welcome through collaboration and community engagement.' },
-            // What We Do
             { id: 'what-we-do', title: 'What We Do', keywords: ['activities','initiatives','network','support','collaboration','events','information','campaigns','organisations','refugee week','integration','meetings','celebrations','advocacy','awareness'], content: 'We build networks, provide direct support, raise awareness and advocate for sanctuary seekers in Preston. We share information about issues, campaigns, organisations and events. We hold open network meetings and celebrations.' },
-            // Who We Are
             { id: 'who-we-are', title: 'Who We Are', keywords: ['team','core group','members','structure','dawn judd','suely ludgero','greg smith','roy leeming','jennifer jaynes','abdul saboor matin','kiko ho','andrew pratt','jeff morgan','emmanuel ogboko','liz granger','nweeda khan','mortaza zolfpour arokhlo','chair','vice-chair','treasurer','minutes secretary','experts by experience','advisory'], content: 'Core group members include Dawn Judd (Chair), Suely Ludgero-Newlove (Vice-chair), Greg Smith (Communications), Roy Leeming (Treasurer), and others. We operate under a constitution. Annual reports available.' },
-            // Experts Group
             { id: 'experts-group', title: 'Experts Group', keywords: ['experts','lived experience','advisory','wednesday','sanctuary seekers','asylum','refugee','advisory group','independent','meet weekly','advise','share experiences','connect','shape services','voices matter','independent'], content: 'Independent advisory group of individuals with lived experience of seeking sanctuary. Written by experts group members. They advise, share, connect and shape Preston City of Sanctuary\'s work.' },
-            // Policies & Documents
             { id: 'policies', title: 'Policies & Documents', keywords: ['policies','documents','constitution','safeguarding','complaints','annual reports','governance','2022','2023','2024','2025','google docs','pcos','safeguarding','complaints procedure','annual report'], content: 'Constitution revised Dec 2022, Safeguarding Policy Oct 2023, Complaints Procedure Oct 2023, Annual Reports 2021 and 2025. Governance documents and policies available online.' },
-            // Red Cross
             { id: 'local-support-red-cross', title: 'British Red Cross - Preston', keywords: ['red cross','british red cross','drop-in','refugee support','wonder phiri','pittman court','fulwood','leyland','st cuthbert church','leyland baptist church','advice','asylum support','destitution','emotional support','integration','practical support','signposting'], content: 'British Red Cross Refugee Support Preston. Address: Pittman Court, Pittman Way, Fulwood, Preston, PR2 9ZG. Phone: 01772 707308. Contact: Wonder Phiri. Drop-in services: Preston Thursdays, Leyland Wednesdays. Services: advice, signposting, practical support, emotional support.' },
-            // Kind Communities
             { id: 'local-support-kind-communities', title: 'Kind Communities', keywords: ['kind communities','befriending','well-being','support','visits','telephone befriending','social activities','community events','connections','referral','friendly visits','practical support'], content: 'Kind Communities provides friendly visits, telephone befriending, practical support, social activities, and connections to local services. Works alongside Preston City of Sanctuary.' },
-            // Muslim Forum
             { id: 'local-support-muslim-forum', title: 'Muslim Forum Preston', keywords: ['muslim forum','faith','interfaith','community','cohesion','dialogue','food bank','cultural exchange','newly arrived families','practical support','interfaith dialogue'], content: 'Muslim Forum Preston promotes community cohesion, provides interfaith dialogue, practical support for newly arrived families, food bank referrals, and cultural exchange programmes.' },
-            // Sports & Leisure
             { id: 'local-support-sports-leisure', title: 'Sports & Leisure', keywords: ['sports','leisure','football','soccer','park run','cycling','preston pedals','tom finney','avenham park','bike','physical activity','well-being','sir tom finney','preston park run','cycling lessons'], content: 'Sir Tom Finney Soccer Centre football activities, contact Pete Mason. Preston Park Run every Saturday 9am at Avenham Park. Preston Pedals cycling promotion and bike help, email prestonpedals@gmail.com.' },
-            // Help In Preston
             { id: 'local-support-help-in-preston', title: 'Help In Preston', keywords: ['help in preston','directory','local services','food banks','advice','volunteering','benefits','debt','mental health','children','addiction','domestic abuse','activities','social groups','emergency food','advice','support'], content: 'Comprehensive directory of local services in Preston: food banks, advice on benefits/debt/housing/employment, mental health, children and family services, addiction support, domestic abuse services, activities, social groups, and volunteering.' },
-            // Learning English
             { id: 'learning-english', title: 'Learning English', keywords: ['english','ESOL','courses','classes','Preston College','language','talk english','university of lancashire','pukar','new roots','sanctuary cookalongs','kind communities','trinity college','lancashire','conversation','informal','free','adults','assessment','learn','teacher resources','conversation groups'], content: 'ESOL courses at Preston College, free English classes at University of Lancashire, conversation groups: Talk English (Tuesdays), New Roots (Wednesdays), Pukar (Oakham Court), Kind Communities, Sanctuary Cookalongs. Trinity College resources for teachers. Lancashire county council guide.' },
-            // Translation & interpreting
             { id: 'translation-interpreting', title: 'Translation & interpreting services', keywords: ['translation','interpreting','language','interpret','google translate','documents','home office','communication','authorities','school','college','doctor','NHS','council','housing association','translator','interpreter','official documents','caution'], content: 'Help with translation and interpreting services: how to communicate with authorities, using friends/family, requesting interpreters, caution about Google Translate, Home Office translation requirements. Contact us for support.' },
-            // Schools
             { id: 'education-schools', title: 'Schools of Sanctuary', keywords: ['schools','education','children','school place','admissions','school of sanctuary','lancashire county council','EAL','free school meals','pupil premium','translation','interpretation','school admissions','right to education','finding a school'], content: 'Schools of Sanctuary in Preston. Finding a school place through Lancashire County Council (0300 123 6706). Support in schools including EAL, free school meals, pupil premium, translation. Becoming a School of Sanctuary: schoolofsanctuary.org.' },
-            // Libraries
             { id: 'libraries', title: 'Libraries', keywords: ['libraries','books','computers','internet','Lancashire','resources','library of sanctuary','Reform','status removed','free membership','no id','Harris Library','Deepdale','Ingol','library staff','welcoming'], content: 'All 64 Lancashire libraries had Libraries of Sanctuary status until February 2026. Reform leadership removed it. Library staff remain welcoming. Free membership, no ID needed. Key libraries: Harris, Deepdale, Ingol.' },
-            // Universities
             { id: 'education-universities', title: 'Universities', keywords: ['universities','higher education','sanctuary scholarships','university of lancashire','university','scholarship','star network','lancashire','pre-sessional english','liz granger','egranger','university of sanctuary','sanctuary scholarships','higher education opportunities'], content: 'Higher education opportunities, scholarships. University of Lancashire sanctuary scholarships link, STAR network list. University of Lancashire offers scholarships, pre-sessional English, dedicated support. Contact Liz Granger egranger@lancashire.ac.uk.' },
-            // Housing
             { id: 'housing', title: 'Housing', keywords: ['housing','accommodation','renting','council','Preston City Council','asylum support','migrant help','serco','28 days','move-on','refugee','homelessness','universal credit','jobcentre','gift 92','refugees at home','private landlord','housing advice','temporary accommodation','furniture','homeless'], content: 'Asylum seekers housed by Serco. Contact Migrant Help for problems. When an asylum claim is successful and you become a refugee you may have as little as 28 days to leave asylum accommodation. Must find own housing, contact Jobcentre and Housing Advice Centre. Gift 92, Refugees at Home. Preston City Council Housing Advice Service: 01772 906412.' },
-            // Health
             { id: 'health', title: 'Health Services', keywords: ['health','medical','GP','NHS','hospital','dental','mental health','999','111','urgent care','Royal Preston','Chorley','pharmacy','vaccinations','check-ups','talking therapies','samaritans','prescriptions','PPC','prescription prepayment','free prescriptions','dental treatment','urgent care centre','chemists','rethink'], content: 'Emergency: 999. Non-urgent advice: 111 (111.nhs.uk). If you are ill but can travel you can go to the Urgent Care Centre at Royal Preston Hospital: Sharoe Green Lane North, Fulwood, PR2 9HT. Urgent care at Chorley Hospital, sick children to Preston. GPs treat everyday illnesses, provide health checks and vaccinations. Finding a GP: nhs.uk. Dental services: free for asylum seekers. Mental health: contact your GP, Lancashire Talking Therapies, Samaritans (116 123), Rethink Mental Health. Pharmacies: free advice, prescriptions can be paper or electronic, free for asylum seekers, standard charge £9.90, PPCs available.' },
-            // Employment
             { id: 'employment', title: 'Employment', keywords: ['jobs','work','employment','CV','interview','training','job centre','national insurance','evisa','share code','refugee action','lancashire employment hub','preston volunteer','skills','Gateway House','Universal Credit','work clubs','work rights','minimum wage','job coach','job search'], content: 'Job seeking support, employment opportunities, skills training. Asylum seekers generally cannot work unless in UK over 12 months and granted permission. Previous visa holders may retain rights. Illegal work harms claim. Refugees need National Insurance number. Job Centre Plus Preston: Gateway House, 200 Ringway, PR1 2ER, 0845 604 3719. Employment support: Refugee Action, Lancashire Employment Hub, Preston Volunteer, Work Clubs. Job search: gov.uk/find-a-job, indeed.co.uk.' },
-            // Immigration Rights
             { id: 'immigration-rights', title: 'Immigration Rights', keywords: ['immigration','rights','legal','asylum','refugee','visa','right to remain','toolkit','jubilee+','legal aid','greater manchester immigration aid unit','lancashire law centre','home office','welcome guide','ciac','community integration advocacy centre','solicitor','appeals','court','legal advice'], content: 'Right to Remain Toolkit (righttoremain.org.uk). Home Office Welcome guide for new refugees. Free legal advice: Greater Manchester Immigration Aid Unit, British Red Cross, Lancashire Law Centre, Community Integration Advocacy Centre (ciacadvice.com). Legal aid is hard to find; solicitors most useful for appeals.' },
-            // Transport
             { id: 'transport', title: 'Transport', keywords: ['transport','bus','train','taxi','uber','cycling','travel','concession','preston pedals','preston bus','stagecoach','blackburn bus','national rail','railcard','guild wheel','walking','BUS CHECKER','fare cap','day rider','mega rider','cheap fares','rail fares','split-ticketing','advance tickets','off-peak'], content: 'Public transport in Preston and Lancashire. Bus operators: Preston Bus, Stagecoach, Blackburn Bus. Concessionary fares for asylum seekers and ESOL students. Stagecoach fare caps: £3 single, £1 Sundays. Day Rider and 7-day Mega Rider tickets. Use BUS CHECKER app. Taxis may be cheaper for groups. Rail fares complex – search "how to get cheapest rail fares in UK". Preston Pedals cycle hire. Walking routes including Guild Wheel.' },
-            // Events
             { id: 'events', title: 'Events', keywords: ['events','workshops','meetings','gatherings','calendar','upcoming','Refugee Week','Courage','volunteering fair','10th birthday','global link','escape to safety','summer fun','past events','future events','celebration','archive','reports','videos','photos'], content: 'Our public events in 2026: volunteering fair, 10th Birthday publication launch, Global Link\'s Escape to Safety exhibition, summer fun activities. Watch Facebook for details. Past events archive with links to reports, videos and photos from previous events. Browse by year.' },
-            // Campaigns
             { id: 'campaigns', title: 'Current Campaigns', keywords: ['campaigns','refugee rights','family reunion','asylum matters','advocacy','mp','councillor','paul foster','mark hendrick','write to them','theyworkforyou','local representatives','elected representatives','campaign','talking points','lancashire county council','preston city council','ward','writetothem','south ribble','leyland','penwortham','lostock hall','postcode'], content: 'Campaigning with Asylum Matters, Lift the Ban, Family Reunion UK. Your voice matters: MPs may contact Home Office to speed up decisions. If you live in South Ribble your MP is Paul Foster. Find your MP by postcode. Preston covered by Lancashire County Council and Preston City Council. Find your local councillors at writetothem.com. Suggested talking points.' },
-            // Donate
             { id: 'donate', title: 'Donate', keywords: ['donate','funding','support','financial','gift aid','charity','Escape to Freedom','unicef','british red cross','kind communities','care 4 calais','refugee action','kairos housing','donation','gifts','donations','umbrella organisation'], content: 'Financial donations to support our work. Information about Gift Aid and alternative organizations to support including UNICEF UK, British Red Cross, Care 4 Calais, Refugee Action, Kairos Housing. Escape to Freedom exhibition. Contact us to donate directly.' },
-            // Volunteers
             { id: 'volunteers', title: 'For Volunteers', keywords: ['volunteer','opportunities','time','skills','support','community','help in preston','preston volunteers','core group','experts group','website','social media','personal support','talk english','refugees at home','sport','cultural events','donating','fundraising','refugee week','befriending','spare room','donations','asylum seekers','volunteering','VCFS organisation','recruit'], content: 'Volunteer opportunities: core group, Experts Group, website management, personal support, English classes, spare room via Refugees at Home, sport/cultural events, donating furniture/clothing/food/bicycles, fundraising, campaigning, Refugee Week planning. If you are a VCFS organisation wishing to recruit sanctuary seekers as volunteers please contact us. Preston Volunteers (communitycvs.org.uk) has special programme for asylum seekers. Help in Preston website lists opportunities.' },
-            // Contact Overview
             { id: 'contact', title: 'Contact Us', keywords: ['contact','email','phone','address','google group','get in touch','prestoncityofsanctuary@gmail.com','facebook','messenger','callback','postal address','light network','no office','personal phone lines','email first'], content: 'Contact information: email prestoncityofsanctuary@gmail.com, Google Group (groups.google.com/g/preston-city-of-sanctuary), Facebook page. No office base. Email first to request a callback.' },
-            // Get In Touch (form)
             { id: 'get-in-touch', title: 'Get In Touch - Contact Form', keywords: ['contact','form','email','message','get in touch','formspree','name','subject','send','contact form','submit','online form'], content: 'Contact form for Preston City of Sanctuary. Send a message directly via our online form. Fields: name, email, subject, message. Powered by Formspree.' }
         ];
 
@@ -3932,19 +3922,18 @@ Asylum seekers and refugees who are ESOL students sometimes qualify for a free b
         const searchResultsContainer = document.getElementById('searchResultsContainer');
         const closeSearchBtn = document.getElementById('closeSearchBtn');
         
-        // ============ ENHANCED SEARCH FUNCTION - NOW FINDS ALL WORDS AND TITLES ============
+        // Store the last search query
+        let lastSearchQuery = '';
+
+        // ============ EXACT PHRASE SEARCH FUNCTIONALITY WITH HIGHLIGHTING ============
         function performSearch(query) {
             if (!query || query.trim() === '') {
                 return [];
             }
             
             const searchTerm = query.toLowerCase().trim();
-            // Split into individual words but also keep the full phrase for exact matching
-            const searchWords = searchTerm.split(/\s+/).filter(word => word.length > 0);
             
-            const results = [];
-            
-            searchIndex.forEach(item => {
+            return searchIndex.map(item => {
                 let score = 0;
                 const titleLower = item.title.toLowerCase();
                 const keywordsLower = item.keywords.map(k => k.toLowerCase());
@@ -3965,110 +3954,98 @@ Asylum seekers and refugees who are ESOL students sometimes qualify for a free b
                     score += 6;
                 }
                 
-                // For multi-word searches, also check if all individual words appear in the content
-                // This ensures that searches like "volunteer asylum seeker" match pages containing all three words
-                if (searchWords.length > 1) {
-                    const allWordsPresent = searchWords.every(word => 
-                        titleLower.includes(word) || 
-                        keywordsLower.some(k => k.includes(word)) || 
-                        contentLower.includes(word)
-                    );
-                    
-                    if (allWordsPresent) {
-                        score += 5;
-                    }
-                    
-                    // Count how many words appear
-                    const wordsFound = searchWords.filter(word => 
-                        titleLower.includes(word) || 
-                        keywordsLower.some(k => k.includes(word)) || 
-                        contentLower.includes(word)
-                    ).length;
-                    
-                    // Add partial score based on proportion of words found
-                    score += (wordsFound / searchWords.length) * 3;
-                }
-                
-                // Check each search word individually (for single word searches or as fallback)
-                searchWords.forEach(word => {
-                    if (titleLower.includes(word)) {
-                        score += 3;
-                    }
-                    keywordsLower.forEach(keyword => {
-                        if (keyword.includes(word) || word.includes(keyword)) {
-                            score += 2;
-                        }
-                    });
-                    if (contentLower.includes(word)) {
-                        score += 1;
-                    }
-                });
-                
-                // Check if any keyword contains the full search term (important for phrases)
-                item.keywords.forEach(keyword => {
-                    if (keyword.toLowerCase().includes(searchTerm)) {
-                        score += 4;
-                    }
-                });
-                
-                // Check if any keyword is contained within the search term (e.g., "sanctuary" in "sanctuary seekers")
-                searchWords.forEach(word => {
-                    item.keywords.forEach(keyword => {
-                        if (word.includes(keyword.toLowerCase())) {
-                            score += 2;
-                        }
-                    });
-                });
-                
-                if (score > 0) {
-                    results.push({
-                        ...item,
-                        score: score
-                    });
-                }
-            });
-            
-            // Sort by score descending
-            results.sort((a, b) => b.score - a.score);
-            return results;
+                return { ...item, score };
+            })
+            .filter(item => item.score > 0)
+            .sort((a, b) => b.score - a.score);
         }
-        
-        // Function to display search results
-        function displaySearchResults(results, query) {
-            searchResultsContainer.innerHTML = '';
+
+        function highlightText(text, searchTerm) {
+            if (!searchTerm || searchTerm.trim() === '') {
+                return text;
+            }
             
+            // Escape special regex characters in the search term
+            const escapedTerm = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            const regex = new RegExp(`(${escapedTerm})`, 'gi');
+            return text.replace(regex, '<mark>$1</mark>');
+        }
+
+        function displaySearchResults(results, query) {
             if (results.length === 0) {
-                searchResultsContainer.innerHTML = `
-                    <div class="no-results">
-                        <i class="fas fa-search"></i>
-                        <h4>No results found for "${query}"</h4>
-                        <p>Try searching for different keywords or browse our sections using the menu above.</p>
-                    </div>
-                `;
+                searchResultsContainer.innerHTML = `<div class="no-results">No results found for "${query}"</div>`;
                 return;
             }
             
-            results.forEach(result => {
-                const resultElement = document.createElement('div');
-                resultElement.className = 'search-result-item';
+            let html = '';
+            results.slice(0, 5).forEach(result => {
+                // Highlight the search term in the snippet
+                const highlightedSnippet = highlightText(result.content.substring(0, 80) + '...', query);
                 
-                let snippet = result.content;
-                if (snippet.length > 200) {
-                    snippet = snippet.substring(0, 200) + '...';
-                }
-                
-                resultElement.innerHTML = `
-                    <div class="search-result-title">${result.title}</div>
-                    <div class="search-result-snippet">${snippet}</div>
-                    <a href="#${result.id}" class="search-result-link" onclick="loadContent('${result.id}'); closeSearchModal(); return false;">
-                        Go to ${result.title} <i class="fas fa-arrow-right ms-1"></i>
-                    </a>
+                html += `
+                    <div class="search-result-item" data-section="${result.id}">
+                        <div class="search-result-title">${result.title}</div>
+                        <div class="search-result-snippet">${highlightedSnippet}</div>
+                    </div>
                 `;
-                
-                searchResultsContainer.appendChild(resultElement);
+            });
+            searchResultsContainer.innerHTML = html;
+            
+            // Add click handlers
+            document.querySelectorAll('.search-result-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    const section = this.dataset.section;
+                    lastSearchQuery = query; // Store the query before navigating
+                    if (window.loadContent) {
+                        window.loadContent(section);
+                    }
+                    searchInput.value = '';
+                    closeSearchModal();
+                });
             });
         }
-        
+
+        // Function to highlight search terms in the loaded content
+        function highlightSearchTermsInContent(searchTerm) {
+            if (!searchTerm || searchTerm.trim() === '' || !contentArea) return;
+
+            // Escape special regex characters
+            const escapedTerm = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            
+            // Create a regex that matches whole words or phrases
+            const regex = new RegExp(`(${escapedTerm})`, 'gi');
+
+            // Function to recursively walk through text nodes and highlight matches
+            function walkTextNodes(node) {
+                if (node.nodeType === 3) { // Text node
+                    const text = node.textContent;
+                    if (regex.test(text)) {
+                        const span = document.createElement('span');
+                        const parts = text.split(regex);
+                        
+                        parts.forEach((part, index) => {
+                            if (index % 2 === 1) { // Matched part
+                                const mark = document.createElement('mark');
+                                mark.className = 'search-highlight';
+                                mark.textContent = part;
+                                span.appendChild(mark);
+                            } else if (part) { // Non-matched part
+                                span.appendChild(document.createTextNode(part));
+                            }
+                        });
+                        
+                        node.parentNode.replaceChild(span, node);
+                    }
+                } else if (node.nodeType === 1 && !/^(script|style|mark)$/i.test(node.tagName)) {
+                    // Don't go into script or style tags, and avoid already highlighted content
+                    Array.from(node.childNodes).forEach(walkTextNodes);
+                }
+            }
+
+            // Walk through all text nodes in the content area
+            Array.from(contentArea.childNodes).forEach(walkTextNodes);
+        }
+
         // Function to open search modal
         function openSearchModal() {
             searchModal.classList.add('active');
@@ -4084,21 +4061,21 @@ Asylum seekers and refugees who are ESOL students sometimes qualify for a free b
                     <div class="no-results">
                         <i class="fas fa-search"></i>
                         <h4>Search within this site</h4>
-                        <p>Type any word or phrase related to sanctuary, support, events, volunteering, or any other topic you're interested in. Every word on this website is searchable.</p>
+                        <p>Type any word or phrase related to sanctuary, support, events, volunteering, or any other topic you're interested in.</p>
                     </div>
                 `;
             }
         }
-        
+
         // Function to close search modal
         function closeSearchModal() {
             searchModal.classList.remove('active');
             document.body.style.overflow = 'auto';
         }
-        
+
         // Function to close search modal globally
         window.closeSearchModal = closeSearchModal;
-        
+
         // ============ UPDATED LOAD CONTENT FUNCTION ============
         window.loadContent = function(section) {
             console.log('Loading content for:', section);
@@ -4108,7 +4085,7 @@ Asylum seekers and refugees who are ESOL students sometimes qualify for a free b
             
             if (pageTitle && content) {
                 const newUrl = `${window.location.origin}${window.location.pathname}#${section}`;
-                history.pushState({ section: section }, '', newUrl);
+                history.pushState({ section: section, searchQuery: lastSearchQuery }, '', newUrl);
                 
                 if (pageTitleArea) {
                     pageTitleArea.innerHTML = pageTitle;
@@ -4116,6 +4093,13 @@ Asylum seekers and refugees who are ESOL students sometimes qualify for a free b
                 
                 if (contentArea) {
                     contentArea.innerHTML = content;
+                }
+                
+                // Highlight search terms if there was a last search query
+                if (lastSearchQuery) {
+                    setTimeout(() => {
+                        highlightSearchTermsInContent(lastSearchQuery);
+                    }, 100);
                 }
                 
                 // Load Facebook feed after content is inserted
@@ -4136,11 +4120,12 @@ Asylum seekers and refugees who are ESOL students sometimes qualify for a free b
                 }
             }
         };
-        
+
         // Function to handle browser history navigation
         function handlePopState(event) {
             const hash = window.location.hash.substring(1);
             let section = hash || 'home';
+            const searchQuery = event.state ? event.state.searchQuery : '';
             
             if (!contentTemplates[section]) {
                 section = 'home';
@@ -4154,11 +4139,19 @@ Asylum seekers and refugees who are ESOL students sometimes qualify for a free b
                 contentArea.innerHTML = content;
                 updateActiveNavLink(section);
                 
+                // Restore search query and highlight if present
+                if (searchQuery) {
+                    lastSearchQuery = searchQuery;
+                    setTimeout(() => {
+                        highlightSearchTermsInContent(searchQuery);
+                    }, 100);
+                }
+                
                 // Load Facebook feed after content update
                 setTimeout(loadFacebookFeed, 100);
             }
         }
-        
+
         // Function to update active navigation link
         function updateActiveNavLink(section) {
             document.querySelectorAll('.nav-link').forEach(link => {
@@ -4181,7 +4174,7 @@ Asylum seekers and refugees who are ESOL students sometimes qualify for a free b
                 }
             }
         }
-        
+
         // Function to setup navigation links
         function setupNavigationLinks() {
             document.querySelectorAll('a[href^="#"]').forEach(link => {
@@ -4212,7 +4205,7 @@ Asylum seekers and refugees who are ESOL students sometimes qualify for a free b
                 });
             });
         }
-        
+
         // Function to setup footer navigation links
         function setupFooterNavigationLinks() {
             document.querySelectorAll('.footer-nav-link').forEach(link => {
@@ -4229,19 +4222,20 @@ Asylum seekers and refugees who are ESOL students sometimes qualify for a free b
                 });
             });
         }
-        
+
         // Initialize event listeners
         function initializeEventListeners() {
             console.log('Initializing event listeners...');
             
             setupNavigationLinks();
             setupFooterNavigationLinks();
-            
+
+            // Search input events
             if (searchInput) {
                 searchInput.addEventListener('focus', function() {
                     openSearchModal();
                 });
-                
+
                 searchInput.addEventListener('input', function() {
                     const query = this.value.trim();
                     
@@ -4250,7 +4244,7 @@ Asylum seekers and refugees who are ESOL students sometimes qualify for a free b
                             <div class="no-results">
                                 <i class="fas fa-search"></i>
                                 <h4>Search within this site</h4>
-                                <p>Type any word or phrase related to sanctuary, support, events, volunteering, or any other topic you're interested in. Every word on this website is searchable.</p>
+                                <p>Type any word or phrase related to sanctuary, support, events, volunteering, or any other topic you're interested in.</p>
                             </div>
                         `;
                         return;
@@ -4259,7 +4253,7 @@ Asylum seekers and refugees who are ESOL students sometimes qualify for a free b
                     const results = performSearch(query);
                     displaySearchResults(results, query);
                 });
-                
+
                 searchInput.addEventListener('keydown', function(e) {
                     if (e.key === 'Enter') {
                         e.preventDefault();
@@ -4274,17 +4268,17 @@ Asylum seekers and refugees who are ESOL students sometimes qualify for a free b
                     }
                 });
             }
-            
+
             if (closeSearchBtn) {
                 closeSearchBtn.addEventListener('click', closeSearchModal);
             }
-            
+
             searchModal.addEventListener('click', function(e) {
                 if (e.target === searchModal) {
                     closeSearchModal();
                 }
             });
-            
+
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape' && searchModal.classList.contains('active')) {
                     closeSearchModal();
@@ -4293,7 +4287,7 @@ Asylum seekers and refugees who are ESOL students sometimes qualify for a free b
             
             console.log('Event listeners initialized successfully');
         }
-        
+
         // Handle initial page load
         function handleInitialPageLoad() {
             const hash = window.location.hash.substring(1);
@@ -4306,7 +4300,7 @@ Asylum seekers and refugees who are ESOL students sometimes qualify for a free b
             
             loadContent(initialSection);
         }
-        
+
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', function() {
             console.log('DOM fully loaded');
@@ -4321,9 +4315,9 @@ Asylum seekers and refugees who are ESOL students sometimes qualify for a free b
             
             console.log('Page loaded successfully - All content should be visible');
         });
-        
+
         window.addEventListener('popstate', handlePopState);
-        
+
         window.addEventListener('scroll', function() {
             const navbar = document.querySelector('.navbar');
             if (window.pageYOffset > 50) {
@@ -4348,7 +4342,7 @@ Asylum seekers and refugees who are ESOL students sometimes qualify for a free b
                 }
             });
         });
-        
+
         const backToTopButton = document.querySelector('.back-to-top');
         if (backToTopButton) {
             backToTopButton.addEventListener('click', function(e) {

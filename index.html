@@ -2486,56 +2486,107 @@ const facebookSidebarHTML = `
                                 </ul>
                                 <p><strong>Watch our <a href="${FACEBOOK_PAGE_URL}" target="_blank">Facebook page</a> for further details.</strong></p>
                             </div>
+
+
+
+
+<!-- Submit an Event Section -->
+<div style="
+    margin-top: 30px;
+    padding: 25px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    border-radius: 12px;
+    border: 1px solid #e9ecef;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    align-items: center;
+    justify-content: space-between;
+">
+    <!-- Icon and Text Container -->
+    <div style="
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        flex: 1 1 300px;
+    ">
+        <!-- Circular Icon -->
+        <div style="
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        ">
+            <i class="fas fa-calendar-plus" style="color: white; font-size: 1.3rem;"></i>
+        </div>
+
+        <!-- Text Content -->
+        <div>
+            <h5 style="
+                color: var(--primary-color);
+                margin: 0 0 5px 0;
+                font-size: 1.1rem;
+                font-weight: 600;
+            ">
+                Share Your Event With Us!
+            </h5>
+            <p style="
+                margin: 0;
+                color: #666;
+                font-size: 0.95rem;
+                line-height: 1.5;
+            ">
+                Please inform us of any event you are planning, 
+                and we will share it with our network.
+            </p>
+        </div>
+    </div>
+
+    <!-- Email Button -->
+    <a href="mailto:prestoncityofsanctuary@gmail.com?subject=Event%20Submission%20-%20Website" 
+       class="btn-email-submit"
+       style="
+           background: var(--gradient-primary);
+           color: white;
+           padding: 12px 30px;
+           border-radius: 50px;
+           text-decoration: none;
+           font-weight: 600;
+           border: none;
+           box-shadow: 0 4px 15px rgba(160, 18, 90, 0.3);
+           display: inline-flex;
+           align-items: center;
+           justify-content: center;
+           gap: 10px;
+           transition: all 0.3s ease;
+           cursor: pointer;
+           flex-shrink: 0;
+       "
+       onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(160, 18, 90, 0.4)';"
+       onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(160, 18, 90, 0.3)';">
+        <i class="fas fa-paper-plane" style="font-size: 1.1rem;"></i>
+        <span>Email us the details</span>
+    </a>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
                             
-                            <!-- Submit an Event Section -->
-                            <div style="
-                                margin-top: 30px;
-                                padding: 25px;
-                                background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-                                border-radius: 12px;
-                                border: 1px solid #e9ecef;
-                                display: flex;
-                                flex-wrap: wrap;
-                                gap: 25px;
-                                align-items: center;
-                                justify-content: space-between;
-                            ">
-                                <div style="display: flex; align-items: center; gap: 20px;">
-                                    <div style="
-                                        width: 50px;
-                                        height: 50px;
-                                        background: var(--gradient-primary);
-                                        border-radius: 50%;
-                                        display: flex;
-                                        align-items: center;
-                                        justify-content: center;
-                                    ">
-                                        <i class="fas fa-calendar-plus" style="color: white; font-size: 1.3rem;"></i>
-                                    </div>
-                                    <div>
-                                        <h5 style="color: var(--primary-color); margin-bottom: 5px; font-size: 1.1rem;">
-                                            Submit an Event
-                                        </h5>
-                                        <p style="margin-bottom: 0; color: #666; font-size: 0.95rem;">
-                                            Know about an event that should be listed here? Email us the details.
-                                        </p>
-                                    </div>
-                                </div>
-                                <a href="mailto:prestoncityofsanctuary@gmail.com?subject=Event%20Submission%20-%20Website" 
-                                   class="btn btn-primary-custom" 
-                                   style="
-                                       background: var(--gradient-primary);
-                                       color: white;
-                                       padding: 12px 30px;
-                                       border-radius: 8px;
-                                       text-decoration: none;
-                                       font-weight: 600;
-                                       border: none;
-                                       box-shadow: 0 4px 12px rgba(160, 18, 90, 0.2);
-                                   ">
-                                    <i class="fas fa-paper-plane me-2"></i>Submit Event
-                                </a>
-                            </div>
+
+
 
                             <!-- Follow us reminder -->
                             <div style="

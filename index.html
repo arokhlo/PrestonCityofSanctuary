@@ -1603,7 +1603,7 @@
                             <li><a class="dropdown-item" href="#transport" id="transport-link">Transport</a></li>
                         </ul>
                     </li>
-                    
+
                     <!-- Get Involved -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" id="get-involved-main-link">
@@ -1616,10 +1616,18 @@
                         </ul>
                     </li>
                     
-                    <li class="nav-item">
-                        <a class="nav-link" href="#events" id="events-link">Events</a>
+                    <!-- Events - UPDATED DROPDOWN MENU -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" id="Events-main-link">
+                            Events
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#PlannedEvents" id="planned-events-link">Planned Events</a></li>
+                            <li><a class="dropdown-item" href="#PastEvents" id="past-events-link">Past Events</a></li>
+                            <li><a class="dropdown-item" href="#Pandemic-Memories" id="pandemic-memories-link">Our Covid memories project 2020</a></li>
+                        </ul>
                     </li>
-                    
+
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" id="contact-main-link">
                             Contact
@@ -1722,7 +1730,7 @@
                         </div>
                         <div class="col-6">
                             <ul class="list-unstyled">
-                                <li><a href="#events" class="footer-nav-link">Events</a></li>
+                                <li><a href="#PlannedEvents" class="footer-nav-link">Events</a></li>
                                 <li><a href="#who-we-are" class="footer-nav-link">Who We Are</a></li>
                                 <li><a href="#how-to-help" class="footer-nav-link">How to Help</a></li>
                                 <li><a href="#volunteers" class="footer-nav-link">Volunteers</a></li>
@@ -2251,6 +2259,24 @@ const facebookSidebarHTML = `
                     <p class="page-subtitle">Past and upcoming events - Refugee Week 2026: 15-21 June, Theme "Courage"</p>
                 </div>
             `,
+            'PlannedEvents': `
+                <div class="container">
+                    <h1 class="page-title">Planned Events</h1>
+                    <p class="page-subtitle">Upcoming activities and gatherings - Refugee Week 2026: 15-21 June, Theme "Courage"</p>
+                </div>
+            `,
+            'PastEvents': `
+                <div class="container">
+                    <h1 class="page-title">Past Events Archive</h1>
+                    <p class="page-subtitle">A comprehensive archive of our previous activities</p>
+                </div>
+            `,
+            'Pandemic-Memories': `
+                <div class="container">
+                    <h1 class="page-title">Our Covid Memories Project 2020</h1>
+                    <p class="page-subtitle">Stories and reflections from the pandemic</p>
+                </div>
+            `,
             'contact': `
                 <div class="container">
                     <h1 class="page-title">Contact Us</h1>
@@ -2313,7 +2339,7 @@ const facebookSidebarHTML = `
                                                        
                             <div class="mt-4">
                                 <a href="#about" onclick="loadContent('about'); return false;" class="btn btn-primary-custom me-3">Learn More About Us</a>
-                                <a href="#events" onclick="loadContent('events'); return false;" class="btn btn-outline-primary">View Upcoming Events</a>
+                                <a href="#PlannedEvents" onclick="loadContent('PlannedEvents'); return false;" class="btn btn-outline-primary">View Upcoming Events</a>
                             </div>
                         </section>
                     </div>
@@ -2443,16 +2469,12 @@ const facebookSidebarHTML = `
                 </div>
             `,
 
-
-
-
-// ============ 8888888888888888888888888 ================ //
-            'events': `
+            // ============ PLANNED EVENTS PAGE ============
+            'PlannedEvents': `
                 <div class="two-column-layout" style="display: flex; flex-wrap: wrap;">
                     <div class="content-left-column">
                         <section class="dynamic-content">
-                            
-                            <!-- ========== PRINCIPLE 1: OUR OWN PUBLIC EVENTS (BRIEF OVERVIEW) ========== -->
+                            <!-- Content for Planned Events -->
                             <div style="background: white; border-radius: 12px; padding: 25px; margin: 20px 0; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-left: 5px solid var(--primary-color);">
                                 <h4 style="color: var(--primary-color); margin-top: 0; margin-bottom: 20px;">Our Public Events in 2026</h4>
                                 <p>In 2026 we are hoping to organize a number of public events mainly around Refugee Week in June:</p>
@@ -2464,8 +2486,115 @@ const facebookSidebarHTML = `
                                 </ul>
                                 <p><strong>Watch our <a href="${FACEBOOK_PAGE_URL}" target="_blank">Facebook page</a> for further details.</strong></p>
                             </div>
+                            
+                            <!-- Submit an Event Section -->
+                            <div style="
+                                margin-top: 30px;
+                                padding: 25px;
+                                background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+                                border-radius: 12px;
+                                border: 1px solid #e9ecef;
+                                display: flex;
+                                flex-wrap: wrap;
+                                gap: 25px;
+                                align-items: center;
+                                justify-content: space-between;
+                            ">
+                                <div style="display: flex; align-items: center; gap: 20px;">
+                                    <div style="
+                                        width: 50px;
+                                        height: 50px;
+                                        background: var(--gradient-primary);
+                                        border-radius: 50%;
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                    ">
+                                        <i class="fas fa-calendar-plus" style="color: white; font-size: 1.3rem;"></i>
+                                    </div>
+                                    <div>
+                                        <h5 style="color: var(--primary-color); margin-bottom: 5px; font-size: 1.1rem;">
+                                            Submit an Event
+                                        </h5>
+                                        <p style="margin-bottom: 0; color: #666; font-size: 0.95rem;">
+                                            Know about an event that should be listed here? Email us the details.
+                                        </p>
+                                    </div>
+                                </div>
+                                <a href="mailto:prestoncityofsanctuary@gmail.com?subject=Event%20Submission%20-%20Website" 
+                                   class="btn btn-primary-custom" 
+                                   style="
+                                       background: var(--gradient-primary);
+                                       color: white;
+                                       padding: 12px 30px;
+                                       border-radius: 8px;
+                                       text-decoration: none;
+                                       font-weight: 600;
+                                       border: none;
+                                       box-shadow: 0 4px 12px rgba(160, 18, 90, 0.2);
+                                   ">
+                                    <i class="fas fa-paper-plane me-2"></i>Submit Event
+                                </a>
+                            </div>
 
-                            <!-- ========== PRINCIPLE 2: PAST EVENTS ARCHIVE (NEWEST TO OLDEST) ========== -->
+                            <!-- Follow us reminder -->
+                            <div style="
+                                margin-top: 30px;
+                                padding: 20px;
+                                background: white;
+                                border-radius: 12px;
+                                box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+                                display: flex;
+                                align-items: center;
+                                gap: 20px;
+                                border: 1px solid #e0e0e0;
+                            ">
+                                <div style="
+                                    width: 45px;
+                                    height: 45px;
+                                    background: #1877f2;
+                                    border-radius: 50%;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                ">
+                                    <i class="fab fa-facebook-f" style="color: white; font-size: 1.2rem;"></i>
+                                </div>
+                                <div style="flex: 1;">
+                                    <p style="margin-bottom: 0; color: #333;">
+                                        <strong>Follow us on Facebook</strong> for real-time event updates, campaign actions, and community news.
+                                    </p>
+                                </div>
+                                <a href="https://www.facebook.com/people/Preston-City-of-Sanctuary/100067197351909/" 
+                                   target="_blank"
+                                   style="
+                                       background: #1877f2;
+                                       color: white;
+                                       padding: 8px 20px;
+                                       border-radius: 6px;
+                                       text-decoration: none;
+                                       font-weight: 600;
+                                       display: inline-flex;
+                                       align-items: center;
+                                       gap: 8px;
+                                       white-space: nowrap;
+                                   ">
+                                    <i class="fab fa-facebook-f"></i>
+                                    Follow
+                                </a>
+                            </div>
+                        </section>
+                    </div>
+                    ${facebookSidebarHTML}
+                </div>
+            `,
+
+            // ============ PAST EVENTS PAGE ============
+            'PastEvents': `
+                <div class="two-column-layout" style="display: flex; flex-wrap: wrap;">
+                    <div class="content-left-column">
+                        <section class="dynamic-content">
+                            <!-- Content for Past Events Archive -->
                             <div style="
                                 background: white;
                                 border-radius: 12px;
@@ -2945,112 +3074,144 @@ const facebookSidebarHTML = `
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- ========== PRINCIPLE 3: SUBMIT AN EVENT (CONTACT) ========== -->
-                            <div style="
-                                margin-top: 30px;
-                                padding: 25px;
-                                background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-                                border-radius: 12px;
-                                border: 1px solid #e9ecef;
-                                display: flex;
-                                flex-wrap: wrap;
-                                gap: 25px;
-                                align-items: center;
-                                justify-content: space-between;
-                            ">
-                                <div style="display: flex; align-items: center; gap: 20px;">
-                                    <div style="
-                                        width: 50px;
-                                        height: 50px;
-                                        background: var(--gradient-primary);
-                                        border-radius: 50%;
-                                        display: flex;
-                                        align-items: center;
-                                        justify-content: center;
-                                    ">
-                                        <i class="fas fa-calendar-plus" style="color: white; font-size: 1.3rem;"></i>
-                                    </div>
-                                    <div>
-                                        <h5 style="color: var(--primary-color); margin-bottom: 5px; font-size: 1.1rem;">
-                                            Submit an Event
-                                        </h5>
-                                        <p style="margin-bottom: 0; color: #666; font-size: 0.95rem;">
-                                            Know about an event that should be listed here? Email us the details.
-                                        </p>
-                                    </div>
-                                </div>
-                                <a href="mailto:prestoncityofsanctuary@gmail.com?subject=Event%20Submission%20-%20Website" 
-                                   class="btn btn-primary-custom" 
-                                   style="
-                                       background: var(--gradient-primary);
-                                       color: white;
-                                       padding: 12px 30px;
-                                       border-radius: 8px;
-                                       text-decoration: none;
-                                       font-weight: 600;
-                                       border: none;
-                                       box-shadow: 0 4px 12px rgba(160, 18, 90, 0.2);
-                                   ">
-                                    <i class="fas fa-paper-plane me-2"></i>Submit Event
-                                </a>
-                            </div>
-
-                            <!-- Follow us reminder -->
-                            <div style="
-                                margin-top: 30px;
-                                padding: 20px;
-                                background: white;
-                                border-radius: 12px;
-                                box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-                                display: flex;
-                                align-items: center;
-                                gap: 20px;
-                                border: 1px solid #e0e0e0;
-                            ">
-                                <div style="
-                                    width: 45px;
-                                    height: 45px;
-                                    background: #1877f2;
-                                    border-radius: 50%;
-                                    display: flex;
-                                    align-items: center;
-                                    justify-content: center;
-                                ">
-                                    <i class="fab fa-facebook-f" style="color: white; font-size: 1.2rem;"></i>
-                                </div>
-                                <div style="flex: 1;">
-                                    <p style="margin-bottom: 0; color: #333;">
-                                        <strong>Follow us on Facebook</strong> for real-time event updates, campaign actions, and community news.
-                                    </p>
-                                </div>
-                                <a href="https://www.facebook.com/people/Preston-City-of-Sanctuary/100067197351909/" 
-                                   target="_blank"
-                                   style="
-                                       background: #1877f2;
-                                       color: white;
-                                       padding: 8px 20px;
-                                       border-radius: 6px;
-                                       text-decoration: none;
-                                       font-weight: 600;
-                                       display: inline-flex;
-                                       align-items: center;
-                                       gap: 8px;
-                                       white-space: nowrap;
-                                   ">
-                                    <i class="fab fa-facebook-f"></i>
-                                    Follow
-                                </a>
-                            </div>
-
                         </section>
                     </div>
                     ${facebookSidebarHTML}
                 </div>
             `,
 
-// ============ 8888888888888888888888888 ================ //
+            // ============ COVID MEMORIES PAGE (Fully updated with new content) ============
+            'Pandemic-Memories': `
+                <div class="two-column-layout" style="display: flex; flex-wrap: wrap;">
+                    <div class="content-left-column">
+                        <section class="dynamic-content">
+                            <div style="background: white; border-radius: 12px; padding: 25px; margin: 20px 0; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-left: 5px solid var(--accent-color);">
+                                <h4 style="color: var(--accent-color);">OUR COVID MEMORIES PROJECT 2020</h4>
+                                <h5 style="color: var(--primary-color); margin-bottom: 20px;">Looking at the Virus Through the Eyes of Children and Young People</h5>
+                                
+                                <p>This is the link to the short version of the video we produced thanks to funding from the Harris Museum. Its URL is here: <a href="https://theharris.org.uk/" target="_blank">https://theharris.org.uk/</a></p>
+                                
+                                <!-- Short Video Embed -->
+                                <div style="margin: 20px 0; text-align: center;">
+                                    <div style="position: relative; display: inline-block; max-width: 100%;">                         
+                                        <a href="https://vimeo.com/484178908"
+                                           target="_blank"
+                                           style="text-decoration: none; color: inherit;">
+                                            <div style="position: relative;">
+                                                <img src="https://i.vimeocdn.com/video/969971146-640.jpg" 
+                                                     alt="Vimeo Video Thumbnail"
+                                                     style="width: 100%; max-width: 560px; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+                                                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.7); width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                                                    <span style="color: white; font-size: 30px; margin-left: 5px;">▶</span>
+                                                </div>
+                                            </div>
+                                            <p style="margin-top: 10px; font-weight: bold; color: #000;">Click to watch our short video</p>
+                                        </a>
+                                    </div>
+                                </div>
 
+<!-- Image eye.jpg -->
+<div class="about-image-container fade-in mt-4 text-center" style="max-width: 250px;">
+    <img src="eye.jpg" 
+         alt="Eye illustration from the project"
+         class="about-image"
+         style="width: 100%; height: auto; max-height: 200px; object-fit: contain;">
+    <div class="about-image-caption">
+        A visual representation from the project
+    </div>
+</div>
+                                <p style="margin-top: 25px;">This is the full 18 Minute version of the video we had made from the project. I think in Hollywood they would call this the Director's cut..</p>
+                                <p><a href="https://vimeo.com/485478656" target="_blank">https://vimeo.com/485478656</a></p>
+
+                                <!-- Full Video Embed -->
+                                <div style="margin: 20px 0; text-align: center;">
+                                    <div style="position: relative; display: inline-block; max-width: 100%;">                         
+                                        <a href="https://vimeo.com/485478656"
+                                           target="_blank"
+                                           style="text-decoration: none; color: inherit;">
+                                            <div style="position: relative;">
+                                                <img src="https://i.vimeocdn.com/video/971786403-640.jpg" 
+                                                     alt="Vimeo Video Thumbnail"
+                                                     style="width: 100%; max-width: 560px; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+                                                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.75); width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                                                    <span style="color: white; font-size: 30px; margin-left: 5px;">▶</span>
+                                                </div>
+                                            </div>
+                                            <p style="margin-top: 10px; font-weight: bold; color: #000;">
+                                                Click to watch the Director's Cut
+                                            </p>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <p>In so many ways the Coronavirus is changing our lives. Although it is not at the forefront of government and scientific discussions, children and young people have been affected by the pandemic.</p>
+                                <p>Many children are missing their friends, school, and usual routines. This is a really tough time for many children and young people. Some children have also lost loved ones to the virus.</p>
+
+                                <!-- Image covid1.jpg -->
+                                <div class="about-image-container fade-in mt-4 text-center">
+                                    <img src="covid1.jpg" 
+                                         alt="Children's artwork from the project"
+                                         class="about-image">
+                                    <div class="about-image-caption">
+                                        Artwork by a young participant
+                                    </div>
+                                </div>
+
+                                <p>Children's understanding of the world is different from adults and they deal with their emotions in a multitude of ways- some of which are hard for adults to always understand. We know that fears, uncertainty and concerns about Covid-19 can make people feel added stress and anxiety and that these can be felt by adults, young people and children of all ages. For some children and young people these feelings can be overwhelming as they become concerned about themselves, their family members, missing friends and the lack of familiar routines. Children and young people may also be picking up a lot of misinformation especially from social media. This means it can be a really scary time for children and young people.</p>
+                                <p>It's important to listen to the child or young person and reassure them that illness from CV-19 is actually very rare and generally mild, with most people having flu or cold like symptoms. It's important that they know that many simple things can keep them safe such as hand washing and staying at home.</p>
+                                <p>For these reasons Preston COS wanted to give the children and young people of refugees and asylum seekers a chance to share their experiences, feelings, memories, impressions of life during the pandemic and the lockdown.</p>
+                                <p>This is the invitation we distributed around our networks in the spring: <a href="https://cdn-e2wra3va3xhgzx.cityofsanctuary.org/uploads/sites/105/2020/09/Preston-City-of-Sanctuary-COVID-19-Memories-project.pdf" target="_blank">Download the invitation (PDF)</a></p>
+
+                                <h5 style="color: var(--primary-color); margin: 30px 0 20px;">COVID MEMORIES PROJECT GALLERY:</h5>
+
+                                <!-- Image Gallery -->
+                                <div style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center;">
+                                    <img src="covid2.png" alt="Covid memory 2" style="width: 150px; height: auto; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                                    <img src="covid3.jpg" alt="Covid memory 3" style="width: 150px; height: auto; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                                    <img src="covid4.png" alt="Covid memory 4" style="width: 150px; height: auto; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                                    <img src="covid5.jpg" alt="Covid memory 5" style="width: 150px; height: auto; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                                    <img src="covid6.jpg" alt="Covid memory 6" style="width: 150px; height: auto; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                                    <img src="covid7.jpg" alt="Covid memory 7" style="width: 150px; height: auto; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                                    <img src="covid8.jpg" alt="Covid memory 8" style="width: 150px; height: auto; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                                    <img src="covid9.jpg" alt="Covid memory 9" style="width: 150px; height: auto; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                                    <img src="covid10.jpg" alt="Covid memory 10" style="width: 150px; height: auto; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                                    <img src="covid11.jpg" alt="Covid memory 11" style="width: 150px; height: auto; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                                    <img src="covid12.jpg" alt="Covid memory 12" style="width: 150px; height: auto; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                                    <img src="covid13.jpg" alt="Covid memory 13" style="width: 150px; height: auto; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                                    <img src="covid14.jpg" alt="Covid memory 14" style="width: 150px; height: auto; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                                    <img src="covid15.jpg" alt="Covid memory 15" style="width: 150px; height: auto; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                                    <img src="covid16.jpg" alt="Covid memory 16" style="width: 150px; height: auto; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                                    <img src="covid17.jpg" alt="Covid memory 17" style="width: 150px; height: auto; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                                    <img src="covid18.jpg" alt="Covid memory 18" style="width: 150px; height: auto; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                                    <img src="covid19.jpg" alt="Covid memory 19" style="width: 150px; height: auto; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                                    <img src="covid20.jpg" alt="Covid memory 20" style="width: 150px; height: auto; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                                    <img src="covid21.jpg" alt="Covid memory 21" style="width: 150px; height: auto; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                                    <img src="covid22.jpg" alt="Covid memory 22" style="width: 150px; height: auto; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                                    <img src="covid23.jpg" alt="Covid memory 23" style="width: 150px; height: auto; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                                    <img src="covid24.jpg" alt="Covid memory 24" style="width: 150px; height: auto; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                                    <img src="covid25.jpg" alt="Covid memory 25" style="width: 150px; height: auto; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                                </div>
+
+                                <p style="margin-top: 30px;">You can watch a 15 minute version of the project video here:</p>
+
+                                <!-- 15-minute video iframe -->
+                                <div style="text-align:center; margin: 20px 0;">
+                                    <iframe 
+                                        src="https://player.vimeo.com/video/484139083"
+                                        width="560" 
+                                        height="315" 
+                                        frameborder="0" 
+                                        allow="autoplay; fullscreen; picture-in-picture" 
+                                        allowfullscreen
+                                        style="max-width:100%; border-radius:8px;">
+                                    </iframe>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    ${facebookSidebarHTML}
+                </div>
+            `,
             
             'campaigns': `
                 <div class="two-column-layout" style="display: flex; flex-wrap: wrap;">
@@ -4235,6 +4396,9 @@ Asylum seekers and refugees who are ESOL students sometimes qualify for a free b
             { id: 'immigration-rights', title: 'Immigration Rights', keywords: ['immigration','rights','legal','asylum','refugee','visa','right to remain','toolkit','jubilee+','legal aid','greater manchester immigration aid unit','lancashire law centre','home office','welcome guide','ciac','community integration advocacy centre','solicitor','appeals','court','legal advice'], content: 'Right to Remain Toolkit (righttoremain.org.uk). Home Office Welcome guide for new refugees. Free legal advice: Greater Manchester Immigration Aid Unit, British Red Cross, Lancashire Law Centre, Community Integration Advocacy Centre (ciacadvice.com). Legal aid is hard to find; solicitors most useful for appeals.' },
             { id: 'transport', title: 'Transport', keywords: ['transport','bus','train','taxi','uber','cycling','travel','concession','preston pedals','preston bus','stagecoach','blackburn bus','national rail','railcard','guild wheel','walking','BUS CHECKER','fare cap','day rider','mega rider','cheap fares','rail fares','split-ticketing','advance tickets','off-peak'], content: 'Public transport in Preston and Lancashire. Bus operators: Preston Bus, Stagecoach, Blackburn Bus. Concessionary fares for asylum seekers and ESOL students. Stagecoach fare caps: £3 single, £1 Sundays. Day Rider and 7-day Mega Rider tickets. Use BUS CHECKER app. Taxis may be cheaper for groups. Rail fares complex – search "how to get cheapest rail fares in UK". Preston Pedals cycle hire. Walking routes including Guild Wheel.' },
             { id: 'events', title: 'Events', keywords: ['events','workshops','meetings','gatherings','calendar','upcoming','Refugee Week','Courage','volunteering fair','10th birthday','global link','escape to safety','summer fun','past events','future events','celebration','archive','reports','videos','photos'], content: 'Our public events in 2026: volunteering fair, 10th Birthday publication launch, Global Link\'s Escape to Safety exhibition, summer fun activities. Watch Facebook for details. Past events archive with links to reports, videos and photos from previous events. Browse by year.' },
+            { id: 'PlannedEvents', title: 'Planned Events', keywords: ['planned','upcoming','future','2026','Refugee Week','Courage','volunteering fair','10th birthday','global link','escape to safety','summer fun','activities','dates'], content: 'Planned events for 2026: Volunteering Fair, 10th Birthday Publication & Launch, Global Link\'s "Escape to Safety" Exhibition, Summer Fun Activities. Watch our Facebook page for confirmed dates.' },
+            { id: 'PastEvents', title: 'Past Events Archive', keywords: ['past','archive','history','previous','2023','2022','2021','refugee week','stakeholder','photos','videos','reports','programme'], content: 'Past events archive featuring Refugee Week celebrations, stakeholder meetings, and community gatherings from 2023, 2022, 2021, and earlier.' },
+            { id: 'Pandemic-Memories', title: 'Our Covid Memories Project 2020', keywords: ['covid','pandemic','2020','memories','stories','lockdown','reflections','community','resilience','project','photos','stories','video','children','young people'], content: 'Our Covid Memories Project 2020 collects stories, photos, and reflections from sanctuary seekers and supporters during the pandemic, capturing resilience and community spirit. Includes videos and a gallery.' },
             { id: 'campaigns', title: 'Current Campaigns', keywords: ['campaigns','refugee rights','family reunion','asylum matters','advocacy','mp','councillor','paul foster','mark hendrick','write to them','theyworkforyou','local representatives','elected representatives','campaign','talking points','lancashire county council','preston city council','ward','writetothem','south ribble','leyland','penwortham','lostock hall','postcode'], content: 'Campaigning with Asylum Matters, Lift the Ban, Family Reunion UK. Your voice matters: MPs may contact Home Office to speed up decisions. If you live in South Ribble your MP is Paul Foster. Find your MP by postcode. Preston covered by Lancashire County Council and Preston City Council. Find your local councillors at writetothem.com. Suggested talking points.' },
             { id: 'donate', title: 'Donate', keywords: ['donate','funding','support','financial','gift aid','charity','Escape to Freedom','unicef','british red cross','kind communities','care 4 calais','refugee action','kairos housing','donation','gifts','donations','umbrella organisation'], content: 'Financial donations to support our work. Information about Gift Aid and alternative organizations to support including UNICEF UK, British Red Cross, Care 4 Calais, Refugee Action, Kairos Housing. Escape to Freedom exhibition. Contact us to donate directly.' },
             { id: 'volunteers', title: 'For Volunteers', keywords: ['volunteer','opportunities','time','skills','support','community','help in preston','preston volunteers','core group','experts group','website','social media','personal support','talk english','refugees at home','sport','cultural events','donating','fundraising','refugee week','befriending','spare room','donations','asylum seekers','volunteering','VCFS organisation','recruit'], content: 'Volunteer opportunities: core group, Experts Group, website management, personal support, English classes, spare room via Refugees at Home, sport/cultural events, donating furniture/clothing/food/bicycles, fundraising, campaigning, Refugee Week planning. If you are a VCFS organisation wishing to recruit sanctuary seekers as volunteers please contact us. Preston Volunteers (communitycvs.org.uk) has special programme for asylum seekers. Help in Preston website lists opportunities.' },

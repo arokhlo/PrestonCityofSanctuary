@@ -1,4 +1,4 @@
-echo '{
+{
   "name": "preston-city-of-sanctuary",
   "version": "1.0.0",
   "description": "Preston City of Sanctuary website",
@@ -12,4 +12,4 @@ echo '{
   "engines": {
     "node": "18.x"
   }
-}' > package.json
+}

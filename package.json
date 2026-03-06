@@ -1,0 +1,15 @@
+echo '{
+  "name": "preston-city-of-sanctuary",
+  "version": "1.0.0",
+  "description": "Preston City of Sanctuary website",
+  "main": "index.html",
+  "scripts": {
+    "start": "http-server -p $PORT"
+  },
+  "dependencies": {
+    "http-server": "^14.1.1"
+  },
+  "engines": {
+    "node": "18.x"
+  }
+}' > package.json

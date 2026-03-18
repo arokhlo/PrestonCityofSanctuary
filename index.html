@@ -1975,7 +1975,7 @@ async function loadFacebookFeed() {
     // Try direct fetch first (no proxy) for your working RSS feed
     try {
         console.log('Attempting direct fetch from FetchRSS...');
-        const response = await fetchWithTimeout(RSS_FEEDS[0], 10000);
+        const response = await fetchWithTimeout(RSS_FEEDS[0], 30000);
         
         if (response.ok) {
             const xmlText = await response.text();
@@ -2003,7 +2003,7 @@ async function loadFacebookFeed() {
                     const proxyUrl = proxy + encodeURIComponent(rssUrl);
                     console.log(`Attempt ${attempts}: Trying ${proxyUrl}`);
                     
-                    const response = await fetchWithTimeout(proxyUrl, 10000);
+                    const response = await fetchWithTimeout(proxyUrl, 30000);
                     
                     if (!response.ok) {
                         console.warn(`Proxy ${proxy} failed with status: ${response.status}`);
